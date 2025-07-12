@@ -6,7 +6,18 @@ import UseAuth from "../../../Hooks/UseAuth";
 const Navbar = () => {
     const { user, logOut } = UseAuth()
     console.log(user?.displayName)
+    console.log(user?.photoURL)
     const [isOpen, setIsOpen] = useState(false);
+
+
+
+    const handleLogout = () => {
+        logOut().then(() => {
+
+        }).catch((error) => {
+
+        });
+    }
 
     // Simulated user auth (replace with your logic)
     // const user = { email: "user@example.com", name: "John Doe" };
@@ -76,32 +87,38 @@ const Navbar = () => {
                 {/* Right Side */}
                 <div className="hidden md:flex items-center gap-4">
                     {user ? (
-                        <NavLink
-                            to="/profile"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
-                            }
-                        >
-                            {user.displayName}
-                        </NavLink>
+                        <div className="dropdown dropdown-hover mr-30 lg:ml-0">
+                            <img src={user?.photoURL} alt={user?.displayName} className="w-15 rounded-4xl" />
+                            {/* <img  className=' w-12 rounded-full' src={user?.photoURL} alt="" /> */}
+
+
+                            <ul tabIndex={0} className=" space-y-4 dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                {/* {
+                                    user && profileDropdown
+                                } */}
+
+                                <Link to="/auth/register" onClick={handleLogout} className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+                                    <div className="relative overflow-hidden">
+                                        <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">LogOut</p>
+                                        <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">LogOut</p>
+                                    </div>
+                                </Link>
+                            </ul>
+                        </div>
                     ) : (
                         <>
-                            <NavLink
-                                to="/auth/login"
-                                className={({ isActive }) =>
-                                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
-                                }
-                            >
-                                Login
-                            </NavLink>
-                            <NavLink
-                                to="/auth/register"
-                                className={({ isActive }) =>
-                                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
-                                }
-                            >
-                                Register
-                            </NavLink>
+                            <Link to="/auth/login" className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+                                <div className="relative overflow-hidden">
+                                    <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Login</p>
+                                    <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Login</p>
+                                </div>
+                            </Link>
+                            <Link to="/auth/register" className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+                                <div className="relative overflow-hidden">
+                                    <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Register</p>
+                                    <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Register</p>
+                                </div>
+                            </Link>
                         </>
                     )}
                 </div>
@@ -163,22 +180,29 @@ const Navbar = () => {
                                 </NavLink>
                             ) : (
                                 <>
-                                    <NavLink
-                                        to="/login"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
-                                        }
-                                    >
-                                        Login
-                                    </NavLink>
-                                    <NavLink
+                                    <Link to="/auth/login" className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+                                        <div className="relative overflow-hidden">
+                                            <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Login</p>
+                                            <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Login</p>
+                                        </div>
+                                    </Link>
+                                    <Link to="/auth/register" className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+                                        <div className="relative overflow-hidden">
+                                            <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Register</p>
+                                            <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">Register</p>
+                                        </div>
+                                    </Link>
+                                    {/* <NavLink
                                         to="/register"
                                         className={({ isActive }) =>
                                             isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
                                         }
                                     >
                                         Register
-                                    </NavLink>
+                                    </NavLink> */}
+
+
+
                                 </>
                             )}
                         </div>

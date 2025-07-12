@@ -5,6 +5,7 @@ import UseAuth from '../../../Hooks/UseAuth'
 import axios from 'axios'
 import UseAxios from '../../../Hooks/UseAxious'
 import { motion } from "framer-motion";
+import SocialLogin from '../SocialLogin/SocialLogin'
 
 // import "./Register.css"
 
@@ -52,9 +53,10 @@ function Register() {
             // update user information in database
             const userInfo = {
                 email: data.email,
-                role: "user",
+                role: "customer",
+                name:data.name,
                 created_at: new Date().toISOString(),
-                lastLogin: new Date().toISOString()
+                lastLogin: new Date().toISOString(),
             }
 
 
@@ -65,6 +67,7 @@ function Register() {
                 displayName: data?.name,
                 photoURL: profilePic,
                 email: data?.email,
+
             }
 
 
@@ -165,6 +168,8 @@ function Register() {
                 <button type="submit" className="btn btn-primary w-full">
                     Register
                 </button>
+                <div className='text-2xl font-bold'>Or</div>
+                <SocialLogin/>
 
                 <p className="text-start text-sm">
                     Already have an account?{" "}

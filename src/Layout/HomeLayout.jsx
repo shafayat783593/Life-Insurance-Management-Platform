@@ -7,7 +7,7 @@ export default function HomeLayout() {
 
     <>
 
-      <div className='w-11/12 mx-auto'>
+      {/* <div className='w-11/12 mx-auto'> */}
 
         <Navbar />
 
@@ -15,7 +15,7 @@ export default function HomeLayout() {
         <Outlet />
 
 
-      </div>
+      {/* </div> */}
       {/* <Footer /> */}
 
     </>

@@ -4,9 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import UseAuth from "../../../Hooks/UseAuth";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
-    const { loginUser, googleLogin } = UseAuth();
+    const { loginUser } = UseAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const redirectPath = location.state?.from?.pathname || "/";
@@ -36,24 +37,7 @@ const Login = () => {
         }
     };
 
-    const handleGoogleLogin = async () => {
-        try {
-            await googleLogin();
-            Swal.fire({
-                icon: "success",
-                title: "Google Login Successful!",
-                timer: 1500,
-                showConfirmButton: false,
-            });
-            navigate(redirectPath);
-        } catch (err) {
-            Swal.fire({
-                icon: "error",
-                title: "Google Login Failed",
-                text: err.message,
-            });
-        }
-    };
+
 
     return (
         <motion.div
@@ -102,14 +86,10 @@ const Login = () => {
                 </button>
 
                 {/* Google Login */}
-                <button
-                    type="button"
-                    onClick={handleGoogleLogin}
-                    className="btn btn-outline w-full flex items-center justify-center gap-2"
-                >
-                    <FcGoogle className="text-xl" /> Login with Google
-                </button>
+                <div className='text-2xl font-bold'>Or</div>
 
+
+                <SocialLogin />
                 {/* Register Redirect */}
                 <p className="text-center text-sm">
                     Don’t have an account?{" "}
