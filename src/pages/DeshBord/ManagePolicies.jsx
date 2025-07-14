@@ -46,6 +46,7 @@ export default function ManagePolicies() {
         try {
             const dataInfo = {
                 ...data,
+                purchaseCount:0,
                 image: profilePic,
             };
 
@@ -212,6 +213,7 @@ export default function ManagePolicies() {
                                     />
                                 )}
                             </div>
+                          
 
                             <div className="md:col-span-2 flex justify-end gap-4 mt-4">
                                 <button type="button" onClick={() => { setShowModal(false); reset(); setEditItem(null); }} className="btn">

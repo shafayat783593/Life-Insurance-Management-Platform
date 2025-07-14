@@ -1,35 +1,76 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import { FaUserShield, FaUserTie, FaTrashAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
+import { FaUserTie, FaUserShield, FaTrashAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function ManageUsers() {
-    const axiosSecure= UseAxiosSecure()
+    const axiosSecure = UseAxiosSecure();
+    const [filter, setFilter] = useState('all');
+
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
             return res.data;
-        }
+        },
     });
 
     const updateRole = async (id, role) => {
         try {
-            await axiosSecure.patch(`/api/users/role/${id}`, { role });
-            Swal.fire('Success!', `User role changed to ${role}`, 'success');
+            await axiosSecure.patch(`/role/${id}`, { role });
+            Swal.fire('Updated!', `Role changed to ${role}`, 'success');
             refetch();
         } catch (err) {
-            Swal.fire('Error', 'Failed to change role', 'error');
+            Swal.fire('Error', 'Role update failed', 'error');
         }
     };
+
+    const deleteUser = async (id) => {
+        const confirm = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'This user will be deleted permanently!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+        });
+
+        if (confirm.isConfirmed) {
+            try {
+                await axiosSecure.delete(`/users/${id}`);
+                Swal.fire('Deleted!', 'User has been removed.', 'success');
+                refetch();
+            } catch (err) {
+                Swal.fire('Error', 'Failed to delete user', 'error');
+            }
+        }
+    };
+
+    const filteredUsers =
+        filter === 'all' ? users : users.filter((u) => u.role === filter);
 
     return (
         <div className="p-6">
             <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
 
-            <div className="overflow-x-auto">
+            {/* Filter Dropdown */}
+            <div className="mb-4">
+                <select
+                    className="select select-bordered select-sm"
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                >
+                    <option value="all">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="agent">Agent</option>
+                    <option value="customer">Customer</option>
+                </select>
+            </div>
+
+            <div className="">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -41,29 +82,50 @@ export default function ManageUsers() {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => (
+                        {filteredUsers.map((user) => (
                             <motion.tr key={user._id} whileHover={{ scale: 1.01 }}>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <span className={`badge ${user.role === 'admin' ? 'badge-error' : user.role === 'agent' ? 'badge-info' : 'badge-success'}`}>
+                                    <span
+                                        className={`badge ${user.role === 'admin'
+                                                ? 'badge-error'
+                                                : user.role === 'agent'
+                                                    ? 'badge-info'
+                                                    : 'badge-success'
+                                            }`}
+                                    >
                                         {user.role}
                                     </span>
                                 </td>
-                                <td>{new Date(user.createdAt).toLocaleDateString()}</td>
-                                <td className="flex gap-2">
+                                <td>
+                                    {user.created_at
+                                        ? new Date(user.created_at).toLocaleDateString()
+                                        : 'N/A'}
+                                </td>
+                                <td className="flex flex-wrap gap-2">
                                     {user.role === 'customer' && (
-                                        <button onClick={() => updateRole(user._id, 'agent')} className="btn btn-sm btn-info flex items-center gap-1">
+                                        <button
+                                            onClick={() => updateRole(user._id, 'agent')}
+                                            className="btn btn-sm btn-info flex items-center gap-1"
+                                        >
                                             <FaUserTie /> Promote
                                         </button>
                                     )}
                                     {user.role === 'agent' && (
-                                        <button onClick={() => updateRole(user._id, 'customer')} className="btn btn-sm btn-warning flex items-center gap-1">
+                                        <button
+                                            onClick={() => updateRole(user._id, 'customer')}
+                                            className="btn btn-sm btn-warning flex items-center gap-1"
+                                        >
                                             <FaUserShield /> Demote
                                         </button>
                                     )}
-                                    {/* Optional delete button */}
-                                    {/* <button className="btn btn-sm btn-error"><FaTrashAlt /></button> */}
+                                    <button
+                                        onClick={() => deleteUser(user._id)}
+                                        className="btn btn-sm btn-error"
+                                    >
+                                        <FaTrashAlt />
+                                    </button>
                                 </td>
                             </motion.tr>
                         ))}

@@ -7,7 +7,7 @@ import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 const ManageApplications = () => {
     const [selectedApp, setSelectedApp] = useState(null);
-const axiosSecure= UseAxiosSecure()
+    const axiosSecure = UseAxiosSecure()
     // Get all applications
     const { data: applications = [], refetch } = useQuery({
         queryKey: ["applications"],
@@ -19,9 +19,9 @@ const axiosSecure= UseAxiosSecure()
 
     // Get agents list
     const { data: agents = [] } = useQuery({
-        queryKey: ["agents"],
+        queryKey: ["users"],
         queryFn: async () => {
-            const res = await axiosSecure.get("/agents");
+            const res = await axiosSecure.get("/users");
             return res.data;
         },
     });
@@ -29,6 +29,12 @@ const axiosSecure= UseAxiosSecure()
     // Handle agent assign
     const handleAssignAgent = async (id, agentEmail) => {
         await axiosSecure.patch(`/api/applications/${id}/assign`, { agentEmail });
+        const selectedAgent = agents.find(agent => agent.email === agentEmail);
+
+        // 3️⃣ Promote user role if found
+        if (selectedAgent?._id) {
+            await axiosSecure.patch(`/user/role/${selectedAgent._id}/assign`);
+        }
         Swal.fire("Assigned!", "Agent assigned successfully", "success");
         refetch();
     };
@@ -39,7 +45,7 @@ const axiosSecure= UseAxiosSecure()
             title: "Reject Application?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, reject it",  
+            confirmButtonText: "Yes, reject it",
         });
         if (confirm.isConfirmed) {
             await axiosSecure.patch(`applications/${id}/reject`);
@@ -71,7 +77,7 @@ const axiosSecure= UseAxiosSecure()
                             <tr key={app._id}>
                                 <td>{app.name}</td>
                                 <td>{app.email}</td>
-                                <td>{app.policyName}</td>
+                                <td>{app?.policyData?.title}</td>
                                 <td>{new Date(app.submittedAt).toLocaleDateString()}</td>
                                 <td className="font-semibold text-blue-600">{app.status}</td>
                                 <td>
@@ -132,7 +138,7 @@ const axiosSecure= UseAxiosSecure()
                                 <p><strong>Nominee:</strong> {selectedApp.nomineeName} ({selectedApp.nomineeRelation})</p>
                                 <p><strong>Status:</strong> {selectedApp.status}</p>
                                 <p><strong>Address:</strong> {selectedApp.address}</p>
-                                <p><strong>Health:</strong> {selectedApp.healthDisclosure.map((helth)=><span>{helth }</span>)}</p>
+                                <p><strong>Health:</strong> {selectedApp.healthDisclosure.map((helth) => <span>{helth}</span>)}</p>
                             </div>
                         )}
                         <div className="mt-6 flex justify-end">

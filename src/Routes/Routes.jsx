@@ -17,6 +17,7 @@ import PolicyDetails from "../pages/PolicyDetails/PolicyDetails";
 import PrivateRoutes from "../pages/Route/PrivateRoutes";
 import QuotePage from "../pages/QuotePage/QuotePage";
 import ApplicationForm from "../pages/ApplicationForm/ApplicationForm";
+import AssignedCustomers from "../pages/DeshBord/AgentDeshBord/AssignedCustomers";
 
 export const router = createBrowserRouter([
 
@@ -41,12 +42,12 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <QuotePage />
                 </PrivateRoutes>
-            },{
-                path:"application",
-                element:<PrivateRoutes>
-                    <ApplicationForm/>
+            }, {
+                path: "application",
+                element: <PrivateRoutes>
+                    <ApplicationForm />
                 </PrivateRoutes>
-            }
+            },
         ]
     }, {
         path: "/auth",
@@ -80,6 +81,12 @@ export const router = createBrowserRouter([
                 path: "my-policies",
                 Component: MyPolicies
 
+            },
+            {
+                path: "assigned-customers",
+                element: <PrivateRoutes>
+                    <AssignedCustomers />
+                </PrivateRoutes>
             }
         ]
     }

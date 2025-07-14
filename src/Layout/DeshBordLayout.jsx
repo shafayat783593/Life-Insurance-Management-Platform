@@ -204,7 +204,7 @@ function DashBordLayout() {
                                 }
                             >
                                 <FaUsers className="inline mr-2" />
-                                Users
+                                Manage Users
                             </NavLink>
                         </li>
                         <li>
@@ -254,6 +254,24 @@ function DashBordLayout() {
                             >
                                 <FaFileAlt className="inline mr-2" />
                                 My Policies
+                            </NavLink>
+                        </li>
+
+
+
+
+                        {/*agent ...............  */}
+
+
+                        <li>
+                            <NavLink
+                                to="/dashboard/assigned-customers"
+                                className={({ isActive }) =>
+                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                }
+                            >
+                                <FaUsers className="inline mr-2" />
+                                Assigned Customers
                             </NavLink>
                         </li>
 

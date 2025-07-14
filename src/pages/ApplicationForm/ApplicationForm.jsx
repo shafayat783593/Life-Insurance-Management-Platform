@@ -12,8 +12,8 @@ export default function ApplicationForm() {
     const { user } = UseAuth();
     const axiosSecure = UseAxiosSecure()
     const loaction = useLocation()
-    const quteData = loaction.state
-    console.log(quteData)
+    const { quote, policyData }= loaction.state
+ 
     const navigate = useNavigate()
 
     const {
@@ -36,10 +36,11 @@ export default function ApplicationForm() {
             ...data,
             userEmail: user?.email,
             status: "Pending",
-            quteData,
+            quote,
+            policyData,
             submittedAt: new Date().toISOString(),
         };
-        console.log(quteData)
+      
         try {
             const res = await axiosSecure.post("/applications", application);
             if (res.data?.insertedId) {

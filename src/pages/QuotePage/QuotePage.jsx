@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { FaCalculator } from "react-icons/fa";
 
 const QuotePage = () => {
     const { register, handleSubmit, reset } = useForm();
     const [quote, setQuote] = useState(null);
     const navigate = useNavigate();
+    const loaction = useLocation()
+    const  policyData  = loaction.state
+
 
     const calculatePremium = (data) => {
         const baseRate = 0.0005; // base rate per month
@@ -101,7 +104,7 @@ const QuotePage = () => {
                     <p>Monthly: ৳{quote.monthly}</p>
                     <p>Yearly: ৳{quote.annual}</p>
                     <button
-                        onClick={() => navigate("/application",{state:quote})}
+                        onClick={() => navigate("/application", { state: { quote, policyData }})}
                         className="btn btn-accent mt-4"
                     >
                         Apply for Policy
