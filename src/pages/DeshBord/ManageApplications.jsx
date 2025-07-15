@@ -4,12 +4,13 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
+import Loading from "../../components/Loader/Loading";
 
 const ManageApplications = () => {
     const [selectedApp, setSelectedApp] = useState(null);
     const axiosSecure = UseAxiosSecure()
     // Get all applications
-    const { data: applications = [], refetch } = useQuery({
+    const { data: applications = [], refetch,isLoading } = useQuery({
         queryKey: ["applications"],
         queryFn: async () => {
             const res = await axiosSecure.get("/applications");
@@ -53,6 +54,7 @@ const ManageApplications = () => {
             refetch();
         }
     };
+    if(isLoading) return <Loading/>
 
     return (
         <div className="space-y-6">

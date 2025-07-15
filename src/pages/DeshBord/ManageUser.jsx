@@ -4,12 +4,13 @@ import Swal from 'sweetalert2';
 import { FaUserTie, FaUserShield, FaTrashAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Loading from '../../components/Loader/Loading';
 
 export default function ManageUsers() {
     const axiosSecure = UseAxiosSecure();
     const [filter, setFilter] = useState('all');
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch,isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
@@ -51,6 +52,8 @@ export default function ManageUsers() {
 
     const filteredUsers =
         filter === 'all' ? users : users.filter((u) => u.role === filter);
+
+        if(isLoading) return <Loading/>
 
     return (
         <div className="p-6">

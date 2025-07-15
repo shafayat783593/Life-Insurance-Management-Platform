@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import axios from 'axios';
+import Loading from '../../components/Loader/Loading';
 
 export default function ManagePolicies() {
     const { user } = UseAuth();
@@ -23,7 +24,7 @@ export default function ManagePolicies() {
         formState: { errors }
     } = useForm();
 
-    const { data: policies = [], refetch } = useQuery({
+    const { data: policies = [], refetch ,isLoading} = useQuery({
         queryKey: ['policies'],
         queryFn: async () => {
             const res = await axiosSecure.get('/policies');
@@ -96,6 +97,8 @@ export default function ManagePolicies() {
             refetch();
         }
     };
+
+    if(isLoading) return <Loading/>
 
     return (
         <div className="p-6">

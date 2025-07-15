@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Modal from "../../ShardeComponents/Modal";
+import Loading from "../../../components/Loader/Loading";
 
 export default function AssignedCustomers() {
     const { user } = UseAuth();
@@ -12,7 +13,7 @@ export default function AssignedCustomers() {
     const [selectedApp, setSelectedApp] = useState(null);
 
     // Get assigned customers
-    const { data: assignedApps = [], refetch } = useQuery({
+    const { data: assignedApps = [], refetch, isLoading, isError } = useQuery({
         queryKey: ["assignedApps", user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/applications/assigned?agent=${user?.email}`);
@@ -42,9 +43,10 @@ export default function AssignedCustomers() {
             Swal.fire("Error", "Failed to update status", "error");
         }
     };
+ if (isLoading) return <Loading/>
+    if (isError) return <p className="p-4 text-center text-red-600">Failed to load policies</p>;
     
-
-    return (
+  return (
         <div className="p-6">
             <h2 className="text-2xl font-bold mb-6">Assigned Customers</h2>
 

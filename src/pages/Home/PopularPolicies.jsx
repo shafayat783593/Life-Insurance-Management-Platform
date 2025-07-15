@@ -5,13 +5,12 @@ import Loading from "../../components/Loader/Loading";
 
 const PopularPolicies = () => {
     const axiosSecure = UseAxiosSecure();
-
-    const { data: policies = [], isLoading, isError } = useQuery({
+    const { data: policies = [], isLoading,isError } = useQuery({
         queryKey: ["popularPolicies"],
         queryFn: async () => {
-            const res = await axiosSecure.get("/policies/popular?limit=6");
+            const res = await axiosSecure.get("/policies/popular");
             return res.data;
-        },
+        }
     });
     console.log(policies)
     if (isLoading) {

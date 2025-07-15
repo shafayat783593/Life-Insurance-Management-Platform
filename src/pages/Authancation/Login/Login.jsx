@@ -7,7 +7,7 @@ import UseAuth from "../../../Hooks/UseAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
-    const { loginUser } = UseAuth();
+    const { signin  } = UseAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const redirectPath = location.state?.from?.pathname || "/";
@@ -20,7 +20,7 @@ const Login = () => {
 
     const onSubmit = async ({ email, password }) => {
         try {
-            await loginUser(email, password);
+            await signin(email, password);
             Swal.fire({
                 icon: "success",
                 title: "Login Successful!",

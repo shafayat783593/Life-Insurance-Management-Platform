@@ -1,14 +1,13 @@
 import React from 'react'
-
+import "./Loading.css"
 function Loading() {
   return (
         <div>
-
-            <div className='min-h-screen flex justify-center items-center'>
-                <span className="loading loading-spinner text-success"></span>
-
-            </div>
-
+          <div className="three-body">
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+          </div>
         </div>
     )
 }

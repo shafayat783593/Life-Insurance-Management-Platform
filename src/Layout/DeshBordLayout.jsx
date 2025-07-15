@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router'
 // import Logo from '../pages/ShardeComponents/Logo/Logo'
-import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle } from "react-icons/fa";
+import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog } from "react-icons/fa";
 // import UseUserRole from '../Hooks/UseUserRole';
 function DashBordLayout() {
     // const { role, roleLoading } = UseUserRole()
@@ -274,6 +274,19 @@ function DashBordLayout() {
                                 Assigned Customers
                             </NavLink>
                         </li>
+
+                        <li>
+                            <NavLink
+                                to="/dashboard/manage-blogs"
+                                className={({ isActive }) =>
+                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                }
+                            >
+                                <FaBlog className="inline mr-2" />
+                                Manage Blogs
+                            </NavLink>
+                        </li>
+
 
 
                     </ul>
