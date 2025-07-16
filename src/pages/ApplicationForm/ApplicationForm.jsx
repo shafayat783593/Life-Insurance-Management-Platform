@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 
 export default function ApplicationForm() {
-    const { user } = UseAuth();
+    const { user, setselectedPolicy } = UseAuth();
     const axiosSecure = UseAxiosSecure()
     const loaction = useLocation()
     const { quote, policyData }= loaction.state
@@ -39,7 +39,10 @@ export default function ApplicationForm() {
             quote,
             policyData,
             submittedAt: new Date().toISOString(),
+
         };
+
+        setselectedPolicy(application)
       
         try {
             const res = await axiosSecure.post("/applications", application);
@@ -68,6 +71,8 @@ export default function ApplicationForm() {
             console.error(err);
         }
     };
+
+    
     return (
         <motion.div
             initial={{ opacity: 0, y: 40 }}

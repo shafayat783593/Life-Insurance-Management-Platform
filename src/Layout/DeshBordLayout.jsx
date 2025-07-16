@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router'
 // import Logo from '../pages/ShardeComponents/Logo/Logo'
-import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog } from "react-icons/fa";
+import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature } from "react-icons/fa";
 // import UseUserRole from '../Hooks/UseUserRole';
 function DashBordLayout() {
     // const { role, roleLoading } = UseUserRole()
@@ -286,6 +286,20 @@ function DashBordLayout() {
                                 Manage Blogs
                             </NavLink>
                         </li>
+
+
+                        <li>
+                            <NavLink
+                                to="/dashboard/claim-request"
+                                className={({ isActive }) =>
+                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                }
+                            >
+                                <FaFileSignature className="inline mr-2" />
+                                Claim Request
+                            </NavLink>
+                        </li>
+
 
 
 

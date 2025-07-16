@@ -19,6 +19,7 @@ import QuotePage from "../pages/QuotePage/QuotePage";
 import ApplicationForm from "../pages/ApplicationForm/ApplicationForm";
 import AssignedCustomers from "../pages/DeshBord/AgentDeshBord/AssignedCustomers";
 import ManageBlogs from "../pages/DeshBord/AgentDeshBord/ManageBlogs";
+import ClaimRequest from "../pages/DeshBord/UserDeshBord/ClaimRequest";
 
 export const router = createBrowserRouter([
 
@@ -91,6 +92,9 @@ export const router = createBrowserRouter([
             },{
                 path:'manage-blogs',
                 Component:ManageBlogs
+            },{
+                path:"claim-request",
+                Component:ClaimRequest
             }
         ]
     }

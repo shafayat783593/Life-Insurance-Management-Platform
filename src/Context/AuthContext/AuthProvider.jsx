@@ -10,6 +10,8 @@ function AuthProvider({ children }) {
     const provider = new GoogleAuthProvider();
     const [user, setuser] = useState(null)
     const [loading, setloading] = useState(true)
+    const [selectedPolicy, setselectedPolicy] = useState(null)
+    const [quatadata , setquatadata ] = useState(null)
 
     console.log(user)
     const createrUser = (email, password) => {
@@ -59,7 +61,7 @@ function AuthProvider({ children }) {
 
         return () => unsubscribe(); // ← THIS is correct
     }, []);
-
+console.log(" ehro fofosdfsndofdfodsf fjdpfsfffffffffffffffffffffffffffffffff  fjdf",selectedPolicy)
 
     const authInfo = {
         createrUser,
@@ -70,6 +72,10 @@ function AuthProvider({ children }) {
         logOut,
         updateUser,
         loading,
+        selectedPolicy,
+        quatadata,
+        setselectedPolicy, 
+        setquatadata
 
 
 

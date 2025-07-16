@@ -27,6 +27,8 @@ const QuotePage = () => {
         setQuote({
             monthly: monthlyPremium,
             annual: annualPremium,
+            coverageAmount,
+            duration,
         });
     };
 
