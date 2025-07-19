@@ -13,7 +13,8 @@ export default function ApplicationForm() {
     const axiosSecure = UseAxiosSecure()
     const loaction = useLocation()
     const { quote, policyData }= loaction.state
- 
+
+    console.log(quote)
     const navigate = useNavigate()
 
     const {
@@ -32,45 +33,47 @@ export default function ApplicationForm() {
     ];
 
     const onSubmit = async (data) => {
+        const selectedFrequency = "monthly"; // or get this from user selection in form
+        const premiumAmount =
+            selectedFrequency === "monthly"
+                ? parseFloat(quote.monthly)
+                : parseFloat(quote.annual);
+
         const application = {
             ...data,
             userEmail: user?.email,
             status: "Pending",
             quote,
             policyData,
+            premiumAmount,
+            frequency: selectedFrequency,
+            paymentStatus:"Due",
             submittedAt: new Date().toISOString(),
-
         };
 
-        setselectedPolicy(application)
-      
+        setselectedPolicy(application);
+
         try {
             const res = await axiosSecure.post("/applications", application);
             if (res.data?.insertedId) {
                 reset();
-
-                // ✅ Show success alert using SweetAlert2
                 Swal.fire({
                     icon: 'success',
                     title: 'Application Submitted!',
                     text: 'Your insurance application has been successfully submitted.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK',
                 });
-                navigate("/policies")
+                navigate("/policies");
             }
         } catch (err) {
-
             Swal.fire({
                 icon: 'error',
                 title: 'Submission Failed',
                 text: 'Something went wrong. Please try again later.',
-                confirmButtonColor: '#d33',
-                confirmButtonText: 'Close',
             });
             console.error(err);
         }
     };
+
 
     
     return (

@@ -300,6 +300,18 @@ function DashBordLayout() {
                             </NavLink>
                         </li>
 
+                        <li>
+                            <NavLink
+                                to="/dashboard/payment-status"
+                                className={({ isActive }) =>
+                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                }
+                            >
+                                <FaMoneyCheckAlt className="inline mr-2" />
+                                Payment Status
+                            </NavLink>
+                        </li>
+
 
 
 

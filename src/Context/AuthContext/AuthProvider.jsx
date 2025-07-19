@@ -11,7 +11,7 @@ function AuthProvider({ children }) {
     const [user, setuser] = useState(null)
     const [loading, setloading] = useState(true)
     const [selectedPolicy, setselectedPolicy] = useState(null)
-    const [quatadata , setquatadata ] = useState(null)
+    const [quatadata, setquatadata] = useState(null)
 
     console.log(user)
     const createrUser = (email, password) => {
@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
 
         return () => unsubscribe(); // ← THIS is correct
     }, []);
-console.log(" ehro fofosdfsndofdfodsf fjdpfsfffffffffffffffffffffffffffffffff  fjdf",selectedPolicy)
+    console.log(" ehro fofosdfsndofdfodsf fjdpfsfffffffffffffffffffffffffffffffff  fjdf", selectedPolicy)
 
     const authInfo = {
         createrUser,
@@ -74,7 +74,7 @@ console.log(" ehro fofosdfsndofdfodsf fjdpfsfffffffffffffffffffffffffffffffff  f
         loading,
         selectedPolicy,
         quatadata,
-        setselectedPolicy, 
+        setselectedPolicy,
         setquatadata
 
 
