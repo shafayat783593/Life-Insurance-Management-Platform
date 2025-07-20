@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import Loading from "../../../components/Loader/Loading";
 
 export default function PolicyClearance() {
     const [selectedClaim, setSelectedClaim] = useState(null);
@@ -46,7 +47,7 @@ export default function PolicyClearance() {
         }
     };
 
-    if (isLoading) return <p className="text-center">Loading claims...</p>;
+    if (isLoading) return <Loading/>;
 
     return (
         <div className="p-4">

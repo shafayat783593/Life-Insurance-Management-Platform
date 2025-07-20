@@ -5,16 +5,18 @@ import Loading from "../../components/Loader/Loading";
 
 const PopularPolicies = () => {
     const axiosSecure = UseAxiosSecure();
-    const { data: policies = [], isLoading,isError } = useQuery({
+
+    const { data: policies = [], isLoading, isError } = useQuery({
         queryKey: ["popularPolicies"],
         queryFn: async () => {
             const res = await axiosSecure.get("/policies/popular");
             return res.data;
-        }
+        },
     });
-    console.log(policies)
+console.log(policies)
+
     if (isLoading) {
-       <Loading/>
+        return <Loading />;
     }
 
     if (isError) {
@@ -26,11 +28,15 @@ const PopularPolicies = () => {
             <h2 className="text-3xl font-bold text-center mb-8">Popular Policies</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {policies.map((policy) => (
-                    <div key={policy._id} className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-all border">
+                    <div
+                        key={policy._id}
+                        className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-all border"
+                    >
+                        <img src={policy.image} alt={policy.title} className="w-full h-48 object-cover rounded mb-4" />
                         <h3 className="text-xl font-semibold text-blue-600 mb-2">{policy.title}</h3>
-                        <p><span className="font-semibold">Coverage:</span> ${policy.coverageAmount}</p>
-                        <p><span className="font-semibold">Term:</span> {policy.termDuration} years</p>
-                        <p><span className="font-semibold">Purchased:</span> {policy.popularity} times</p>
+                        <p><span className="font-semibold">Coverage:</span> {policy.coverageRange}</p>
+                        <p><span className="font-semibold">Term:</span> {policy.durationOptions}</p>
+                        <p><span className="font-semibold">Purchased:</span> {policy.purchaseCount} times</p>
                         <Link
                             to={`/policies/${policy._id}`}
                             className="mt-3 inline-block text-blue-500 hover:underline"

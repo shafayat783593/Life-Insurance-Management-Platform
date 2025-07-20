@@ -24,6 +24,8 @@ import PaymentStatus from "../pages/DeshBord/UserDeshBord/PaymentStatus";
 import Payment from "../pages/DeshBord/UserDeshBord/Payment/StripeProvider";
 import StripeProvider from "../pages/DeshBord/UserDeshBord/Payment/StripeProvider";
 import PolicyClearance from "../pages/DeshBord/AgentDeshBord/PolicyClearance";
+import BlogsDetails from "../pages/Home/Blogs/BlogsDetails";
+import Allblogs from "../pages/Home/Blogs/Allblogs";
 
 export const router = createBrowserRouter([
 
@@ -34,9 +36,6 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
-
-
-
             }, {
                 path: "policies",
                 Component: AllPolicies
@@ -49,6 +48,17 @@ export const router = createBrowserRouter([
                     <QuotePage />
                 </PrivateRoutes>
             }, {
+                path:"blogs/:id",
+               element:<PrivateRoutes>
+               <BlogsDetails/>
+               </PrivateRoutes>
+            },{
+                path:"All-blogs",
+                element:<PrivateRoutes>
+                    <Allblogs/>
+                </PrivateRoutes>
+            },
+            {
                 path: "application",
                 element: <PrivateRoutes>
                     <ApplicationForm />
@@ -107,9 +117,9 @@ export const router = createBrowserRouter([
                 path: "payment/:id",
                 Component: StripeProvider
 
-            },{
-                path:"policy-clearance",
-                Component:PolicyClearance
+            }, {
+                path: "policy-clearance",
+                Component: PolicyClearance
             }
         ]
     }
