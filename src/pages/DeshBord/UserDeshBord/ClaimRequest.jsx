@@ -19,9 +19,9 @@ export default function ClaimRequest() {
         formState: { errors },
     } = useForm();
 
-    // Fetch approved policies + claim info for user
+    // Fetch approved application + claim info for user
     const {
-        data: policies = [],
+        data: application = [],
         refetch,
         isLoading,
     } = useQuery({
@@ -37,13 +37,14 @@ export default function ClaimRequest() {
         if (!selectedPolicy) return;
 
         const payload = new FormData();
-        payload.append("policyId", selectedPolicy._id);
+        payload.append("applicationId", selectedPolicy._id);
+
         payload.append("policyTitle", selectedPolicy.policyData?.title);
         payload.append("userEmail", user?.email);
         payload.append("reason", formData.reason);
         payload.append("status", "Pending");
         payload.append("document", formData.document[0]);
-
+        console.log(selectedPolicy._id)
         try {
             const res = await axiosSecure.post("/claims", payload);
             if (res.data?.insertedId) {
@@ -64,8 +65,8 @@ export default function ClaimRequest() {
         <div className="p-6 max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold mb-4">📋 Claim Your Approved Policies</h2>
 
-            {policies.length === 0 ? (
-                <p>No approved policies found.</p>
+            {application.length === 0 ? (
+                <p>No approved  police found.</p>
             ) : (
                 <div className="overflow-x-auto bg-white shadow rounded">
                     <table className="table w-full text-sm">
@@ -79,28 +80,28 @@ export default function ClaimRequest() {
                             </tr>
                         </thead>
                         <tbody>
-                            {policies.map((policy) => (
-                                <tr key={policy._id} className="border-t">
-                                    <td className="p-3">{policy.policyData?.title}</td>
-                                    <td className="p-3">{policy.quote?.coverageAmount || "-"}</td>
-                                    <td className="p-3">{policy.quote?.duration || "-"}</td>
+                            {application.map((appli) => (
+                                <tr key={appli._id} className="border-t">
+                                    <td className="p-3">{appli.policyData?.title}</td>
+                                    <td className="p-3">{appli.quote?.coverageAmount || "-"}</td>
+                                    <td className="p-3">{appli.quote?.duration || "-"}</td>
                                     <td className="p-3 font-semibold">
-                                        {policy.claimStatus ? (
+                                        {appli.claimStatus ? (
                                             <span
-                                                className={`text-${policy.claimStatus === "Approved" ? "green" : "orange"
+                                                className={`text-${appli.claimStatus === "Approved" ? "green" : "orange"
                                                     }-600`}
                                             >
-                                                {policy.claimStatus}
+                                                {appli.claimStatus}
                                             </span>
                                         ) : (
                                             "Not Claimed"
                                         )}
                                     </td>
                                     <td className="p-3">
-                                        {!policy.claimStatus && (
+                                        {!appli.claimStatus && (
                                             <button
                                                 onClick={() => {
-                                                    setSelectedPolicy(policy);
+                                                    setSelectedPolicy(appli);
                                                     setOpenModal(true);
                                                 }}
                                                 className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"

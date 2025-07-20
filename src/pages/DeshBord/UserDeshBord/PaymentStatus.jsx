@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import UseAuth from "../../../Hooks/UseAuth";
+import Loading from "../../../components/Loader/Loading";
 
 export default function PaymentStatus() {
     const axiosSecure = UseAxiosSecure();
@@ -18,8 +19,8 @@ export default function PaymentStatus() {
         enabled: !!user?.email
     });
 
-    const handlePay = (policyId) => {
-        navigate(`/dashboard/payment/${policyId}`);
+    const handlePay = (id) => {
+        navigate(`/dashboard/payment/${id}`);
     };
 
     const formatCoverage = (amount) => {
@@ -29,7 +30,7 @@ export default function PaymentStatus() {
         return amount + " ৳";
     };
 
-    if (isLoading) return <p className="text-center py-10">Loading...</p>;
+    if (isLoading) return <Loading/>;
 
     return (
         <div className="p-6">
@@ -59,7 +60,7 @@ export default function PaymentStatus() {
                                     <td>{formatCoverage(policy?.quote?.coverageAmount)}</td>
                                     <td>{policy?.premiumAmount} ৳</td>
                                     <td>{policy.frequency}</td>
-                                    <td>{policy?.paymentStatus}</td>
+                                    <td className=" font-medium">{policy?.paymentStatus}</td>
                                     <td>
                                         {policy?.paymentStatus === "Due" && (
                                             <button

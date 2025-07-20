@@ -49,11 +49,11 @@ function AuthProvider({ children }) {
             setuser(currentuser);
             console.log("User:", currentuser);
             if (currentuser?.email) {
-                axios.post("http://localhost:3000//jwt", {
-                    email: currentuser?.email
-                }).then(res => {
+                // axios.post("http://localhost:3000//jwt", {
+                //     email: currentuser?.email
+                // }).then(res => {
 
-                })
+                // })
             }
 
             setloading(false);

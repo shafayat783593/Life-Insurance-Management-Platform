@@ -21,7 +21,9 @@ import AssignedCustomers from "../pages/DeshBord/AgentDeshBord/AssignedCustomers
 import ManageBlogs from "../pages/DeshBord/AgentDeshBord/ManageBlogs";
 import ClaimRequest from "../pages/DeshBord/UserDeshBord/ClaimRequest";
 import PaymentStatus from "../pages/DeshBord/UserDeshBord/PaymentStatus";
-import Payment from "../pages/DeshBord/UserDeshBord/Payment/Payment";
+import Payment from "../pages/DeshBord/UserDeshBord/Payment/StripeProvider";
+import StripeProvider from "../pages/DeshBord/UserDeshBord/Payment/StripeProvider";
+import PolicyClearance from "../pages/DeshBord/AgentDeshBord/PolicyClearance";
 
 export const router = createBrowserRouter([
 
@@ -91,20 +93,23 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <AssignedCustomers />
                 </PrivateRoutes>
-            },{
-                path:'manage-blogs',
-                Component:ManageBlogs
-            },{
-                path:"claim-request",
-                Component:ClaimRequest
-            },{
-                path:"payment-status",
-                Component:PaymentStatus
+            }, {
+                path: 'manage-blogs',
+                Component: ManageBlogs
+            }, {
+                path: "claim-request",
+                Component: ClaimRequest
+            }, {
+                path: "payment-status",
+                Component: PaymentStatus
+
+            }, {
+                path: "payment/:id",
+                Component: StripeProvider
 
             },{
-                path:"payment/:id",
-            Component:Payment
-
+                path:"policy-clearance",
+                Component:PolicyClearance
             }
         ]
     }
