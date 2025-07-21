@@ -26,6 +26,7 @@ import StripeProvider from "../pages/DeshBord/UserDeshBord/Payment/StripeProvide
 import PolicyClearance from "../pages/DeshBord/AgentDeshBord/PolicyClearance";
 import BlogsDetails from "../pages/Home/Blogs/BlogsDetails";
 import Allblogs from "../pages/Home/Blogs/Allblogs";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
 
@@ -63,7 +64,12 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <ApplicationForm />
                 </PrivateRoutes>
-            },
+            },{
+                path:"profile",
+                element:<PrivateRoutes>
+                    <UserProfile/>
+                </PrivateRoutes>
+            }
         ]
     }, {
         path: "/auth",

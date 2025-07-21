@@ -55,6 +55,7 @@ function Register() {
                 email: data.email,
                 role: "customer",
                 name:data.name,
+                photoURL:profilePic,
                 created_at: new Date().toISOString(),
                 lastLogin: new Date().toISOString(),
             }

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 const FeaturedAgents = () => {
-    const axiosSecure = UseAxiosSecure();
+const axiosSecure= UseAxiosSecure()
 
     const { data: agents = [], isLoading } = useQuery({
         queryKey: ["featuredAgents"],
@@ -24,14 +24,14 @@ const FeaturedAgents = () => {
                             <img
                                 src={agent.photoURL}
                                 alt={agent.name}
-                                className="w-25 h-25 mx-auto rounded-full object-cover border-4 border-indigo-500"
+                                className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-indigo-500"
                             />
                             <h3 className="mt-4 text-xl font-semibold">{agent.name}</h3>
                             <p className="text-sm text-gray-500 mb-2">{agent.email}</p>
                             <div className="mt-4 text-left space-y-1 text-sm text-gray-700">
                                 <p><strong>Experience:</strong> 5+ years</p>
                                 <p><strong>Specialties:</strong> Life, Health, Auto Insurance</p>
-                                {/* <p><strong>Last Login:</strong> {new Date(agent.lastLogin).toLocaleString()}</p> */}
+                                <p><strong>Last Login:</strong> {new Date(agent.lastLogin).toLocaleString()}</p>
                             </div>
                         </div>
                     ))}

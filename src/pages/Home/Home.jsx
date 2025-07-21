@@ -4,6 +4,8 @@ import PopularPolicies from './PopularPolicies'
 import BenefitsOfLifeSure from './BenefitsLifeSure'
 import AllReviews from './Review/Review'
 import LatestBlogs from './Blogs/LatestBlogs'
+import NewsletterSubscription from './NewsletterSubscription'
+import AssignedCustomers from '../DeshBord/AgentDeshBord/AssignedCustomers'
 
 function Home() {
   return (
@@ -13,6 +15,8 @@ function Home() {
         <AllReviews/>
         <LatestBlogs/>
         <BenefitsOfLifeSure/>
+        <AssignedCustomers/>
+        <NewsletterSubscription/>
         
  
     </div>
