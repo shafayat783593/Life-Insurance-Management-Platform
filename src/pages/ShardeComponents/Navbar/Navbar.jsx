@@ -87,7 +87,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center w-full">
                 {/* Logo */}
                 <Link to="/" className="text-xl font-bold text-blue-600 flex items-center gap-1">
-                    <img className="w-15 rounded-2xl" src={logo} alt="" />
+                    <img className="w-15 rounded-full" src={logo} alt="" />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -100,7 +100,7 @@ const Navbar = () => {
                     {user ? (
                         <div className="dropdown dropdown-hover mr-30 lg:ml-0">
                             <Link to="/profile">
-                                <img src={user?.photoURL} alt={user?.displayName} className="w-15 rounded-4xl" />
+                                <img src={user?.photoURL} alt={user?.displayName} className="w-15 h-15 rounded-full" />
                             </Link>
                             {/* <img  className=' w-12 rounded-full' src={user?.photoURL} alt="" /> */}
 

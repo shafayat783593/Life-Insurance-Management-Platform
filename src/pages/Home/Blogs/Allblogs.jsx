@@ -37,30 +37,39 @@ const Allblogs = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {blogs.slice(0, 4).map((blog, i) => (
-                    <motion.div
-                        key={blog._id}
-                        custom={i}
-                        initial="hidden"
-                        animate="visible"
-                        variants={cardVariants}
-                        className="bg-white shadow-md rounded-2xl p-6 border hover:shadow-xl transition-all duration-300"
-                    >
-                        <h3 className="text-xl font-semibold text-indigo-700 mb-2">
-                            {blog.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-3 break-words truncate-multiline">
-                            {blog.content}
-                        </p>
-                        <p className="text-xs text-gray-400 mb-4">By {blog.author}</p>
-                        <Link
-                            to={`/blogs/${blog._id}`}
-                            className="inline-block text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded-md"
+                {blogs.slice(0, 4).map((blog, i) => {
+                    // Assign colorful gradients
+                    const cardColors = [
+                        "from-pink-500 to-red-400",
+                        "from-blue-500 to-indigo-500",
+                        "from-green-500 to-emerald-400",
+                        "from-yellow-500 to-orange-400",
+                    ];
+                    const bgGradient = cardColors[i % cardColors.length];
+
+                    return (
+                        <motion.div
+                            key={blog._id}
+                            custom={i}
+                            initial="hidden"
+                            animate="visible"
+                            variants={cardVariants}
+                            className={`bg-gradient-to-br ${bgGradient} text-white shadow-xl rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300`}
                         >
-                            Read More →
-                        </Link>
-                    </motion.div>
-                ))}
+                            <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+                            <p className="text-sm opacity-90 mb-3 break-words line-clamp-4">
+                                {blog.content}
+                            </p>
+                            <p className="text-xs opacity-70 mb-4">By {blog.author}</p>
+                            <Link
+                                to={`/blogs/${blog._id}`}
+                                className="inline-block text-sm font-medium text-white bg-black/20 hover:bg-black/30 transition px-4 py-2 rounded-md"
+                            >
+                                Read More →
+                            </Link>
+                        </motion.div>
+                    );
+                })}
             </div>
 
         </div>

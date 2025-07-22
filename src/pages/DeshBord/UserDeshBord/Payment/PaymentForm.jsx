@@ -90,7 +90,10 @@ const PaymentForm = () => {
                 id,
                 email: user.email,
                 amount,
+                paymentName: user?.displayName,
                 transactionId: paymentIntent.id,
+           
+                policename: application?.policyData?.title
             };
             console.log(paymentData)
             const paymentRes = await axiosSecure.post("/payments", paymentData);

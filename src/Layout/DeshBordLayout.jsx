@@ -2,9 +2,11 @@ import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router'
 // import Logo from '../pages/ShardeComponents/Logo/Logo'
 import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature, FaClipboardCheck } from "react-icons/fa";
+import UseUserRole from '../Hooks/UserRole';
 // import UseUserRole from '../Hooks/UseUserRole';
 function DashBordLayout() {
-    // const { role, roleLoading } = UseUserRole()
+
+    const { role, roleLoading } = UseUserRole()
     // console.log(role)
     return (
         <div>
@@ -60,7 +62,7 @@ function DashBordLayout() {
                             </NavLink>
                         </li>
 
-                        <li>
+                        {/* <li>
                             <NavLink
                                 to="/dashbord/myparcel"
                                 className={({ isActive }) =>
@@ -71,10 +73,10 @@ function DashBordLayout() {
                                 My Parcel
                             </NavLink>
                         </li>
+ */}
 
 
-
-                        <li>
+                        {/* <li>
                             <NavLink
                                 to="/dashbord/payment-history"
                                 className={({ isActive }) =>
@@ -84,7 +86,7 @@ function DashBordLayout() {
                                 <FaMoneyCheckAlt className="inline mr-2" />
                                 Payment History
                             </NavLink>
-                        </li>
+                        </li> */}
                         {/* Rider links  */}
 
                         {/* {!roleLoading && role === "rider" && (
@@ -184,52 +186,192 @@ function DashBordLayout() {
 
                         {/*  admin  */}
 
+                        {
+                            !roleLoading && role === "admin" && (
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-applications"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaUserShield className="inline mr-2" />
-                               Manage Applications
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-user"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaUsers className="inline mr-2" />
-                                Manage Users
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-policies"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaFileAlt className="inline mr-2" />
-                                Manage Policie
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-transactions"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaMoneyCheckAlt className="inline mr-2" />
-                                Transactions
-                            </NavLink>
-                        </li>
-                        <li>
+
+                                <>
+
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/manage-applications"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaUserShield className="inline mr-2" />
+                                            Manage Applications
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/manage-user"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaUsers className="inline mr-2" />
+                                            Manage Users
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/manage-policies"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaFileAlt className="inline mr-2" />
+                                            Manage Policie
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/manage-transactions"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaMoneyCheckAlt className="inline mr-2" />
+                                            Transactions
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/manage-blogs"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaBlog className="inline mr-2" />
+                                            Manage Blogs
+                                        </NavLink>
+                                    </li>
+
+
+
+
+
+
+                                </>
+
+
+                            )
+                        }
+
+
+                        {/*  agent  */}
+
+                        {
+                            !roleLoading && role === "agent" && (<>
+
+
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/assigned-customers"
+                                        className={({ isActive }) =>
+                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                        }
+                                    >
+                                        <FaUsers className="inline mr-2" />
+                                        Assigned Customers
+                                    </NavLink>
+                                </li>
+
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/manage-blogs"
+                                        className={({ isActive }) =>
+                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                        }
+                                    >
+                                        <FaBlog className="inline mr-2" />
+                                        Manage Blogs
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/policy-clearance"
+                                        className={({ isActive }) =>
+                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                        }
+                                    >
+                                        <FaClipboardCheck className="inline mr-2" />
+                                        Policy Clearance
+                                    </NavLink>
+                                </li>
+
+
+
+                            </>
+
+                            )
+                        }
+
+
+                        {/* customer */}
+                        {
+                            !roleLoading && role === "customer" && (
+                                <>
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/my-policies"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaFileAlt className="inline mr-2" />
+                                            My Policies
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/payment-status"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaMoneyCheckAlt className="inline mr-2" />
+                                            Payment Status
+                                        </NavLink>
+                                    </li>
+
+
+
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/claim-request"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaFileSignature className="inline mr-2" />
+                                            Claim Request
+                                        </NavLink>
+                                    </li>
+
+
+                                </>
+
+
+
+
+                            )
+                        }
+
+
+
+
+                        {/* <li>
                             <NavLink
                                 to="/dashboard/manage-agents"
                                 className={({ isActive }) =>
@@ -239,90 +381,24 @@ function DashBordLayout() {
                                 <FaUserTie className="inline mr-2" />
                                 Agents
                             </NavLink>
-                        </li>
-
-
-
-                        {/*  user */}
-
-                        <li>
-                            <NavLink
-                                to="/dashboard/my-policies"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaFileAlt className="inline mr-2" />
-                                My Policies
-                            </NavLink>
-                        </li>
+                        </li> */}
 
 
 
 
-                        {/*agent ...............  */}
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/assigned-customers"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaUsers className="inline mr-2" />
-                                Assigned Customers
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-blogs"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaBlog className="inline mr-2" />
-                                Manage Blogs
-                            </NavLink>
-                        </li>
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/claim-request"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaFileSignature className="inline mr-2" />
-                                Claim Request
-                            </NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/payment-status"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaMoneyCheckAlt className="inline mr-2" />
-                                Payment Status
-                            </NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/policy-clearance"
-                                className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaClipboardCheck className="inline mr-2" />
-                                Policy Clearance
-                            </NavLink>
-                        </li>
+
+
+                     
+
+
+
+
 
 
 

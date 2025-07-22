@@ -11,7 +11,7 @@ export default function ClaimRequest() {
     const axiosSecure = UseAxiosSecure();
     const [openModal, setOpenModal] = useState(false);
     const [selectedPolicy, setSelectedPolicy] = useState(null);
-
+    console.log(selectedPolicy)
     const {
         register,
         handleSubmit,
@@ -33,13 +33,14 @@ export default function ClaimRequest() {
         enabled: !!user?.email,
     });
 
+
     const onSubmit = async (formData) => {
         if (!selectedPolicy) return;
 
         const payload = new FormData();
         payload.append("applicationId", selectedPolicy._id);
 
-        payload.append("policyTitle", selectedPolicy.policyData?.title);
+        payload.append("policyTitle", selectedPolicy?.policyData?.title);
         payload.append("userEmail", user?.email);
         payload.append("reason", formData.reason);
         payload.append("status", "Pending");
@@ -98,7 +99,7 @@ export default function ClaimRequest() {
                                         )}
                                     </td>
                                     <td className="p-3">
-                                        {!appli.claimStatus && (
+                                        {(!appli.claimStatus || appli.claimStatus === "Not Claimed") && (
                                             <button
                                                 onClick={() => {
                                                     setSelectedPolicy(appli);

@@ -33,7 +33,7 @@ export default function PolicyClearance() {
         },
         enabled: !!selectedClaim?.policyId,
     });
-    console.log(selectedClaim?.policyId)
+    console.log(policyDetails?.policyId)
 
     const handleApprove = async (id) => {
         try {
@@ -69,7 +69,7 @@ export default function PolicyClearance() {
                         {claims.map((claim, index) => (
                             <tr key={claim._id}>
                                 <td>{index + 1}</td>
-                                <td>{claim.policyId}</td>
+                                <td>{claim?.policyTitle}</td>
                                 <td>{claim.userEmail}</td>
                                 <td>
                                     <span
@@ -100,7 +100,7 @@ export default function PolicyClearance() {
                 {claims.map((claim, index) => (
                     <div key={claim._id} className="bg-white rounded-lg shadow-md p-4 border">
                         <p className="text-sm text-gray-500 mb-1">{index + 1}</p>
-                        <p><strong>Policy ID:</strong> {claim.policyId}</p>
+                        <p><strong>Policy ID:</strong> {claim?.policyTitle}</p>
                         <p><strong>User Email:</strong> {claim.userEmail}</p>
                         <p>
                             <strong>Status:</strong>{" "}
@@ -138,6 +138,9 @@ export default function PolicyClearance() {
 
                             <p>
                                 <strong>User Email:</strong> {selectedClaim.userEmail}
+                            </p>
+                            <p>
+                                <strong>Policy Title</strong> {selectedClaim?.policyTitle}
                             </p>
                             <p>
                                 <strong>Reason:</strong> {selectedClaim.reason}
