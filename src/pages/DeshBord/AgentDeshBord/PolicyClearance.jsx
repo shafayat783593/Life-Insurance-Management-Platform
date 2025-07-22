@@ -52,11 +52,13 @@ export default function PolicyClearance() {
     return (
         <div className="p-4">
             <h2 className="text-2xl font-bold mb-4">Policy Clearance</h2>
-            <div className="overflow-x-auto">
+
+            {/* ✅ Table view (only on md and up) */}
+            <div className="hidden md:block overflow-x-auto">
                 <table className="table table-zebra w-full">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Policy ID</th>
                             <th>User Email</th>
                             <th>Status</th>
@@ -93,6 +95,34 @@ export default function PolicyClearance() {
                 </table>
             </div>
 
+            {/* 📱 Card view for small screens */}
+            <div className="grid gap-4 md:hidden">
+                {claims.map((claim, index) => (
+                    <div key={claim._id} className="bg-white rounded-lg shadow-md p-4 border">
+                        <p className="text-sm text-gray-500 mb-1">{index + 1}</p>
+                        <p><strong>Policy ID:</strong> {claim.policyId}</p>
+                        <p><strong>User Email:</strong> {claim.userEmail}</p>
+                        <p>
+                            <strong>Status:</strong>{" "}
+                            <span
+                                className={`badge ${claim.status === "Approved"
+                                    ? "badge-success"
+                                    : "badge-warning"
+                                    }`}
+                            >
+                                {claim.status}
+                            </span>
+                        </p>
+                        <button
+                            onClick={() => setSelectedClaim(claim)}
+                            className="btn btn-sm btn-info mt-3 w-full"
+                        >
+                            View Details
+                        </button>
+                    </div>
+                ))}
+            </div>
+
             {/* Modal */}
             {selectedClaim && (
                 <Dialog
@@ -124,17 +154,18 @@ export default function PolicyClearance() {
                                 </a>
                             </p>
 
-                            {/* Policy details */}
                             {policyLoading ? (
                                 <p>Loading policy...</p>
                             ) : (
                                 policyDetails && (
                                     <div className="mt-4">
                                         <p>
-                                                <strong>Policy Name:</strong> {policyDetails?.policyData?.title}
+                                            <strong>Policy Name:</strong>{" "}
+                                            {policyDetails?.policyData?.title}
                                         </p>
                                         <p>
-                                                <strong>Amount:</strong> ${policyDetails?.quote?.coverageAmount}
+                                            <strong>Amount:</strong> $
+                                            {policyDetails?.quote?.coverageAmount}
                                         </p>
                                     </div>
                                 )
@@ -160,5 +191,6 @@ export default function PolicyClearance() {
                 </Dialog>
             )}
         </div>
+
     );
 }

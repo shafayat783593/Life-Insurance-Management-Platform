@@ -10,7 +10,7 @@ export default function ManageUsers() {
     const axiosSecure = UseAxiosSecure();
     const [filter, setFilter] = useState('all');
 
-    const { data: users = [], refetch,isLoading } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
@@ -53,7 +53,7 @@ export default function ManageUsers() {
     const filteredUsers =
         filter === 'all' ? users : users.filter((u) => u.role === filter);
 
-        if(isLoading) return <Loading/>
+    if (isLoading) return <Loading />;
 
     return (
         <div className="p-6">
@@ -62,7 +62,7 @@ export default function ManageUsers() {
             {/* Filter Dropdown */}
             <div className="mb-4">
                 <select
-                    className="select select-bordered select-sm"
+                    className="select w-34 select-bordered select-sm"
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
                 >
@@ -73,7 +73,8 @@ export default function ManageUsers() {
                 </select>
             </div>
 
-            <div className="">
+            {/* Table on md+ */}
+            <div className="hidden md:block">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -92,10 +93,10 @@ export default function ManageUsers() {
                                 <td>
                                     <span
                                         className={`badge ${user.role === 'admin'
-                                                ? 'badge-error'
-                                                : user.role === 'agent'
-                                                    ? 'badge-info'
-                                                    : 'badge-success'
+                                            ? 'badge-error'
+                                            : user.role === 'agent'
+                                                ? 'badge-info'
+                                                : 'badge-success'
                                             }`}
                                     >
                                         {user.role}
@@ -134,6 +135,62 @@ export default function ManageUsers() {
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            {/* Card view on mobile */}
+            <div className="md:hidden grid grid-cols-1 gap-4">
+                {filteredUsers.map((user) => (
+                    <motion.div
+                        key={user._id}
+                        className="card bg-base-100 shadow-md p-4 space-y-2"
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <div className="text-lg font-semibold">{user.name}</div>
+                        <div className="text-sm text-gray-600">{user.email}</div>
+                        <div>
+                            <span
+                                className={`badge ${user.role === 'admin'
+                                    ? 'badge-error'
+                                    : user.role === 'agent'
+                                        ? 'badge-info'
+                                        : 'badge-success'
+                                    }`}
+                            >
+                                {user.role}
+                            </span>
+                        </div>
+                        <div className="text-sm text-gray-500">
+                            Registered:{' '}
+                            {user.created_at
+                                ? new Date(user.created_at).toLocaleDateString()
+                                : 'N/A'}
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {user.role === 'customer' && (
+                                <button
+                                    onClick={() => updateRole(user._id, 'agent')}
+                                    className="btn btn-sm btn-info"
+                                >
+                                    <FaUserTie /> Promote
+                                </button>
+                            )}
+                            {user.role === 'agent' && (
+                                <button
+                                    onClick={() => updateRole(user._id, 'customer')}
+                                    className="btn btn-sm btn-warning"
+                                >
+                                    <FaUserShield /> Demote
+                                </button>
+                            )}
+                            <button
+                                onClick={() => deleteUser(user._id)}
+                                className="btn btn-sm btn-error"
+                            >
+                                <FaTrashAlt />
+                            </button>
+                        </div>
+                    </motion.div>
+                ))}
             </div>
         </div>
     );

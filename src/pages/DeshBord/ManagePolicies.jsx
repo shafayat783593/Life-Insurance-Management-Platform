@@ -106,8 +106,8 @@ export default function ManagePolicies() {
                 <h2 className="text-2xl font-bold">Manage Policies</h2>
                 <button onClick={() => setShowModal(true)} className="btn btn-primary">Add New Policy</button>
             </div>
-
-            <div className="overflow-x-auto">
+            {/* Table for desktop */}
+            <div className="hidden md:block overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -129,7 +129,7 @@ export default function ManagePolicies() {
                                 <td>{policy.coverageRange}</td>
                                 <td>{policy.durationOptions}</td>
                                 <td>{policy.baseRate}</td>
-                                <td className="flex gap-2">
+                                <td className="flex flex-wrap gap-2">
                                     <button onClick={() => handleEdit(policy)} className="btn btn-sm btn-info">Edit</button>
                                     <button onClick={() => handleDelete(policy._id)} className="btn btn-sm btn-error">Delete</button>
                                 </td>
@@ -138,6 +138,27 @@ export default function ManagePolicies() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Cards for mobile/tablet */}
+            <div className="grid grid-cols-1 gap-4 md:hidden">
+                {policies?.map(policy => (
+                    <div key={policy._id} className="bg-white shadow rounded-lg p-4 border">
+                        <div className="flex items-center justify-between mb-2">
+                            <h3 className="text-lg font-semibold">{policy.title}</h3>
+                            <div className="flex gap-2">
+                                <button onClick={() => handleEdit(policy)} className="btn btn-sm btn-info">Edit</button>
+                                <button onClick={() => handleDelete(policy._id)} className="btn btn-sm btn-error">Delete</button>
+                            </div>
+                        </div>
+                        <p><strong>Category:</strong> {policy.category}</p>
+                        <p><strong>Age:</strong> {policy.minAge}–{policy.maxAge}</p>
+                        <p><strong>Coverage:</strong> {policy.coverageRange}</p>
+                        <p><strong>Duration:</strong> {policy.durationOptions}</p>
+                        <p><strong>Rate:</strong> {policy.baseRate}</p>
+                    </div>
+                ))}
+            </div>
+
 
             {/* Modal */}
             {showModal && (

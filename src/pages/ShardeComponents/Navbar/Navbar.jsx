@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import UseAuth from "../../../Hooks/UseAuth";
-
+import logo from "../../../assets/lifeInsurence.png"
 const Navbar = () => {
     const { user, logOut } = UseAuth()
     console.log(user?.displayName)
@@ -28,7 +28,9 @@ const Navbar = () => {
             <NavLink
                 to="/"
                 className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
+                    isActive
+                        ? "text-blue-500 font-semibold"
+                        : "hover:text-blue-400 font-semibold "
                 }
             >
                 Home
@@ -36,7 +38,9 @@ const Navbar = () => {
             <NavLink
                 to="/policies"
                 className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
+                    isActive
+                        ? "text-blue-500 font-semibold"
+                        : "hover:text-blue-400 font-semibold"
                 }
             >
                 All Policies
@@ -44,7 +48,9 @@ const Navbar = () => {
             <NavLink
                 to="/agents"
                 className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
+                    isActive
+                        ? "text-blue-500 font-semibold"
+                        : "hover:text-blue-400"
                 }
             >
                 Agents
@@ -52,7 +58,9 @@ const Navbar = () => {
             <NavLink
                 to="/faqs"
                 className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
+                    isActive
+                        ? "text-blue-500 font-semibold"
+                        : "hover:text-blue-400"
                 }
             >
                 FAQs
@@ -62,13 +70,16 @@ const Navbar = () => {
                 <NavLink
                     to="/dashboard"
                     className={({ isActive }) =>
-                        isActive ? "text-blue-500 font-semibold" : "hover:text-blue-400"
+                        isActive
+                            ? "text-blue-500 font-semibold"
+                            : "hover:text-blue-400"
                     }
                 >
                     Dashboard
                 </NavLink>
             )}
         </>
+
     );
 
     return (
@@ -76,7 +87,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center w-full">
                 {/* Logo */}
                 <Link to="/" className="text-xl font-bold text-blue-600 flex items-center gap-1">
-                    <span role="img" aria-label="map">🗺</span> InsuranceCo
+                    <img className="w-15 rounded-2xl" src={logo} alt="" />
                 </Link>
 
                 {/* Desktop Nav */}
