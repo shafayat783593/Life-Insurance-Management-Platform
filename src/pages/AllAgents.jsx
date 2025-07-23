@@ -18,7 +18,7 @@ const axiosSecure  = UseAxiosSecure()
         },
     });
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     if (isError) return <p className="text-red-600 text-center mt-6">Failed to load agents.</p>;
 
     return (

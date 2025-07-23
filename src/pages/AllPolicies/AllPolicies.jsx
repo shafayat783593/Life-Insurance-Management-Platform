@@ -57,7 +57,7 @@ export default function AllPolicies() {
         );
     }
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading/></div>;
     if (isError)
         return <p className="p-4 text-center text-red-600">Failed to load policies</p>;
 

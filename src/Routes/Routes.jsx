@@ -31,6 +31,10 @@ import AllAgents from "../pages/AllAgents";
 import FAQ from "../pages/Faq";
 import Forbidden from "../pages/Forbidden";
 import AgentPrivateRouters from "../pages/Route/AgentPrivateRouters";
+import AdminPrivateRoutes from "../pages/Route/AdminPrivateRouters";
+import CostomerPrivateRouter from "../pages/Route/CostomerPrivateRouter";
+import ManageTransactions from "../pages/DeshBord/ManageTransaction";
+import DeshBordHome from "../pages/DeshBord/DeshBordHome/DeshBordHome";
 
 export const router = createBrowserRouter([
 
@@ -53,14 +57,14 @@ export const router = createBrowserRouter([
                     <QuotePage />
                 </PrivateRoutes>
             }, {
-                path:"blogs/:id",
-               element:<PrivateRoutes>
-               <BlogsDetails/>
-               </PrivateRoutes>
-            },{
-                path:"All-blogs",
-                element:<PrivateRoutes>
-                    <Allblogs/>
+                path: "blogs/:id",
+                element: <PrivateRoutes>
+                    <BlogsDetails />
+                </PrivateRoutes>
+            }, {
+                path: "All-blogs",
+                element: <PrivateRoutes>
+                    <Allblogs />
                 </PrivateRoutes>
             },
             {
@@ -68,20 +72,20 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <ApplicationForm />
                 </PrivateRoutes>
-            },{
-                path:"profile",
-                element:<PrivateRoutes>
-                    <UserProfile/>
+            }, {
+                path: "profile",
+                element: <PrivateRoutes>
+                    <UserProfile />
                 </PrivateRoutes>
-            },{
-                path:"all-agents",
-                Component:AllAgents
-            },{
-                path:"faq",
-                Component:FAQ
-            },{
-                path:"forbidden",
-                Component:Forbidden
+            }, {
+                path: "all-agents",
+                Component: AllAgents
+            }, {
+                path: "faq",
+                Component: FAQ
+            }, {
+                path: "forbidden",
+                Component: Forbidden
             }
         ]
     }, {
@@ -104,41 +108,66 @@ export const router = createBrowserRouter([
         Component: DashBordLayout,
         children: [
             {
+                index: true,
+                Component:DeshBordHome
+            },
+            {
                 path: "manage-policies",
-                Component: ManagePolicies
+                element: <AdminPrivateRoutes>
+                    <ManagePolicies />
+                </AdminPrivateRoutes>
             }, {
                 path: "manage-applications",
-                Component: ManageApplications
+                element: <AdminPrivateRoutes>
+                    <ManageApplications />
+                </AdminPrivateRoutes>
             }, {
                 path: "manage-user",
-                Component: ManageUsers
+                element: <AdminPrivateRoutes>
+                    <ManageUsers />
+                </AdminPrivateRoutes>
             }, {
                 path: "my-policies",
-                Component: MyPolicies
+                element: <CostomerPrivateRouter>
+                    <MyPolicies />
+                </CostomerPrivateRouter>
 
             },
             {
                 path: "assigned-customers",
                 element: <AgentPrivateRouters>
-                    <AssignedCustomers/>
+                    <AssignedCustomers />
                 </AgentPrivateRouters>
             }, {
                 path: 'manage-blogs',
                 Component: ManageBlogs
             }, {
                 path: "claim-request",
-                Component: ClaimRequest
+                element: <CostomerPrivateRouter>
+                    <ClaimRequest />
+                </CostomerPrivateRouter>
             }, {
                 path: "payment-status",
-                Component: PaymentStatus
+                element: <CostomerPrivateRouter>
+                    <PaymentStatus />
+                </CostomerPrivateRouter>
 
             }, {
                 path: "payment/:id",
-                Component: StripeProvider
+                element: <CostomerPrivateRouter>
+                    <StripeProvider />
+                </CostomerPrivateRouter>
 
             }, {
                 path: "policy-clearance",
-                Component: PolicyClearance
+                element: <PolicyClearance>
+                    <PolicyClearance />
+                </PolicyClearance>
+            },{
+                path:"manage-transaction",
+                element:<AdminPrivateRoutes>
+                    <ManageTransactions/>
+                </AdminPrivateRoutes>
             }
         ]
     }

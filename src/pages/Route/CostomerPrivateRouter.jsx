@@ -6,7 +6,7 @@ import UseUserRole from '../../Hooks/UserRole';
 import Loading from '../../components/Loader/Loading';
 
 
-function AgentPrivateRouters({ children }) {
+function CostomerPrivateRouter({ children }) {
 
 
     const { user, loading } = UseAuth()
@@ -16,7 +16,7 @@ function AgentPrivateRouters({ children }) {
 
     if (loading || roleLoading) return <Loading />;
 
-    if (!user || role !== "agent") {
+    if (!user || role !== "customer") {
         return <Navigate to="/forbiddrn" state={location.pathname} replace />;
     }
 
@@ -24,4 +24,4 @@ function AgentPrivateRouters({ children }) {
     return children
 }
 
-export default AgentPrivateRouters
+export default CostomerPrivateRouter

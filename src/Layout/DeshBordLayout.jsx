@@ -232,13 +232,13 @@ function DashBordLayout() {
 
                                     <li>
                                         <NavLink
-                                            to="/dashboard/manage-transactions"
+                                            to="/dashboard/manage-transaction"
                                             className={({ isActive }) =>
                                                 isActive ? "text-primary font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaMoneyCheckAlt className="inline mr-2" />
-                                            Transactions
+                                            Manage Transactions
                                         </NavLink>
                                     </li>
                                     <li>

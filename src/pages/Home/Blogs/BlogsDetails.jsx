@@ -29,7 +29,7 @@ const BlogDetails = () => {
         },
     });
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     if (isError)
         return (
             <p className="text-center text-red-600 font-semibold py-10">

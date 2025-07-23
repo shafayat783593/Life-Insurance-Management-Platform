@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { motion } from "framer-motion";
+import Loading from "../../components/Loader/Loading";
 
 const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -26,8 +27,7 @@ const FeaturedAgents = () => {
         },
     });
 
-    if (isLoading) return <p className="text-center py-10 text-indigo-500 font-semibold">Loading agents...</p>;
-
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     return (
         <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-white to-blue-50">
             <div className="max-w-6xl mx-auto text-center">

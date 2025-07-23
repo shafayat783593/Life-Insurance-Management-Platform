@@ -15,7 +15,7 @@ const PopularPolicies = () => {
         },
     });
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     if (isError)
         return <div className="text-center text-red-500">Failed to load policies.</div>;
 

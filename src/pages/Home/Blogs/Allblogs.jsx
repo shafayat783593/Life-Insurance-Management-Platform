@@ -26,7 +26,7 @@ const Allblogs = () => {
         },
     });
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     if (isError)
         return <p className="text-center text-red-500">Failed to load blogs.</p>;
 
