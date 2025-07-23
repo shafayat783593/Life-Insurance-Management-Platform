@@ -27,6 +27,10 @@ import PolicyClearance from "../pages/DeshBord/AgentDeshBord/PolicyClearance";
 import BlogsDetails from "../pages/Home/Blogs/BlogsDetails";
 import Allblogs from "../pages/Home/Blogs/Allblogs";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import AllAgents from "../pages/AllAgents";
+import FAQ from "../pages/Faq";
+import Forbidden from "../pages/Forbidden";
+import AgentPrivateRouters from "../pages/Route/AgentPrivateRouters";
 
 export const router = createBrowserRouter([
 
@@ -69,6 +73,15 @@ export const router = createBrowserRouter([
                 element:<PrivateRoutes>
                     <UserProfile/>
                 </PrivateRoutes>
+            },{
+                path:"all-agents",
+                Component:AllAgents
+            },{
+                path:"faq",
+                Component:FAQ
+            },{
+                path:"forbidden",
+                Component:Forbidden
             }
         ]
     }, {
@@ -106,9 +119,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "assigned-customers",
-                element: <PrivateRoutes>
-                    <AssignedCustomers />
-                </PrivateRoutes>
+                element: <AgentPrivateRouters>
+                    <AssignedCustomers/>
+                </AgentPrivateRouters>
             }, {
                 path: 'manage-blogs',
                 Component: ManageBlogs

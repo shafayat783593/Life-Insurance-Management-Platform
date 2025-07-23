@@ -3,6 +3,7 @@
 // import { Carousel } from "react-responsive-carousel";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { NavLink } from 'react-router';
 
 const slides = [
     {
@@ -27,7 +28,7 @@ const slides = [
 
 const HeroSlider = () => {
     return (
-        <div className="w-full max-h-[600px] mt-20">
+        <div className="w-full max-h-[600px] mt-5">
             <Carousel
                 autoPlay
                 infiniteLoop
@@ -48,9 +49,12 @@ const HeroSlider = () => {
                                 {slide.title}
                             </h2>
                             <p className="text-lg md:text-xl mb-6 drop-shadow">{slide.tagline}</p>
-                            <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 text-white text-lg rounded shadow">
+                            <NavLink
+                                to="/quote"
+                             className="w-70 px-8  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all"
+>
                                 Get a Free Quote
-                            </button>
+                            </NavLink>
                         </div>
                     </div>
                 ))}
@@ -60,3 +64,12 @@ const HeroSlider = () => {
 };
 
 export default HeroSlider;
+
+{/* <NavLink
+    to="/All-blogs"
+
+    type="submit"
+    className="w-40 px-8 scale-0 hover:scale-50 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all"
+>
+    All Blogs / Articles
+</NavLink> */}

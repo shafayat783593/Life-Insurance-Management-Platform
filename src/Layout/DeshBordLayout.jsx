@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 // import Logo from '../pages/ShardeComponents/Logo/Logo'
 import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature, FaClipboardCheck } from "react-icons/fa";
 import UseUserRole from '../Hooks/UserRole';
+import logo from "../assets/logo.png"
 // import UseUserRole from '../Hooks/UseUserRole';
 function DashBordLayout() {
 
@@ -47,7 +48,7 @@ function DashBordLayout() {
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                         <Link to="/" className="text-xl font-bold text-blue-600 flex items-center gap-1">
-                            <span role="img" aria-label="map">🗺</span> InsuranceCo
+                            <img className='w-15 rounded-full' src={logo} alt="" />  InsuranceCo
                         </Link>
 
                         <li>

@@ -48,20 +48,23 @@ function AuthProvider({ children }) {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
             setuser(currentuser);
             console.log("User:", currentuser);
-            if (currentuser?.email) {
-                // axios.post("http://localhost:3000//jwt", {
-                //     email: currentuser?.email
-                // }).then(res => {
 
-                // })
+            if (currentuser?.email) {
+                axios.post("http://localhost:3000/jwt", {
+                    email: currentuser.email
+                }, { withCredentials: true })
+                    .then(res => {
+                        console.log("JWT stored in cookie");
+                    });
             }
 
             setloading(false);
         });
 
-        return () => unsubscribe(); // ← THIS is correct
+        return () => unsubscribe();
     }, []);
-    console.log(" ehro fofosdfsndofdfodsf fjdpfsfffffffffffffffffffffffffffffffff  fjdf", selectedPolicy)
+
+    console.log(" iuu", selectedPolicy)
 
     const authInfo = {
         createrUser,

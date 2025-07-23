@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { motion } from "framer-motion";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Loading from "../../../components/Loader/Loading";
@@ -73,12 +73,16 @@ const LatestBlogs = () => {
             </div>
 
             <div className="text-center mt-10">
-                <Link
+               
+              <NavLink
                     to="/All-blogs"
-                    className="inline-block bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-900 transition"
+                  
+                    type="submit"
+                    className="w-40 px-8 scale-0 hover:scale-50 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all"
                 >
                     All Blogs / Articles
-                </Link>
+                </NavLink>
+        
             </div>
         </div>
     );

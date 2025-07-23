@@ -15,7 +15,7 @@ function UseUserRole() {
             return res.data.role;
         },
     });
-
+console.log(role)
     return { role, roleLoading, refetch };
 }
 
