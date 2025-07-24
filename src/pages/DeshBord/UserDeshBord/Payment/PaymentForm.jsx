@@ -106,7 +106,7 @@ const PaymentForm = () => {
                     confirmButtonText: "Go to My Parcel",
                     confirmButtonColor: "#2563eb",
                 }).then(() => {
-                    navigate("/dashbord/paymentHistory");
+                    navigate("/dashbord/my-policies");
                 });
             }
 
