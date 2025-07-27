@@ -13,7 +13,7 @@ export default function ClaimRequest() {
     const axiosSecure = UseAxiosSecure();
     const [openModal, setOpenModal] = useState(false);
     const [selectedPolicy, setSelectedPolicy] = useState(null);
-    console.log(selectedPolicy)
+    // console.log(selectedPolicy)
     const {
         register,
         handleSubmit,

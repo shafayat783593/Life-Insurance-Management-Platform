@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
     const [selectedPolicy, setselectedPolicy] = useState(null)
     const [quatadata, setquatadata] = useState(null)
 
-    console.log(user)
+    // console.log(user)
     const createrUser = (email, password) => {
         setloading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -45,19 +45,19 @@ function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
             setuser(currentuser);
-            console.log("User:", currentuser);
+            // console.log("User:", currentuser);
 
             if (currentuser?.email) {
                 axios.post("https://server-one-jet-28.vercel.app/jwt", {
                     email: currentuser.email
                 })
                     .then(res => {
-                        console.log("JWT stored in cookie", res.data);
+                        // console.log("JWT stored in cookie", res.data);
                         const token = res.data.token;
                         localStorage.setItem("token", token); // ✅ Store token
                     })
                     .catch(err => {
-                        console.log("jwt error", err);
+                        // console.log("jwt error", err);
                     });
             } else {
                 // ✅ Remove token on logoutnpm 

@@ -15,7 +15,7 @@ export default function ApplicationForm() {
     const loaction = useLocation()
     const { quote, policyData }= loaction.state
 
-    console.log(quote)
+    // console.log(quote)
     const navigate = useNavigate()
 
     const {

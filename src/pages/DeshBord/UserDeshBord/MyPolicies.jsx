@@ -8,6 +8,7 @@ import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../components/Loader/Loading";
 import PageTitle from "../../../Hooks/PageTItle";
+import Swal from "sweetalert2";
 
 const MyPolicies = () => {
     const { user } = UseAuth();
@@ -39,17 +40,35 @@ const MyPolicies = () => {
         }
         return amount;
     };
-
-    const handleSubmitReview = (e) => {
+    const handleSubmitReview = async (e) => {
         e.preventDefault();
         const form = e.target;
         const rating = form.rating.value;
         const feedback = form.feedback.value;
-        console.log("Review Submitted:", { rating, feedback });
 
-        // Optionally post to backend
-        setShowReviewModal(false);
+        const reviewData = {
+            policyId: selectedPolicy._id,
+            userEmail: user.email,
+            userName: user.displayName,
+            userPhoto: user.photoURL,
+            policyTitle: selectedPolicy?.policyData?.title,
+            rating: parseInt(rating),
+            feedback,
+            createdAt: new Date().toISOString(),
+        };
+
+        try {
+            const res = await axiosSecure.post("/reviews", reviewData);
+            if (res.data.insertedId) {
+                Swal.fire("Thank you!", "Your review has been submitted.", "success");
+                setShowReviewModal(false);
+            }
+        } catch (err) {
+            console.error("Review submit error:", err);
+            Swal.fire("Error", "Failed to submit review. Try again.", "error");
+        }
     };
+
 
     return (
         <div className="p-4 sm:p-6">

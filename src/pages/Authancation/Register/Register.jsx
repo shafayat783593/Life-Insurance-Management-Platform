@@ -21,9 +21,9 @@ function Register() {
     const [previewURL, setPreviewURL] = useState("");
     const [profilePic, setprofilePic] = useState("")
     const axiosIntences = UseAxios()
-    console.log(profilePic)
+    // console.log(profilePic)
 
-    console.log(location)
+    // console.log(location)
     const from = location.state?.from?.pathname || "/";
     const {
         register,
@@ -32,7 +32,7 @@ function Register() {
         formState: { errors },
     } = useForm()
 
-    console.log(user)
+    // console.log(user)
 
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
@@ -87,7 +87,7 @@ function Register() {
         }
     };
 
-    console.log(user)
+    // console.log(user)
 
     return (
 

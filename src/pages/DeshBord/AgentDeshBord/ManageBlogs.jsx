@@ -29,12 +29,12 @@ export default function ManageBlogs() {
     });
 
     const currentUser = users.find(use => use.email === user?.email);
-    console.log(currentUser)
+    // console.log(currentUser)
     const isAdmin = currentUser?.role === "admin";
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
     const userBlogs = isAdmin ? blogs : blogs.filter(blog => blog.authorEmail === user?.email);
-    console.log(userBlogs)
+    // console.log(userBlogs)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

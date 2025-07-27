@@ -21,7 +21,7 @@ export default function AssignedCustomers() {
             return res.data;
         },
     });
-    console.log(assignedApps)
+    // console.log(assignedApps)
 
     
     // Update application status
