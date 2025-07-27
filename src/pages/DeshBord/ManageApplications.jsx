@@ -23,9 +23,9 @@ const ManageApplications = () => {
 
     // Fetch all users (agents)
     const { data: agents = [] } = useQuery({
-        queryKey: ["users", "agents"], // ✅ More specific and unique
+        queryKey: ["user", "agents"], // ✅ More specific and unique
         queryFn: async () => {
-            const res = await axiosSecure.get("/users");
+            const res = await axiosSecure.get("/user/agents");
             return res.data;
         },
     });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AuthContext } from './AuthContext'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 
 import axios from 'axios';
 import { auth } from '../../Firebase/firebase-init';
@@ -40,6 +40,21 @@ function AuthProvider({ children }) {
         return updateProfile(auth.currentUser, updatedData)
     }
 
+
+
+    // forget password.................
+
+    const forgetPassword = ( email)=>{
+        sendPasswordResetEmail(auth,email).then(() => {
+            // Password reset email sent!
+            // ..
+        })
+            .catch((error) => {
+                const errorCode = error.code;
+               console.log(errorCode)
+                // ..
+            });
+    }
     // objerb ....................
 
     useEffect(() => {
@@ -48,7 +63,7 @@ function AuthProvider({ children }) {
             // console.log("User:", currentuser);
 
             if (currentuser?.email) {
-                axios.post("https://server-one-jet-28.vercel.app/jwt", {
+                axios.post("http://localhost:3000/jwt", {
                     email: currentuser.email
                 })
                     .then(res => {
@@ -85,7 +100,8 @@ function AuthProvider({ children }) {
         selectedPolicy,
         quatadata,
         setselectedPolicy,
-        setquatadata
+        setquatadata,
+        forgetPassword
 
 
 

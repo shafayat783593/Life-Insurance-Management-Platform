@@ -35,6 +35,7 @@ import AdminPrivateRoutes from "../pages/Route/AdminPrivateRouters";
 import CostomerPrivateRouter from "../pages/Route/CostomerPrivateRouter";
 import ManageTransactions from "../pages/DeshBord/ManageTransaction";
 import DeshBordHome from "../pages/DeshBord/DeshBordHome/DeshBordHome";
+import ForgotPassword from "../pages/ForgetPassword";
 
 export const router = createBrowserRouter([
 
@@ -100,6 +101,9 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register
+            },{
+                path:"forget",
+                Component:ForgotPassword
             }
         ]
 
