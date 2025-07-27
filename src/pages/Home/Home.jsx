@@ -7,10 +7,12 @@ import LatestBlogs from './Blogs/LatestBlogs'
 import NewsletterSubscription from './NewsletterSubscription'
 import AssignedCustomers from '../DeshBord/AgentDeshBord/AssignedCustomers'
 import FeaturedAgents from './FeaturedAgents'
+import PageTitle from '../../Hooks/PageTItle'
 
 function Home() {
   return (
     <div>
+      <PageTitle title="Home" /> 
         <HeroSection/>
         <PopularPolicies/>
         <AllReviews/>

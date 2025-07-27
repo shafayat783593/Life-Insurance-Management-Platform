@@ -1,4 +1,5 @@
 import { FaQuestionCircle } from "react-icons/fa";
+import PageTitle from "../Hooks/PageTItle";
 
 const FAQs = () => {
     const faqData = [
@@ -35,6 +36,10 @@ const FAQs = () => {
     ];
 
     return (
+
+        <>
+            <PageTitle title="FAQ" /> 
+        
         <div className="max-w-4xl mx-auto my-10 px-4">
             <h2 className="text-4xl font-bold text-center text-indigo-600 mb-8">
                 <FaQuestionCircle className="inline mr-2 text-pink-500" />
@@ -58,6 +63,7 @@ const FAQs = () => {
                 ))}
             </div>
         </div>
+        </>
     );
 };
 

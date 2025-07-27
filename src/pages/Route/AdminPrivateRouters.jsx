@@ -8,15 +8,15 @@ import Loading from '../../components/Loader/Loading';
 function AdminPrivateRoutes({ children }) {
     const { user, loading } = UseAuth();
     const { role, roleLoading } = UseUserRole();
-    const location = useLocation(); // ✅ Fix: useLocation added
+    const location = useLocation(); 
 
     if (loading || roleLoading) return <Loading />;
 
     if (!user || role !== "admin") {
-        return <Navigate to="/forbiddrn" state={location.pathname} replace />;
+        return <Navigate to="/forbidden" state={location.pathname} replace />;
     }
 
-    return children; // ✅ Fix: use `children` not `Children`
+    return children; 
 }
 
 export default AdminPrivateRoutes;

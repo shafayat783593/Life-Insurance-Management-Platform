@@ -7,6 +7,7 @@ import UseAuth from '../../Hooks/UseAuth';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import axios from 'axios';
 import Loading from '../../components/Loader/Loading';
+import PageTitle from '../../Hooks/PageTItle';
 
 export default function ManagePolicies() {
     const { user } = UseAuth();
@@ -102,6 +103,7 @@ export default function ManagePolicies() {
 
     return (
         <div className="p-6">
+            <PageTitle title="Manage policies" /> 
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">Manage Policies</h2>
                 <button onClick={() => setShowModal(true)} className="btn btn-primary">Add New Policy</button>
@@ -161,89 +163,90 @@ export default function ManagePolicies() {
 
 
             {/* Modal */}
+            {/* Modal */}
             {showModal && (
-                <motion.div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <motion.div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4">
                     <motion.div
-                        className="bg-white p-6 rounded-xl shadow-md w-[600px] relative"
+                        className="bg-white p-4 md:p-6 rounded-xl shadow-md w-full max-w-md md:max-w-2xl relative overflow-y-auto max-h-[90vh]"
                         initial={{ scale: 0.7 }}
                         animate={{ scale: 1 }}
                     >
-                        <h3 className="text-xl font-semibold mb-4">{editItem ? 'Edit Policy' : 'Add New Policy'}</h3>
-                        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <h3 className="text-lg md:text-xl font-semibold mb-4">
+                            {editItem ? 'Edit Policy' : 'Add New Policy'}
+                        </h3>
+
+                        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-3">
+                            {/* Title */}
                             <div>
-                                <label className="label font-semibold">Policy Title</label>
-                                <input {...register('title', { required: 'Title is required' })} className="input input-bordered w-full" />
-                                {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
+                                <label className="label font-semibold text-sm">Policy Title</label>
+                                <input {...register('title', { required: 'Title is required' })} className="input input-bordered w-full text-sm" />
+                                {errors.title && <p className="text-red-500 text-xs">{errors.title.message}</p>}
                             </div>
 
+                            {/* Category */}
                             <div>
-                                <label className="label font-semibold">Category</label>
-                                <input {...register('category', { required: 'Category is required' })} className="input input-bordered w-full" />
-                                {errors.category && <p className="text-red-500 text-sm">{errors.category.message}</p>}
+                                <label className="label font-semibold text-sm">Category</label>
+                                <input {...register('category', { required: 'Category is required' })} className="input input-bordered w-full text-sm" />
+                                {errors.category && <p className="text-red-500 text-xs">{errors.category.message}</p>}
                             </div>
 
+                            {/* Min & Max Age */}
+                            <div className="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label className="label font-semibold text-sm">Min Age</label>
+                                    <input type="number" {...register('minAge', { required: 'Min age required' })} className="input input-bordered w-full text-sm" />
+                                    {errors.minAge && <p className="text-red-500 text-xs">{errors.minAge.message}</p>}
+                                </div>
+                                <div>
+                                    <label className="label font-semibold text-sm">Max Age</label>
+                                    <input type="number" {...register('maxAge', { required: 'Max age required' })} className="input input-bordered w-full text-sm" />
+                                    {errors.maxAge && <p className="text-red-500 text-xs">{errors.maxAge.message}</p>}
+                                </div>
+                            </div>
+
+                            {/* Coverage */}
                             <div>
-                                <label className="label font-semibold">Minimum Age</label>
-                                <input type="number" {...register('minAge', { required: 'Minimum age is required' })} className="input input-bordered w-full" />
-                                {errors.minAge && <p className="text-red-500 text-sm">{errors.minAge.message}</p>}
+                                <label className="label font-semibold text-sm">Coverage Range</label>
+                                <input {...register('coverageRange', { required: 'Coverage required' })} className="input input-bordered w-full text-sm" />
+                                {errors.coverageRange && <p className="text-red-500 text-xs">{errors.coverageRange.message}</p>}
                             </div>
 
+                            {/* Duration */}
                             <div>
-                                <label className="label font-semibold">Maximum Age</label>
-                                <input type="number" {...register('maxAge', { required: 'Maximum age is required' })} className="input input-bordered w-full" />
-                                {errors.maxAge && <p className="text-red-500 text-sm">{errors.maxAge.message}</p>}
+                                <label className="label font-semibold text-sm">Duration</label>
+                                <input {...register('durationOptions', { required: 'Duration required' })} className="input input-bordered w-full text-sm" />
+                                {errors.durationOptions && <p className="text-red-500 text-xs">{errors.durationOptions.message}</p>}
                             </div>
 
+                            {/* Rate */}
                             <div>
-                                <label className="label font-semibold">Coverage Range</label>
-                                <input {...register('coverageRange', { required: 'Coverage is required' })} className="input input-bordered w-full" />
-                                {errors.coverageRange && <p className="text-red-500 text-sm">{errors.coverageRange.message}</p>}
+                                <label className="label font-semibold text-sm">Base Rate</label>
+                                <input type="number" {...register('baseRate', { required: 'Base rate required' })} className="input input-bordered w-full text-sm" />
+                                {errors.baseRate && <p className="text-red-500 text-xs">{errors.baseRate.message}</p>}
                             </div>
 
+                            {/* Description */}
                             <div>
-                                <label className="label font-semibold">Duration Options</label>
-                                <input {...register('durationOptions', { required: 'Duration is required' })} className="input input-bordered w-full" />
-                                {errors.durationOptions && <p className="text-red-500 text-sm">{errors.durationOptions.message}</p>}
+                                <label className="label font-semibold text-sm">Description</label>
+                                <textarea {...register('description', { required: 'Description required' })} className="textarea textarea-bordered w-full text-sm" />
+                                {errors.description && <p className="text-red-500 text-xs">{errors.description.message}</p>}
                             </div>
 
+                            {/* Image Upload */}
                             <div>
-                                <label className="label font-semibold">Base Premium Rate</label>
-                                <input type="number" {...register('baseRate', { required: 'Base rate is required' })} className="input input-bordered w-full" />
-                                {errors.baseRate && <p className="text-red-500 text-sm">{errors.baseRate.message}</p>}
-                            </div>
-
-                            <div className="md:col-span-2">
-                                <label className="label font-semibold">Policy Description</label>
-                                <textarea
-                                    {...register('description', { required: 'Description is required' })}
-                                    className="textarea textarea-bordered w-full"
-                                ></textarea>
-                                {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
-                            </div>
-
-                            <div className="md:col-span-2">
-                                <label className="label font-semibold">Upload Policy Image</label>
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleFileChange}
-                                    className="file-input file-input-bordered w-full"
-                                />
+                                <label className="label font-semibold text-sm">Policy Image</label>
+                                <input type="file" accept="image/*" onChange={handleFileChange} className="file-input file-input-bordered w-full text-sm" />
                                 {previewURL && (
-                                    <img
-                                        src={previewURL}
-                                        alt="Preview"
-                                        className="mt-2 w-24 h-24 object-cover rounded-lg border"
-                                    />
+                                    <img src={previewURL} alt="Preview" className="mt-2 w-20 h-20 object-cover rounded-md border" />
                                 )}
                             </div>
-                          
 
-                            <div className="md:col-span-2 flex justify-end gap-4 mt-4">
-                                <button type="button" onClick={() => { setShowModal(false); reset(); setEditItem(null); }} className="btn">
+                            {/* Action Buttons */}
+                            <div className="flex justify-end gap-2 mt-2">
+                                <button type="button" onClick={() => { setShowModal(false); reset(); setEditItem(null); }} className="btn btn-sm">
                                     Cancel
                                 </button>
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-sm btn-primary">
                                     {editItem ? "Update" : "Add Policy"}
                                 </button>
                             </div>
@@ -251,6 +254,7 @@ export default function ManagePolicies() {
                     </motion.div>
                 </motion.div>
             )}
+
         </div>
     );
 }

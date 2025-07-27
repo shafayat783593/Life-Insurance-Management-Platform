@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import UseAuth from "../../../../Hooks/UseAuth";
 import Loading from "../../../../components/Loader/Loading";
+import PageTitle from "../../../../Hooks/PageTItle";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -106,7 +107,7 @@ const PaymentForm = () => {
                     confirmButtonText: "Go to My Parcel",
                     confirmButtonColor: "#2563eb",
                 }).then(() => {
-                    navigate("/dashbord/my-policies");
+                    navigate("/");
                 });
             }
 
@@ -122,6 +123,8 @@ const PaymentForm = () => {
 
     return (
         <div className="max-w-3xl mx-auto mt-16 bg-white shadow-2xl rounded-2xl p-10 animate-fade-in">
+
+            <PageTitle title="Payment From" /> 
             <h2 className="text-4xl font-extrabold text-center text-indigo-600 mb-8 tracking-wide">
                 Secure Payment
             </h2>

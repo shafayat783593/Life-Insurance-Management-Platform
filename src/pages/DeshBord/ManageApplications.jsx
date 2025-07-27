@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Loading from "../../components/Loader/Loading";
+import PageTitle from "../../Hooks/PageTItle";
 
 const ManageApplications = () => {
     const [selectedApp, setSelectedApp] = useState(null);
@@ -22,7 +23,7 @@ const ManageApplications = () => {
 
     // Fetch all users (agents)
     const { data: agents = [] } = useQuery({
-        queryKey: ["users"],
+        queryKey: ["users", "agents"], // ✅ More specific and unique
         queryFn: async () => {
             const res = await axiosSecure.get("/users");
             return res.data;
@@ -66,6 +67,7 @@ const ManageApplications = () => {
 
     return (
         <div className="space-y-6">
+            <PageTitle title="Manage Applications" /> 
             <h2 className="text-2xl font-bold mb-4">📋 Manage Applications</h2>
 
             {/* Desktop Table */}
@@ -170,7 +172,7 @@ const ManageApplications = () => {
                             <div className="space-y-2 text-sm text-gray-700">
                                 <p><strong>Name:</strong> {selectedApp.name}</p>
                                 <p><strong>Email:</strong> {selectedApp.email}</p>
-                                <p><strong>Policy:</strong> {selectedApp.policyName}</p>
+                                <p><strong>Policy:</strong> {selectedApp?.policyData?.title}</p>
                                 <p><strong>Nominee:</strong> {selectedApp.nomineeName} ({selectedApp.nomineeRelation})</p>
                                 <p><strong>Status:</strong> {selectedApp.status}</p>
                                 <p><strong>Address:</strong> {selectedApp.address}</p>

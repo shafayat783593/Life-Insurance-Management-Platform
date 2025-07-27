@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router"; // fixed import
+import { Link } from "react-router"; // ✅ fixed
 import { FaShieldAlt, FaClock, FaShoppingCart } from "react-icons/fa";
 import Loading from "../../components/Loader/Loading";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
@@ -11,7 +11,8 @@ const PopularPolicies = () => {
         queryKey: ["popularPolicies"],
         queryFn: async () => {
             const res = await axiosSecure.get("/popularPolicies/popular");
-            return res.data;
+            console.log("Popular policies:", res.data); // ✅ Debugging
+            return res.data?.data || res.data || []; // safest way
         },
     });
 
@@ -26,7 +27,7 @@ const PopularPolicies = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                {policies.map((policy) => (
+                {Array.isArray(policies) && policies.slice(0, 6).map((policy) => (
                     <div
                         key={policy._id}
                         className="group bg-white p-5 rounded-2xl shadow-xl hover:shadow-2xl border border-indigo-100 hover:border-pink-300 transition-all duration-300 hover:scale-[1.03]"
@@ -43,15 +44,18 @@ const PopularPolicies = () => {
 
                         <div className="text-gray-700 space-y-1 text-sm">
                             <p className="flex items-center gap-2">
-                                <FaShieldAlt className="text-pink-500" /> <span className="font-medium">Coverage:</span>{" "}
+                                <FaShieldAlt className="text-pink-500" />
+                                <span className="font-medium">Coverage:</span>{" "}
                                 {policy.coverageRange}
                             </p>
                             <p className="flex items-center gap-2">
-                                <FaClock className="text-green-500" /> <span className="font-medium">Term:</span>{" "}
+                                <FaClock className="text-green-500" />
+                                <span className="font-medium">Term:</span>{" "}
                                 {policy.durationOptions}
                             </p>
                             <p className="flex items-center gap-2">
-                                <FaShoppingCart className="text-blue-500" /> <span className="font-medium">Purchased:</span>{" "}
+                                <FaShoppingCart className="text-blue-500" />
+                                <span className="font-medium">Purchased:</span>{" "}
                                 {policy.purchaseCount} times
                             </p>
                         </div>

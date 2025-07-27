@@ -4,6 +4,7 @@ import UseAuth from '../../../Hooks/UseAuth';
 import Swal from 'sweetalert2';
 import UseAxios from '../../../Hooks/UseAxious';
 import { FcGoogle } from "react-icons/fc";
+import PageTitle from '../../../Hooks/PageTItle';
 
 function SocialLogin() {
     const { googleLogin } = UseAuth();
@@ -46,6 +47,7 @@ function SocialLogin() {
 
     return (
         <div>
+            <PageTitle title="Google login" /> 
 
             <button
                 type="button"

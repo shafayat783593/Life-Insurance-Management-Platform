@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recha
 import { Link } from "react-router";
 import { FaUsers, FaMoneyBillWave, FaShieldAlt, FaFileAlt } from "react-icons/fa";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import PageTitle from "../../../Hooks/PageTItle";
 
 const AdminDashboard = () => {
     const axiosSecure = UseAxiosSecure();
@@ -46,6 +47,10 @@ const AdminDashboard = () => {
         amount: parseFloat(trx.amount) || 0,
     }));
     return (
+
+        <>
+            <PageTitle title="Admin Deshbord" /> 
+        
         <motion.div
             className="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
             initial={{ opacity: 0 }}
@@ -116,6 +121,7 @@ const AdminDashboard = () => {
                 </Link>
             </div>
         </motion.div>
+        </>
     );
 };
 

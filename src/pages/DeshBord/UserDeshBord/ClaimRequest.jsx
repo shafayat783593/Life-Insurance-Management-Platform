@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Loading from "../../../components/Loader/Loading";
+import PageTitle from "../../../Hooks/PageTItle";
+import axios from "axios";
 
 export default function ClaimRequest() {
     const { user } = UseAuth();
@@ -37,16 +39,29 @@ export default function ClaimRequest() {
     const onSubmit = async (formData) => {
         if (!selectedPolicy) return;
 
-        const payload = new FormData();
-        payload.append("applicationId", selectedPolicy._id);
+        const file = formData.document[0];
+        const imgbbKey = import.meta.env.VITE_IMG_UPLODE_KEY;
+        const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
 
-        payload.append("policyTitle", selectedPolicy?.policyData?.title);
-        payload.append("userEmail", user?.email);
-        payload.append("reason", formData.reason);
-        payload.append("status", "Pending");
-        payload.append("document", formData.document[0]);
-        console.log(selectedPolicy._id)
         try {
+            // 1. Upload image to ImgBB
+            const form = new FormData();
+            form.append("image", file);
+
+            const uploadRes = await axios.post(imgbbUrl, form);
+            const documentUrl = uploadRes.data.data.url;
+
+            // 2. Prepare payload with documentUrl
+            const payload = {
+                applicationId: selectedPolicy._id,
+                policyTitle: selectedPolicy?.policyData?.title,
+                userEmail: user?.email,
+                reason: formData.reason,
+                status: "Pending",
+                documentUrl,
+            };
+
+            // 3. Send claim data to backend
             const res = await axiosSecure.post("/claims", payload);
             if (res.data?.insertedId) {
                 Swal.fire("✅ Success!", "Your claim request has been submitted.", "success");
@@ -64,6 +79,7 @@ export default function ClaimRequest() {
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
+            <PageTitle title="Claim Request" /> 
             <h2 className="text-2xl font-bold mb-4">📋 Claim Your Approved Policies</h2>
 
             {application.length === 0 ? (
@@ -158,10 +174,10 @@ export default function ClaimRequest() {
                                 <input
                                     type="file"
                                     accept="application/pdf,image/*"
-                                    {...register("document", { required: true })}
+                                    {...register("document", { required: false })}
                                     className="w-full"
                                 />
-                                {errors.document && <p className="text-red-500 text-sm">Document is required</p>}
+                                {/* {errors.document && <p className="text-red-500 text-sm">Document is required</p>} */}
                             </div>
 
                             <button

@@ -7,6 +7,7 @@ import { formatAmount } from "./formatAmount";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../components/Loader/Loading";
+import PageTitle from "../../../Hooks/PageTItle";
 
 const MyPolicies = () => {
     const { user } = UseAuth();
@@ -52,6 +53,7 @@ const MyPolicies = () => {
 
     return (
         <div className="p-4 sm:p-6">
+            <PageTitle title="My Policies" /> 
             <h2 className="text-xl sm:text-2xl font-bold mb-4">📄 My Policies</h2>
 
             {isLoading ? (

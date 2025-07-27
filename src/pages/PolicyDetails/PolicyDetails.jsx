@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import Loading from '../../components/Loader/Loading';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
+import PageTitle from '../../Hooks/PageTItle';
 
 const PolicyDetails = () => {
     const { id } = useParams();
@@ -29,6 +30,9 @@ const PolicyDetails = () => {
     if (error) return <p className="text-center text-red-500 py-10">Error loading policy details</p>;
 
     return (
+
+        <>
+            <PageTitle title="Policy Details" /> 
         <motion.div
             className="max-w-4xl mx-auto px-4 py-20"
             initial={{ opacity: 0, y: 20 }}
@@ -74,6 +78,7 @@ const PolicyDetails = () => {
                 </button>
             </div>
         </motion.div>
+        </>
     );
 };
 

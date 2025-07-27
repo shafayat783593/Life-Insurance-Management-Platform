@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PageTitle from '../../Hooks/PageTItle';
 
 export default function PolicyFormModal({ setShowModal, editingPolicy, queryClient }) {
     const { register, handleSubmit, reset } = useForm({
@@ -22,6 +23,10 @@ export default function PolicyFormModal({ setShowModal, editingPolicy, queryClie
     };
 
     return (
+
+        <>
+            <PageTitle title="Policies From" /> 
+        
         <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,5 +56,6 @@ export default function PolicyFormModal({ setShowModal, editingPolicy, queryClie
                 </form>
             </div>
         </motion.div>
+        </>
     );
 }

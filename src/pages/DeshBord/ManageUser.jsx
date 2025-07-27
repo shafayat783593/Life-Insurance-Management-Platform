@@ -5,6 +5,7 @@ import { FaUserTie, FaUserShield, FaTrashAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Loading from '../../components/Loader/Loading';
+import PageTitle from '../../Hooks/PageTItle';
 
 export default function ManageUsers() {
     const axiosSecure = UseAxiosSecure();
@@ -57,6 +58,9 @@ export default function ManageUsers() {
 
     return (
         <div className="p-6">
+
+            <PageTitle title="Manage User" /> 
+            <PageTitle title="Manage User" /> 
             <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
 
             {/* Filter Dropdown */}

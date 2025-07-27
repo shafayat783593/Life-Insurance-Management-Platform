@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import Loading from "../../../components/Loader/Loading";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import PageTitle from "../../../Hooks/PageTItle";
 
 const fadeInVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -38,6 +39,10 @@ const BlogDetails = () => {
         );
 
     return (
+
+        <>
+            <PageTitle title="BLogs Detaisl" /> 
+        
         <motion.div
             className="max-w-5xl mx-auto py-12 px-6 md:px-12 mt-30 bg-gradient-to-br from-white via-blue-50 to-indigo-100 shadow-2xl rounded-3xl"
             initial="hidden"
@@ -91,6 +96,7 @@ const BlogDetails = () => {
                 {blog.content}
             </motion.article>
         </motion.div>
+        </>
     );
 };
 

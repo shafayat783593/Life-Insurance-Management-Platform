@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router";
 import { FaCalculator } from "react-icons/fa";
+import PageTitle from "../../Hooks/PageTItle";
 
 const QuotePage = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -40,6 +41,10 @@ const QuotePage = () => {
     };
 
     return (
+
+        <>
+            <PageTitle title="Quote " /> 
+        
         <motion.div
             className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-30"
             initial={{ opacity: 0, y: 20 }}
@@ -114,6 +119,7 @@ const QuotePage = () => {
                 </div>
             )}
         </motion.div>
+        </>
     );
 };
 

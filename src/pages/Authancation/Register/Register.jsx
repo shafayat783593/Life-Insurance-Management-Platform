@@ -6,6 +6,8 @@ import axios from 'axios'
 import UseAxios from '../../../Hooks/UseAxious'
 import { motion } from "framer-motion";
 import SocialLogin from '../SocialLogin/SocialLogin'
+import PageTitle from '../../../Hooks/PageTItle'
+import Swal from 'sweetalert2'
 
 // import "./Register.css"
 
@@ -47,50 +49,51 @@ function Register() {
     };
 
 
-    const onSubmit = (data) => {
-        console.log(data)
-        createrUser(data.email, data.password).then(async (res) => {
-            // update user information in database
+    const onSubmit = async (data) => {
+        try {
+            const res = await createrUser(data.email, data.password);
+
             const userInfo = {
                 email: data.email,
                 role: "customer",
-                name:data.name,
-                photoURL:profilePic,
+                name: data.name,
+                photoURL: profilePic,
                 created_at: new Date().toISOString(),
                 lastLogin: new Date().toISOString(),
-            }
+            };
 
+            const userResponse = await axiosIntences.post("/users", userInfo);
 
-            const userResponse = await axiosIntences.post("/users", userInfo)
-            console.log(userResponse.data)
-            // update user in firebase
             const userProfile = {
                 displayName: data?.name,
                 photoURL: profilePic,
                 email: data?.email,
+            };
 
-            }
+            await updateUser(userProfile);
 
-
-
-            updateUser(userProfile).then(() => {
-
-                // setuser({ ...user,  })
-
-                navigate(from)
-
-            }).catch((error) => {
-
-
+            Swal.fire({
+                icon: "success",
+                title: "Registration Successful!",
+                text: "Welcome aboard 🎉",
+                confirmButtonColor: "#3085d6",
+            }).then(() => {
+                navigate(from);
             });
-            console.log(res.user)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+
+        } catch (error) {
+            console.error(error);
+            Swal.fire("Error", "Registration failed. Please try again.", "error");
+        }
+    };
+
     console.log(user)
 
     return (
+
+        <>
+            <PageTitle title="Register" /> 
+        
         <motion.div
             className="min-h-screen flex items-center justify-center bg-gray-100 px-4"
             initial={{ opacity: 0, y: 40 }}
@@ -180,6 +183,7 @@ function Register() {
                 </p>
             </form>
         </motion.div>
+        </>
       );
 }
 

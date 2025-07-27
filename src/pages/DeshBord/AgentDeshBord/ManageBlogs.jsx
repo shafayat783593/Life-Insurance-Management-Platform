@@ -4,6 +4,7 @@ import UseAuth from "../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import Loading from "../../../components/Loader/Loading";
+import PageTitle from "../../../Hooks/PageTItle";
 
 export default function ManageBlogs() {
     const { user } = UseAuth();
@@ -73,8 +74,13 @@ export default function ManageBlogs() {
 
     if(isLoading)return <Loading/>
     return (
+
+        <>
+        
+            <PageTitle title="Manage Bloges" /> 
         <div className="p-6 max-w-6xl mx-auto">
-            <div className="flex justify-between items-center mb-6">
+           
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                 <h2 className="text-3xl font-bold text-gray-800">📝 Manage Blogs</h2>
                 <button
                     onClick={() => setShowForm(true)}
@@ -123,37 +129,67 @@ export default function ManageBlogs() {
                 </div>
             )}
 
-            {/* Blog Table */}
-            <div className="bg-white rounded-xl shadow overflow-x-auto">
-                <table className="table w-full">
-                    <thead className="bg-base-200 text-base font-semibold text-gray-700">
-                        <tr>
-                            <th className="py-3 px-4">Title</th>
-                            <th className="py-3 px-4">Author</th>
-                            <th className="py-3 px-4">Published Date</th>
-                            <th className="py-3 px-4 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {userBlogs.map((blog) => (
-                            <tr key={blog._id} className="hover:bg-base-100 transition">
-                                <td className="py-3 px-4">{blog.title}</td>
-                                <td className="py-3 px-4">{blog.author}</td>
-                                <td className="py-3 px-4">{new Date(blog.publishedAt).toLocaleDateString()}</td>
-                                <td className="py-3 px-4 text-center">
+            {/* Responsive Blog Display */}
+            <div>
+                {/* Table for large screens */}
+                <div className="hidden lg:block bg-white rounded-xl shadow overflow-x-auto">
+                    <table className="table w-full">
+                        <thead className="bg-base-200 text-base font-semibold text-gray-700">
+                            <tr>
+                                <th className="py-3 px-4">Title</th>
+                                <th className="py-3 px-4">Author</th>
+                                <th className="py-3 px-4">Published Date</th>
+                                <th className="py-3 px-4 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {userBlogs.map((blog) => (
+                                <tr key={blog._id} className="hover:bg-base-100 transition">
+                                    <td className="py-3 px-4">{blog.title}</td>
+                                    <td className="py-3 px-4">{blog.author}</td>
+                                    <td className="py-3 px-4">{new Date(blog.publishedAt).toLocaleDateString()}</td>
+                                    <td className="py-3 px-4 text-center">
+                                        <button
+                                            onClick={() => handleDelete(blog._id)}
+                                            className="btn btn-sm btn-error"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Card view for small screens */}
+                <div className="lg:hidden space-y-4">
+                    {userBlogs.map((blog) => (
+                        <div key={blog._id} className="card bg-base-100 shadow-lg border">
+                            <div className="card-body space-y-1">
+                                <h3 className="text-xl font-semibold">{blog.title}</h3>
+                                <p className="text-sm text-gray-600">
+                                    <span className="font-medium text-gray-700">Author:</span> {blog.author}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                    <span className="font-medium text-gray-700">Date:</span> {new Date(blog.publishedAt).toLocaleDateString()}
+                                </p>
+                                <div className="card-actions justify-end">
                                     <button
                                         onClick={() => handleDelete(blog._id)}
                                         className="btn btn-sm btn-error"
                                     >
                                         Delete
                                     </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
+        </>
+
 
     );
 }

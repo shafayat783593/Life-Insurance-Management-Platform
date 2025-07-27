@@ -7,6 +7,7 @@ import UseAxios from "../../Hooks/UseAxious";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
+import PageTitle from "../../Hooks/PageTItle";
 
 export default function ApplicationForm() {
     const { user, setselectedPolicy } = UseAuth();
@@ -77,7 +78,11 @@ export default function ApplicationForm() {
 
     
     return (
+
+        <><PageTitle title="Application From" /> 
+        
         <motion.div
+    
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto p-6 bg-white shadow-2xl rounded-lg mt-30"
@@ -129,5 +134,7 @@ export default function ApplicationForm() {
                 </div>
             </form>
         </motion.div>
+        
+        </>
     );
 }

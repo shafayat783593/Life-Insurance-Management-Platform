@@ -1,363 +1,82 @@
-import React, { useState } from "react";
+// src/pages/AgentDashboard.jsx
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
-import {
-    FaUserAlt,
-    FaClipboardList,
-    FaCheckCircle,
-    FaPen,
-    FaTrash,
-    FaTimes,
-} from "react-icons/fa";
-import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
-import UseAuth from "../../../Hooks/UseAuth";
-import Swal from "sweetalert2";
+import axios from "axios";
 
-// Optional status color styles
-const STATUS_COLORS = {
-    Pending: "bg-yellow-100 text-yellow-800",
-    Approved: "bg-green-100 text-green-800",
-    Rejected: "bg-red-100 text-red-800",
-};
+const axiosSecure = axios.create({
+    baseURL: "https://your-server-domain.com", // replace with actual URL
+    withCredentials: true,
+});
 
 const AgentDashboard = () => {
-    const axiosSecure = UseAxiosSecure();
-    const { user } = UseAuth();
-    const [modalContent, setModalContent] = useState(null);
-    const closeModal = () => setModalContent(null);
-
-    // Assigned Customers (via users collection)
-    const { data: assignedCustomers = [], isLoading } = useQuery({
-        queryKey: ["assignedCustomers", user?.email],
+    const { data: agentProfile = {} } = useQuery({
+        queryKey: ["agent-profile"],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/assigned-customers?email=${user?.email}`);
+            const res = await axiosSecure.get("/users/agent/me");
             return res.data;
         },
-        enabled: !!user?.email,
-    });
-    console.log(assignedCustomers)
-
-    // Blogs
-    const { data: blogs = [], isLoading: loadingBlogs } = useQuery({
-        queryKey: ["blogs"],
-        queryFn: async () => (await axiosSecure.get("/blogs")).data,
     });
 
-    // Policy Claims
-    const { data: claims = [], isLoading: loadingClaims } = useQuery({
+    const { data: assignedCustomers = [] } = useQuery({
+        queryKey: ["assigned-customers"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/assigned-customers");
+            return res.data;
+        },
+    });
+
+    const { data: claimRequests = [] } = useQuery({
         queryKey: ["policy-claims"],
-        queryFn: async () => (await axiosSecure.get("/policy-claims")).data,
+        queryFn: async () => {
+            const res = await axiosSecure.get("/policy-claims/agent");
+            return res.data;
+        },
     });
 
-    const updateCustomerStatus = async (customer, newStatus) => {
-        try {
-            await axiosSecure.patch(`/users/${customer._id}`, { status: newStatus });
-            alert("Status updated! Refresh to see changes.");
-            closeModal();
-        } catch {
-            alert("Failed to update status.");
-        }
-    };
+    const { data: blogs = [] } = useQuery({
+        queryKey: ["agent-blogs"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/blogs/agent");
+            return res.data;
+        },
+    });
 
-    const approveClaim = async (claimId, refetch) => {
-        const confirmResult = await Swal.fire({
-            title: 'Are you sure?',
-            text: 'Do you want to approve this claim?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, approve it!',
-            cancelButtonText: 'Cancel',
-        });
+    const { data: policies = [] } = useQuery({
+        queryKey: ["policy-performance"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/policies/performance");
+            return res.data;
+        },
+    });
 
-        if (confirmResult.isConfirmed) {
-            try {
-                const res = await axiosSecure.patch(`/policy-claims/approve/${claimId}`);
-                if (res.data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: 'Approved!',
-                        text: 'The claim has been approved.',
-                        icon: 'success',
-                    });
-                    if (refetch) refetch(); // re-fetch data if provided
-                } else {
-                    Swal.fire({
-                        title: 'No Change',
-                        text: 'Claim was already approved or not found.',
-                        icon: 'info',
-                    });
-                }
-            } catch (error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Something went wrong while approving.',
-                    icon: 'error',
-                });
-            }
-        }
-    };
-
-    const deleteBlog = async (blogId) => {
-        if (!window.confirm("Delete this blog?")) return;
-        try {
-            await axiosSecure.delete(`/blogs/${blogId}`);
-            alert("Blog deleted!");
-        } catch {
-            alert("Failed to delete blog.");
-        }
-    };
-
-    const StatusModal = ({ customer }) => {
-        const [status, setStatus] = useState(customer.status || "Pending");
-        const [saving, setSaving] = useState(false);
-
-        const handleSave = async () => {
-            setSaving(true);
-            await updateCustomerStatus(customer, status);
-            setSaving(false);
-        };
-
-        return (
-            <div>
-                <h3 className="text-2xl font-semibold mb-4">Update Status</h3>
-                <select
-                    className="w-full p-2 border rounded mb-6"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                >
-                    <option value="Pending">Pending</option>
-                    <option value="Approved">Approved</option>
-                    <option value="Rejected">Rejected</option>
-                </select>
-                <div className="flex justify-end gap-4">
-                    <button
-                        onClick={closeModal}
-                        className="px-4 py-2 border rounded"
-                        disabled={saving}
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        onClick={handleSave}
-                        className="px-4 py-2 bg-indigo-600 text-white rounded"
-                        disabled={saving}
-                    >
-                        {saving ? "Saving..." : "Save"}
-                    </button>
-                </div>
-            </div>
-        );
-    };
-
-    const BlogForm = ({ initialData, onClose }) => {
-        const [title, setTitle] = useState(initialData?.title || "");
-        const [content, setContent] = useState(initialData?.content || "");
-        const [saving, setSaving] = useState(false);
-
-        const saveBlog = async () => {
-            setSaving(true);
-            try {
-                if (initialData) {
-                    await axiosSecure.patch(`/blogs/${initialData._id}`, { title, content });
-                    alert("Blog updated!");
-                } else {
-                    await axiosSecure.post("/blogs", {
-                        title,
-                        content,
-                        author: user?.name || "Agent",
-                        authorEmail: user?.email || "agent@example.com",
-                        publishedAt: new Date().toISOString(),
-                    });
-                    alert("Blog created!");
-                }
-                onClose();
-            } catch {
-                alert("Failed to save blog.");
-            }
-            setSaving(false);
-        };
-
-        return (
-            <form onSubmit={(e) => { e.preventDefault(); saveBlog(); }} className="space-y-5">
-                <h3 className="text-2xl font-bold">{initialData ? "Edit Blog" : "New Blog"}</h3>
-                <input
-                    className="w-full border px-3 py-2 rounded"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-                <textarea
-                    className="w-full border px-3 py-2 rounded"
-                    rows={5}
-                    placeholder="Content"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    required
-                />
-                <div className="flex justify-end gap-3">
-                    <button type="button" onClick={onClose} className="border px-4 py-2 rounded">Cancel</button>
-                    <button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded">
-                        {saving ? "Saving..." : initialData ? "Update" : "Publish"}
-                    </button>
-                </div>
-            </form>
-        );
-    };
+    const { data: activities = [] } = useQuery({
+        queryKey: ["agent-activities"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/agent/activities");
+            return res.data;
+        },
+    });
 
     return (
-        <motion.div
-            className="max-w-7xl mx-auto p-6 space-y-14"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
+            <Card title="Assigned Customers" count={assignedCustomers.length} color="bg-blue-200" />
+            <Card title="Claim Requests" count={claimRequests.length} color="bg-rose-200" />
+            <Card title="Manage Blogs" count={blogs.length} color="bg-yellow-200" />
+            <Card title="Policy Performance" count={policies.length} color="bg-green-200" />
+            <Card title="Recent Activities" count={activities.length} color="bg-purple-200" />
+            <Card title="Agent Profile" count={1} color="bg-orange-200" />
+        </div>
+    );
+};
+
+const Card = ({ title, count, color }) => {
+    return (
+        <div
+            className={`${color} rounded-2xl p-6 shadow-md transition hover:scale-[1.02] duration-300`}
         >
-            {/* Assigned Customers Section */}
-            <section>
-                <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-2">
-                    <FaUserAlt /> Assigned Customers
-                </h2>
-
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : (
-                    <div className="overflow-x-auto border rounded">
-                        <table className="min-w-full table-auto">
-                            <thead className="bg-indigo-600 text-white">
-                                <tr>
-                                    <th className="px-4 py-2">Name</th>
-                                    <th className="px-4 py-2">Email</th>
-                                    <th className="px-4 py-2">Status</th>
-                                    <th className="px-4 py-2">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {assignedCustomers.map((c) => (
-                                    <tr key={c._id} className="border-b">
-                                        <td className="px-4 py-2">{c.name}</td>
-                                        <td className="px-4 py-2">{c.email}</td>
-                                        <td className="px-4 py-2">
-                                            <span className={`px-2 py-1 rounded-full text-sm ${STATUS_COLORS[c.status] || "bg-gray-200"}`}>
-                                                {c.status || "Pending"}
-                                            </span>
-                                        </td>
-                                        <td className="px-4 py-2">
-                                            <button
-                                                onClick={() => setModalContent({ type: "statusUpdate", data: c })}
-                                                className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600"
-                                            >
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-            </section>
-
-            {/* Blogs Section */}
-            <section>
-                <h2 className="text-3xl font-bold text-pink-700 mb-6 flex items-center gap-2">
-                    <FaClipboardList /> Manage Blogs
-                </h2>
-
-                <button
-                    onClick={() => setModalContent({ type: "newBlog" })}
-                    className="mb-4 bg-pink-600 text-white px-4 py-2 rounded"
-                >
-                    + New Blog
-                </button>
-
-                {loadingBlogs ? (
-                    <p>Loading blogs...</p>
-                ) : (
-                    <ul className="space-y-2">
-                        {blogs.map((b) => (
-                            <li key={b._id} className="border p-4 rounded bg-pink-50 flex justify-between items-center">
-                                <div>
-                                    <h4 className="font-semibold">{b.title}</h4>
-                                    <p className="text-sm text-gray-600">{b.author}</p>
-                                </div>
-                                <div className="flex gap-3">
-                                    <button onClick={() => setModalContent({ type: "editBlog", data: b })}>
-                                        <FaPen className="text-yellow-600" />
-                                    </button>
-                                    <button onClick={() => deleteBlog(b._id)}>
-                                        <FaTrash className="text-red-600" />
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </section>
-
-            {/* Policy Claims Section */}
-            <section>
-                <h2 className="text-3xl font-bold text-green-700 mb-6 flex items-center gap-2">
-                    <FaCheckCircle /> Policy Claims
-                </h2>
-
-                {loadingClaims ? (
-                    <p>Loading claims...</p>
-                ) : (
-                    <ul className="space-y-2">
-                        {claims.map((claim) => (
-                            <li key={claim._id} className="border p-4 rounded flex justify-between items-center bg-green-50">
-                                <div>
-                                    <h4 className="font-semibold">{claim.policyTitle}</h4>
-                                    <span className={`px-3 py-1 text-sm rounded-full ${STATUS_COLORS[claim.status]}`}>
-                                        {claim.status}
-                                    </span>
-                                </div>
-                                {claim.status === "Pending" && (
-                                    <button
-                                        onClick={() => approveClaim(claim._id)}
-                                        className="bg-green-600 text-white px-4 py-1 rounded"
-                                    >
-                                        Approve
-                                    </button>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </section>
-
-            {/* Modal */}
-            {modalContent && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4"
-                    onClick={closeModal}
-                >
-                    <motion.div
-                        className="bg-white p-6 rounded shadow-lg w-full max-w-lg relative"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-800"
-                        >
-                            <FaTimes />
-                        </button>
-
-                        {modalContent.type === "statusUpdate" && (
-                            <StatusModal customer={modalContent.data} />
-                        )}
-
-                        {(modalContent.type === "newBlog" || modalContent.type === "editBlog") && (
-                            <BlogForm
-                                initialData={modalContent.type === "editBlog" ? modalContent.data : null}
-                                onClose={closeModal}
-                            />
-                        )}
-                    </motion.div>
-                </div>
-            )}
-        </motion.div>
+            <h3 className="text-xl font-bold mb-2">{title}</h3>
+            <p className="text-4xl font-semibold">{count}</p>
+        </div>
     );
 };
 

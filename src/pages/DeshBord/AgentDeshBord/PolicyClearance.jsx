@@ -5,6 +5,7 @@ import { Dialog } from "@headlessui/react";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Loading from "../../../components/Loader/Loading";
+import PageTitle from "../../../Hooks/PageTItle";
 
 export default function PolicyClearance() {
     const [selectedClaim, setSelectedClaim] = useState(null);
@@ -51,6 +52,7 @@ export default function PolicyClearance() {
 
     return (
         <div className="p-4">
+            <PageTitle title="Policy Clearence" /> 
             <h2 className="text-2xl font-bold mb-4">Policy Clearance</h2>
 
             {/* ✅ Table view (only on md and up) */}
@@ -59,7 +61,7 @@ export default function PolicyClearance() {
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Policy ID</th>
+                            <th>Policy Name</th>
                             <th>User Email</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -100,7 +102,7 @@ export default function PolicyClearance() {
                 {claims.map((claim, index) => (
                     <div key={claim._id} className="bg-white rounded-lg shadow-md p-4 border">
                         <p className="text-sm text-gray-500 mb-1">{index + 1}</p>
-                        <p><strong>Policy ID:</strong> {claim?.policyTitle}</p>
+                        <p><strong>Policy:</strong> {claim?.policyTitle}</p>
                         <p><strong>User Email:</strong> {claim.userEmail}</p>
                         <p>
                             <strong>Status:</strong>{" "}
@@ -140,7 +142,7 @@ export default function PolicyClearance() {
                                 <strong>User Email:</strong> {selectedClaim.userEmail}
                             </p>
                             <p>
-                                <strong>Policy Title</strong> {selectedClaim?.policyTitle}
+                                <strong>Policy Title:</strong> {selectedClaim.policyTitle}
                             </p>
                             <p>
                                 <strong>Reason:</strong> {selectedClaim.reason}
@@ -148,7 +150,7 @@ export default function PolicyClearance() {
                             <p className="mt-2">
                                 <strong>Document:</strong>{" "}
                                 <a
-                                    href={`http://localhost:5000/${selectedClaim.documentPath}`}
+                                    href={selectedClaim.documentUrl}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="text-blue-600 underline"
@@ -157,18 +159,24 @@ export default function PolicyClearance() {
                                 </a>
                             </p>
 
+                            {selectedClaim.documentUrl && (
+                                <img
+                                    src={selectedClaim.documentUrl}
+                                    alt="Claim Document"
+                                    className="mt-4 max-h-48 w-auto rounded border"
+                                />
+                            )}
+
                             {policyLoading ? (
                                 <p>Loading policy...</p>
                             ) : (
                                 policyDetails && (
                                     <div className="mt-4">
                                         <p>
-                                            <strong>Policy Name:</strong>{" "}
-                                            {policyDetails?.policyData?.title}
+                                            <strong>Policy Name:</strong> {policyDetails.policyData?.title}
                                         </p>
                                         <p>
-                                            <strong>Amount:</strong> $
-                                            {policyDetails?.quote?.coverageAmount}
+                                            <strong>Amount:</strong> ${policyDetails.quote?.coverageAmount}
                                         </p>
                                     </div>
                                 )
@@ -193,6 +201,7 @@ export default function PolicyClearance() {
                     </div>
                 </Dialog>
             )}
+
         </div>
 
     );

@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosIntences = axios.create({
-    baseURL: `http://localhost:3000`,
+    baseURL: `https://server-one-jet-28.vercel.app`,
 })
 function UseAxios() {
     return axiosIntences

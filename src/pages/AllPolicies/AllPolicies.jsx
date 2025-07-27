@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { FaFilter } from 'react-icons/fa';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import Loading from '../../components/Loader/Loading';
+import PageTitle from '../../Hooks/PageTItle';
 
 const PAGE_SIZE = 6;
 
@@ -63,6 +64,7 @@ export default function AllPolicies() {
 
     return (
         <div className="max-w-7xl mx-auto p-4 mt-20">
+            <PageTitle title="AllPolices" /> 
             <h1 className="text-4xl font-bold mb-8 text-center text-indigo-700">
                 Explore All Insurance Policies
             </h1>

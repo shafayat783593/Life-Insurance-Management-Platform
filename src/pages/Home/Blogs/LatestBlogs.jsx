@@ -37,7 +37,7 @@ const LatestBlogs = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {blogs.slice(0, 4).map((blog, i) => {
+                {blogs.slice(0, 6).map((blog, i) => {
                     // Assign colorful gradients
                     const cardColors = [
                         "from-pink-500 to-red-400",

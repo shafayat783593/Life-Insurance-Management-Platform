@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 
 import Loading from "../components/Loader/Loading";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import PageTitle from "../Hooks/PageTItle";
 
 const AllAgents = () => {
    
@@ -22,7 +23,13 @@ const axiosSecure  = UseAxiosSecure()
     if (isError) return <p className="text-red-600 text-center mt-6">Failed to load agents.</p>;
 
     return (
+
+        <>
+            <PageTitle title="All Agents" /> 
+        
+        
         <div className="max-w-7xl mx-auto px-6 py-10">
+            
             <h1 className="text-4xl font-bold text-center mb-10 text-indigo-700">
                 Our Professional Agents
             </h1>
@@ -52,6 +59,7 @@ const axiosSecure  = UseAxiosSecure()
                 ))}
             </div>
         </div>
+        </>
     );
 };
 

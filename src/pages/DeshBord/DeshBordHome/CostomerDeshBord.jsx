@@ -5,6 +5,7 @@ import UseAuth from '../../../Hooks/UseAuth';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import Loading from '../../../components/Loader/Loading';
 import { useNavigate } from 'react-router';
+import PageTitle from '../../../Hooks/PageTItle';
 
 const CustomerDashboard = () => {
     const { user } = UseAuth();
@@ -30,6 +31,8 @@ const CustomerDashboard = () => {
     if (isLoading) return <Loading />;
 
     return (
+        <>
+            <PageTitle title="Costomer Deshbord" /> 
         <motion.div
             className="p-5 space-y-6"
             initial={{ opacity: 0 }}
@@ -97,6 +100,7 @@ const CustomerDashboard = () => {
                     ))}
             </div>
         </motion.div>
+        </>
     );
 };
 

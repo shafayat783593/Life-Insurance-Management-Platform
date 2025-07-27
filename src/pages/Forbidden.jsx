@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { FaLock } from "react-icons/fa";
+import PageTitle from "../Hooks/PageTItle";
 
 const Forbidden = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex flex-col justify-center items-center text-white px-4">
             {/* Icon & Code */}
+            <PageTitle title="Forbidden" /> 
             <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

@@ -19,9 +19,7 @@ const Navbar = () => {
         });
     }
 
-    // Simulated user auth (replace with your logic)
-    // const user = { email: "user@example.com", name: "John Doe" };
-    // const user = null;
+
 
     const navLinks = (
         <>
@@ -87,7 +85,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center w-full">
                 {/* Logo */}
                 <Link to="/" className="text-xl font-bold text-blue-600 flex items-center gap-1">
-                  <img className='w-15 rounded-full' src={logo} alt="" />  InsuranceCo
+                    <img className='w-15 rounded-full' src={logo} alt="" />  InsuranceCo
                 </Link>
 
                 {/* Desktop Nav */}
@@ -100,7 +98,7 @@ const Navbar = () => {
                     {user ? (
 
 
-<>
+                        <>
 
                             <Link to="/profile">
                                 <img src={user?.photoURL} alt={user?.displayName} className="w-15 h-15 rounded-full" />
@@ -122,38 +120,38 @@ const Navbar = () => {
 
 
 
-</>
+                        </>
                     ) : (
                         <>
-                                <div className="flex gap-6">
-                                    <Link
-                                        to="/auth/login"
-                                        className="w-30 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
-                                    >
-                                        <div className="relative overflow-hidden">
-                                            <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                Login
-                                            </p>
-                                            <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                Login
-                                            </p>
-                                        </div>
-                                    </Link>
+                            <div className="flex gap-6">
+                                <Link
+                                    to="/auth/login"
+                                    className="w-30 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
+                                >
+                                    <div className="relative overflow-hidden">
+                                        <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                            Login
+                                        </p>
+                                        <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                            Login
+                                        </p>
+                                    </div>
+                                </Link>
 
-                                    <Link
-                                        to="/auth/register"
-                                        className="w-35 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
-                                    >
-                                        <div className="relative overflow-hidden">
-                                            <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                Register
-                                            </p>
-                                            <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                Register
-                                            </p>
-                                        </div>
-                                    </Link>
-                                </div>
+                                <Link
+                                    to="/auth/register"
+                                    className="w-35 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
+                                >
+                                    <div className="relative overflow-hidden">
+                                        <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                            Register
+                                        </p>
+                                        <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                            Register
+                                        </p>
+                                    </div>
+                                </Link>
+                            </div>
 
 
 
@@ -176,7 +174,7 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
-                 
+
                 </div>
             </div>
 
@@ -214,7 +212,7 @@ const Navbar = () => {
                             {user ? (
                                 <>
 
-                                   
+
                                     <Link
                                         to="/auth/login"
                                         onClick={handleLogout}
@@ -235,35 +233,35 @@ const Navbar = () => {
                                 </>
                             ) : (
                                 <>
-                                        <div className="flex flex-col gap-6">
-                                            <Link
-                                                to="/auth/login"
-                                                className="w-30 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
-                                            >
-                                                <div className="relative overflow-hidden">
-                                                    <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                        Login
-                                                    </p>
-                                                    <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                        Login
-                                                    </p>
-                                                </div>
-                                            </Link>
+                                    <div className="flex flex-col gap-6">
+                                        <Link
+                                            to="/auth/login"
+                                            className="w-30 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
+                                        >
+                                            <div className="relative overflow-hidden">
+                                                <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                                    Login
+                                                </p>
+                                                <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                                    Login
+                                                </p>
+                                            </div>
+                                        </Link>
 
-                                            <Link
-                                                to="/auth/register"
-                                                className="w-35 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
-                                            >
-                                                <div className="relative overflow-hidden">
-                                                    <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                        Register
-                                                    </p>
-                                                    <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                                                        Register
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <Link
+                                            to="/auth/register"
+                                            className="w-35 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-xl transition-all cursor-pointer border border-transparent group"
+                                        >
+                                            <div className="relative overflow-hidden">
+                                                <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                                    Register
+                                                </p>
+                                                <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                                                    Register
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    </div>
                                     {/* <NavLink
                                         to="/register"
                                         className={({ isActive }) =>

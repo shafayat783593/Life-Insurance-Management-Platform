@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Loading from "../../../components/Loader/Loading";
+import PageTitle from "../../../Hooks/PageTItle";
 
 
 
@@ -32,12 +33,13 @@ const Allblogs = () => {
 
     return (
         <div className="max-w-6xl mx-auto py-12 px-4 mt-10">
+            <PageTitle title="All Blogs" /> 
             <h2 className="text-3xl font-bold text-center mb-10">
-                ✨ Latest Blogs & Articles
+                ✨ All Blogs & Articles
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {blogs.slice(0, 4).map((blog, i) => {
+                {blogs?.map((blog, i) => {
                     // Assign colorful gradients
                     const cardColors = [
                         "from-pink-500 to-red-400",

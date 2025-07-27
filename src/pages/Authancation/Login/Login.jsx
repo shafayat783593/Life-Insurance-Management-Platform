@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import UseAuth from "../../../Hooks/UseAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import PageTitle from "../../../Hooks/PageTItle";
 
 const Login = () => {
     const { signin  } = UseAuth();
@@ -40,6 +41,9 @@ const Login = () => {
 
 
     return (
+
+        <>
+            <PageTitle title="Login" /> 
         <motion.div
             className="min-h-screen flex items-center justify-center bg-gray-100 px-4"
             initial={{ opacity: 0, y: 40 }}
@@ -102,6 +106,7 @@ const Login = () => {
                 </p>
             </form>
         </motion.div>
+        </>
     );
 };
 

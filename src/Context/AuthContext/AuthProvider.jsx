@@ -33,14 +33,12 @@ function AuthProvider({ children }) {
 
     const logOut = () => {
         setloading(true)
+        localStorage.removeItem("token");
         return signOut(auth)
     }
     const updateUser = updatedData => {
         return updateProfile(auth.currentUser, updatedData)
     }
-
-
-
 
     // objerb ....................
 
@@ -50,12 +48,20 @@ function AuthProvider({ children }) {
             console.log("User:", currentuser);
 
             if (currentuser?.email) {
-                axios.post("http://localhost:3000/jwt", {
+                axios.post("https://server-one-jet-28.vercel.app/jwt", {
                     email: currentuser.email
-                }, { withCredentials: true })
+                })
                     .then(res => {
-                        console.log("JWT stored in cookie");
+                        console.log("JWT stored in cookie", res.data);
+                        const token = res.data.token;
+                        localStorage.setItem("token", token); // ✅ Store token
+                    })
+                    .catch(err => {
+                        console.log("jwt error", err);
                     });
+            } else {
+                // ✅ Remove token on logoutnpm 
+                localStorage.removeItem("token");
             }
 
             setloading(false);
@@ -63,6 +69,7 @@ function AuthProvider({ children }) {
 
         return () => unsubscribe();
     }, []);
+
 
     console.log(" iuu", selectedPolicy)
 

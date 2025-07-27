@@ -12,12 +12,12 @@ function CostomerPrivateRouter({ children }) {
     const { user, loading } = UseAuth()
 
     const { role, roleLoading } = UseUserRole();
-    const location = useLocation(); // ✅ Fix: useLocation added
+    const location = useLocation(); 
 
     if (loading || roleLoading) return <Loading />;
 
     if (!user || role !== "customer") {
-        return <Navigate to="/forbiddrn" state={location.pathname} replace />;
+        return <Navigate to="/forbidden" state={location.pathname} replace />;
     }
 
 
