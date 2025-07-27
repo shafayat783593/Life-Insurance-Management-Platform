@@ -5,8 +5,8 @@ import UseAuth from "../../../Hooks/UseAuth";
 import logo from "../../../assets/logo.png"
 const Navbar = () => {
     const { user, logOut } = UseAuth()
-    console.log(user?.displayName)
-    console.log(user?.photoURL)
+    // console.log(user?.displayName)
+    // console.log(user?.photoURL)
     const [isOpen, setIsOpen] = useState(false);
 
 

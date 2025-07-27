@@ -33,7 +33,7 @@ const EditProfile = () => {
             setValue("photoURL", user?.photoURL || "");
         },
     });
-    console.log(userData)
+    // console.log(userData)
     // 2. Submit handler
     const onSubmit = async (data) => {
         try {
@@ -56,7 +56,7 @@ const EditProfile = () => {
 
             }
         } catch (error) {
-            console.error(error);
+            // console.error(error);
             Swal.fire("Error", "Profile update failed", "error");
         }
 

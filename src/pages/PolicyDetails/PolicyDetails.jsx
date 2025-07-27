@@ -10,7 +10,7 @@ import PageTitle from '../../Hooks/PageTItle';
 const PolicyDetails = () => {
     const { id } = useParams();
     const axiosSecure = UseAxiosSecure()
-    console.log(id)
+    // console.log(id)
     const navigate = useNavigate();
 
 
@@ -24,7 +24,7 @@ const PolicyDetails = () => {
 
         enabled: !!id,
     });
-    console.log(policy)
+    // console.log(policy)
 
     if (isLoading) return <Loading />
     if (error) return <p className="text-center text-red-500 py-10">Error loading policy details</p>;

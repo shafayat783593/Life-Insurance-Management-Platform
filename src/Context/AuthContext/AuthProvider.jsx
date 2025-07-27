@@ -71,7 +71,7 @@ function AuthProvider({ children }) {
     }, []);
 
 
-    console.log(" iuu", selectedPolicy)
+    // console.log(" iuu", selectedPolicy)
 
     const authInfo = {
         createrUser,

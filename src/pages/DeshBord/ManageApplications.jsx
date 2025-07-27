@@ -58,7 +58,7 @@ const ManageApplications = () => {
             Swal.fire("Rejected!", "Feedback saved and application rejected.", "info");
             refetch();
         } catch (error) {
-            console.error(error);
+            // console.error(error);
             Swal.fire("Error", "Failed to reject application", "error");
         }
     };
@@ -107,7 +107,9 @@ const ManageApplications = () => {
                                             ))}
                                         </select>
                                     ) : (
-                                        <span className="text-gray-400">Assigned</span>
+                                            <span className="text-gray-600">
+                                                Assigned to: <span className="font-medium">{app?.assignedAgent || "Unknown"}</span>
+                                            </span>
                                     )}
                                 </td>
                                 <td className="flex gap-2">

@@ -11,7 +11,7 @@ const PopularPolicies = () => {
         queryKey: ["popularPolicies"],
         queryFn: async () => {
             const res = await axiosSecure.get("/popularPolicies/popular");
-            console.log("Popular policies:", res.data); // ✅ Debugging
+            // console.log("Popular policies:", res.data); // ✅ Debugging
             return res.data?.data || res.data || []; // safest way
         },
     });

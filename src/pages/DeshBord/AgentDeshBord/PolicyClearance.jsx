@@ -34,7 +34,7 @@ export default function PolicyClearance() {
         },
         enabled: !!selectedClaim?.policyId,
     });
-    console.log(policyDetails?.policyId)
+    // console.log(policyDetails?.policyId)
 
     const handleApprove = async (id) => {
         try {
@@ -43,7 +43,7 @@ export default function PolicyClearance() {
             setSelectedClaim(null);
             refetch();
         } catch (err) {
-            console.error(err);
+            // console.error(err);
             Swal.fire("Error", "Something went wrong!", "error");
         }
     };

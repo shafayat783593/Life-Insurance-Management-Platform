@@ -65,7 +65,7 @@ export default function ManagePolicies() {
             reset();
             refetch();
         } catch (err) {
-            console.error(err);
+            // console.error(err);
             Swal.fire('Error', 'Something went wrong', 'error');
         }
     };
