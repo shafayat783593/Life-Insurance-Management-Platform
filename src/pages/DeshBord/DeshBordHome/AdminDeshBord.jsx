@@ -85,7 +85,7 @@ const AdminDashboard = () => {
             <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-xl rounded-lg p-6">
                 <div className="flex items-center justify-between">
                     <FaMoneyBillWave size={30} />
-                    <h2 className="text-2xl font-bold">${totalIncome}</h2>
+                    <h2 className="text-2xl font-bold">{totalIncome} tk</h2>
                 </div>
                 <p className="mt-2">Total Income</p>
             </div>

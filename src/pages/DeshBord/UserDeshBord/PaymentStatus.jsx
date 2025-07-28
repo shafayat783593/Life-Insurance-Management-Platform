@@ -25,7 +25,7 @@ export default function PaymentStatus() {
     };
 
     const formatCoverage = (amount) => {
-        if (amount >= 10000000) return (amount / 10000000).toFixed(2) + " Cr";
+        if (amount >= 10000000) return (amount / 10000000).toFixed(2) + "কোটি";
         if (amount >= 100000) return (amount / 100000).toFixed(2) + " লাখ";
         if (amount >= 1000) return (amount / 1000).toFixed(2) + " হাজার";
         return amount + " ৳";
@@ -62,7 +62,7 @@ export default function PaymentStatus() {
                                     <tr key={policy._id}>
                                         <td>{policy?.policyData?.title}</td>
                                         <td>{formatCoverage(policy?.quote?.coverageAmount)}</td>
-                                        <td>{policy?.premiumAmount} ৳</td>
+                                        <td>{policy?.premiumAmount} tk</td>
                                         <td>{policy.frequency}</td>
                                         <td className="font-medium">{policy?.paymentStatus}</td>
                                         <td>

@@ -38,7 +38,7 @@ const ManageTransactions = () => {
             {/* Total Income */}
             <div className="mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-xl shadow-md p-6 text-center">
                 <h3 className="text-xl font-semibold">Total Income</h3>
-                <p className="text-4xl font-bold">${totalIncome}</p>
+                <p className="text-4xl font-bold">{totalIncome} tk</p>
             </div>
 
             {/* Filters */}
@@ -73,7 +73,7 @@ const ManageTransactions = () => {
                                 <td>{item.transactionId}</td>
                                 <td>{item.email}</td>
                                 <td>{item.policename}</td>
-                                <td>${item.amount}</td>
+                                <td>{item.amount} tk</td>
                                 <td>{new Date(item.date).toLocaleString()}</td>
                                 <td>
                                     <span className="badge badge-success">{item.paymentStatus}</span>

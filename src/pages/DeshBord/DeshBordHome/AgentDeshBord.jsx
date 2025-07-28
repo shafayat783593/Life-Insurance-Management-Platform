@@ -2,70 +2,69 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import UseAuth from "../../../Hooks/UseAuth";
 
-const axiosSecure = axios.create({
-    baseURL: "https://your-server-domain.com", // replace with actual URL
-    withCredentials: true,
-});
+// const axiosSecure = axios.create({
+//     baseURL: "https://your-server-domain.com", // replace with actual URL
+//     withCredentials: true,
+// });
 
 const AgentDashboard = () => {
-    const { data: agentProfile = {} } = useQuery({
-        queryKey: ["agent-profile"],
+
+    const axiosSecure = UseAxiosSecure();
+    const {user}= UseAuth()
+
+    // const { data: agentProfile = {}, isLoading: profileLoading } = useQuery({
+    //     queryKey: ["agent-profile"],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get("/users/agent/me");
+    //         return res.data;
+    //     },
+    // });
+
+    // const agentEmail = agentProfile?.email;
+
+    // Only run the next queries if email is available
+    const { data: blogs = [] } = useQuery({
+        queryKey: ["agent/blogs", user.email],
+        enabled: !!user.email,
         queryFn: async () => {
-            const res = await axiosSecure.get("/users/agent/me");
+            const encodedEmail = encodeURIComponent(user.email);
+            const res = await axiosSecure.get(`/agent/blogs?email=${encodedEmail}`);
             return res.data;
         },
     });
 
     const { data: assignedCustomers = [] } = useQuery({
-        queryKey: ["assigned-customers"],
+        queryKey: ["assigned-customers", user.email],
+        enabled: !!user.email,
         queryFn: async () => {
-            const res = await axiosSecure.get("/assigned-customers");
+            const res = await axiosSecure.get(`/assigned-customers?email=${user.email}`);
             return res.data;
         },
     });
 
     const { data: claimRequests = [] } = useQuery({
-        queryKey: ["policy-claims"],
+        queryKey: ["policy-claims", user.email],
+        enabled: !!user.email,
         queryFn: async () => {
-            const res = await axiosSecure.get("/policy-claims/agent");
+            const res = await axiosSecure.get(`/policy-claims/agent?email=${user.email}`);
             return res.data;
         },
     });
-
-    const { data: blogs = [] } = useQuery({
-        queryKey: ["agent-blogs"],
-        queryFn: async () => {
-            const res = await axiosSecure.get("/blogs/agent");
-            return res.data;
-        },
-    });
-
-    const { data: policies = [] } = useQuery({
-        queryKey: ["policy-performance"],
-        queryFn: async () => {
-            const res = await axiosSecure.get("/policies/performance");
-            return res.data;
-        },
-    });
-
-    const { data: activities = [] } = useQuery({
-        queryKey: ["agent-activities"],
-        queryFn: async () => {
-            const res = await axiosSecure.get("/agent/activities");
-            return res.data;
-        },
-    });
+  
 
     return (
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
-            <Card title="Assigned Customers" count={assignedCustomers.length} color="bg-blue-200" />
-            <Card title="Claim Requests" count={claimRequests.length} color="bg-rose-200" />
-            <Card title="Manage Blogs" count={blogs.length} color="bg-yellow-200" />
-            <Card title="Policy Performance" count={policies.length} color="bg-green-200" />
-            <Card title="Recent Activities" count={activities.length} color="bg-purple-200" />
-            <Card title="Agent Profile" count={1} color="bg-orange-200" />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
+            <Card title="Assigned Customers" count={assignedCustomers?.length || 0} color="bg-blue-200" />
+            <Card title="Claim Requests" count={claimRequests?.length || 0} color="bg-rose-200" />
+            <Card title="Manage Blogs" count={blogs?.length || 0} color="bg-yellow-200" />
+            {/* <Card title="Policy Performance" count={policies?.length || 0} color="bg-green-200" />
+            <Card title="Recent Activities" count={activities?.length || 0} color="bg-purple-200" /> */}
+            <Card title="Agent Profile" count={user.email ? 1 : 0} color="bg-orange-200" />
         </div>
+
     );
 };
 

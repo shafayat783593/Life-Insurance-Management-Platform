@@ -57,7 +57,7 @@ const MyPolicies = () => {
                                 <FaCheckCircle className="text-green-500" />
                                 <h4 className="text-lg font-bold">{policy.policyData?.title}</h4>
                             </div>
-                            <p className="text-sm text-gray-600 mb-1">Premium: <strong>${policy.premiumAmount}</strong></p>
+                            <p className="text-sm text-gray-600 mb-1">Premium: <strong>{policy.premiumAmount} tk</strong></p>
                             <p className="text-sm text-gray-600 mb-1">Agent: <strong>{policy.assignedAgent || "N/A"}</strong></p>
                             <p className="text-sm text-gray-600 mb-3">Payment Status: <strong>{policy.paymentStatus}</strong></p>
 
@@ -103,7 +103,7 @@ const MyPolicies = () => {
 
                             <p className="text-sm mt-2 text-gray-600">
                                 <span className="font-semibold">Premium:</span>{' '}
-                                ${policy.premiumAmount || 'N/A'}
+                                {policy.premiumAmount || 'N/A'} tk
                             </p>
 
                             <p className="text-sm mt-1 text-gray-600">
