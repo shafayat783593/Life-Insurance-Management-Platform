@@ -16,6 +16,7 @@ const ManageTransactions = () => {
     });
 
     const totalIncome = transactions.reduce((acc, item) => acc + item.amount, 0);
+    const formattedIncome = totalIncome.toFixed(2); 
 
     const chartData = transactions.map((item) => ({
         name: new Date(item.date).toLocaleDateString(),
@@ -38,7 +39,7 @@ const ManageTransactions = () => {
             {/* Total Income */}
             <div className="mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-xl shadow-md p-6 text-center">
                 <h3 className="text-xl font-semibold">Total Income</h3>
-                <p className="text-4xl font-bold">{totalIncome} tk</p>
+                    <p className="text-4xl font-bold">{formattedIncome} tk</p>
             </div>
 
             {/* Filters */}
