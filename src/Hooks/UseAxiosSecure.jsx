@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router'; // make sure this is 'react-router-d
 import UseAuth from './UseAuth'; // your custom hook
 
 const axiosSecure = axios.create({
-    baseURL: 'https://server-one-jet-28.vercel.app', // change to your deployed server when needed
+    // baseURL: 'https://server-one-jet-28.vercel.app', // change to your deployed server when needed
+    baseURL: 'http://localhost:3000', // change to your deployed server when needed
 });
 
 function UseAxiosSecure() {

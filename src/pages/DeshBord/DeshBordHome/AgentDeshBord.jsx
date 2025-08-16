@@ -26,15 +26,6 @@ const AgentDashboard = () => {
     // const agentEmail = agentProfile?.email;
 
     // Only run the next queries if email is available
-    const { data: blogs = [] } = useQuery({
-        queryKey: ["agent/blogs", user.email],
-        enabled: !!user.email,
-        queryFn: async () => {
-            const encodedEmail = encodeURIComponent(user.email);
-            const res = await axiosSecure.get(`/agent/blogs?email=${encodedEmail}`);
-            return res.data;
-        },
-    });
 
     const { data: assignedCustomers = [] } = useQuery({
         queryKey: ["assigned-customers", user.email],

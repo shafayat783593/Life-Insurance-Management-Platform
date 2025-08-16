@@ -1,4 +1,5 @@
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope, FaPhone, FaLocationArrow } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Footer = () => {
     return (
@@ -20,9 +21,9 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><a href="/" className="hover:text-pink-300 transition duration-200">Home</a></li>
-                        <li><a href="/policies" className="hover:text-pink-300 transition duration-200">All Policies</a></li>
-                        <li><a href="/dashboard" className="hover:text-pink-300 transition duration-200">Dashboard</a></li>
+                        <li><Link to="/" className="hover:text-pink-300 transition duration-200">Home</Link></li>
+                        <li><Link to="/policies" className="hover:text-pink-300 transition duration-200">All Policies</Link></li>
+                        <li><Link to="/dashboard" className="hover:text-pink-300 transition duration-200">Dashboard</Link></li>
                         <li><a href="/contact" className="hover:text-pink-300 transition duration-200">Contact Us</a></li>
                     </ul>
                 </div>
@@ -31,10 +32,10 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold mb-3">Support</h3>
                     <ul className="space-y-2">
-                        <li><a href="/faq" className="hover:text-pink-300 transition duration-200">FAQ</a></li>
-                        <li><a href="/condition" className="hover:text-pink-300 transition duration-200">Terms & Conditions</a></li>
-                        <li><a href="/privacy" className="hover:text-pink-300 transition duration-200">Privacy Policy</a></li>
-                        <li><a href="/helpCenter" className="hover:text-pink-300 transition duration-200">Help Center</a></li>
+                        <li><Link to="/faq" className="hover:text-pink-300 transition duration-200">FAQ</Link></li>
+                        <li><Link to="/condition" className="hover:text-pink-300 transition duration-200">Terms & Conditions</Link></li>
+                        <li><Link to="/privacy" className="hover:text-pink-300 transition duration-200">Privacy Policy</Link></li>
+                        <li><Link to="/helpCenter" className="hover:text-pink-300 transition duration-200">Help Center</Link></li>
                     </ul>
                 </div>
 

@@ -79,7 +79,7 @@ const PolicyDetails = () => {
                         📈 Get Quote
                     </button>
                     <button
-                        onClick={() => navigate('/agents')}
+                        onClick={() => navigate('/contactSupport')}
                         className="px-6 py-3 bg-success hover:bg-success/80 text-success-content rounded-lg font-semibold transition"
                     >
                         📞 Book Agent Consultation

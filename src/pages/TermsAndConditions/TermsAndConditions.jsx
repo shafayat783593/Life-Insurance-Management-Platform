@@ -38,13 +38,13 @@ export default function TermsAndConditions() {
             {terms.map((term, index) => (
                 <div
                     key={index}
-                    className="collapse collapse-arrow bg-gradient-to-br from-blue-50 via-white to-blue-100 shadow-xl rounded-2xl border border-blue-200 mt-5"
+                    className="collapse collapse-arrow bg-gradient-to-br  shadow-xl rounded-2xl border border-blue-200 mt-5"
                 >
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title text-lg font-semibold text-indigo-700">
                         {term.title}
                     </div>
-                    <div className="collapse-content text-gray-700 peer-checked:animate-fade-in">
+                    <div className="collapse-content  peer-checked:animate-fade-in">
                         <p>{term.content}</p>
                     </div>
                 </div>

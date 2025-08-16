@@ -54,7 +54,7 @@ export default function HelpCenter() {
             <div className="mt-6 text-center">
                 <p className="">
                     Can’t find an answer?{" "}
-                    <Link to="/helpCenter" className="text-blue-600 font-semibold hover:underline">
+                    <Link to="/contactSupport" className="text-blue-600 font-semibold hover:underline">
                         Contact Support
                     </Link>
                 </p>

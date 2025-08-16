@@ -98,12 +98,12 @@ export const router = createBrowserRouter([
                 path: "helpCenter",
                 Component: HelpCenter
             }, {
-                path: "helpCenter",
-                            Component: ContactSupport
+                path: "contactSupport",
+                Component: ContactSupport
             }
         ]
-    }, 
-    
+    },
+
     //     path: "/",
     //     Component: Layout,
     //     children: [
