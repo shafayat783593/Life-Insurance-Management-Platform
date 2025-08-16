@@ -7,7 +7,7 @@ const slides = [
         id: 1,
         title: "Secure Your Tomorrow Today",
         tagline: "Protect what matters most with reliable life insurance.",
-        image: "https://i.ibb.co/LdjPb7QS/incurence3.jpg",
+        image: "https://i.ibb.co.com/zhsKgwtK/360-F-628937222-we-CSh2-EMy9tpkon-YN8-WUAc0-Qhtf18-Ihs.jpg",
     },
     {
         id: 2,

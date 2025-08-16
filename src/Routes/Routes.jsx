@@ -40,6 +40,7 @@ import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 import HelpCenter from "../pages/HelpCenter/HelpCenter";
 import Layout from "../Layout/Layout";
 import ContactSupport from "../pages/Contact Support/ContactSupport";
+import UserMessages from "../pages/DeshBord/UserDeshBord/Messages";
 
 export const router = createBrowserRouter([
 
@@ -157,6 +158,13 @@ export const router = createBrowserRouter([
                 element: <AdminPrivateRoutes>
                     <ManageUsers />
                 </AdminPrivateRoutes>
+            },{
+                path:"user-messages",
+                element:<AdminPrivateRoutes>
+                  <UserMessages/>
+                </AdminPrivateRoutes>
+
+
             }, {
                 path: "my-policies",
                 element: <CostomerPrivateRouter>

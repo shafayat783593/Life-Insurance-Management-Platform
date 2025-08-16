@@ -15,9 +15,9 @@ function Home() {
       <PageTitle title="Home" /> 
         <HeroSection/>
         <PopularPolicies/>
-        <AllReviews/>
         <LatestBlogs/>
         <BenefitsOfLifeSure/>
+        <AllReviews/>
         <FeaturedAgents/>
         <NewsletterSubscription/>
         

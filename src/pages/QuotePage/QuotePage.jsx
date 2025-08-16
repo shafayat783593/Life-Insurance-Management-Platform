@@ -46,7 +46,7 @@ const QuotePage = () => {
             <PageTitle title="Quote " /> 
         
         <motion.div
-                className="max-w-xl mx-auto p-6 rounded-lg shadow-lg mt-30 hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] "
+                className="max-w-xl mx-auto p-6 rounded-lg shadow-lg my-10 hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
         >
