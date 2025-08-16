@@ -4,26 +4,24 @@ import ReactStars from "react-rating-stars-component";
 import { FaQuoteLeft } from "react-icons/fa";
 
 const ReviewCard = ({ review }) => {
-    const { userName, rating, feedback, photo } = review;
+    const { userName, rating, feedback, userPhoto, policyTitle, createdAt } = review;
 
-    const gradients = [
-        "from-purple-500 to-indigo-500",
-        "from-pink-500 to-red-400",
-        "from-green-400 to-teal-500",
-        "from-yellow-400 to-orange-500",
-    ];
-    const colorClass = gradients[Math.floor(Math.random() * gradients.length)];
+    // Fixed gradient color
+    const colorClass = "hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] ";
 
     return (
-        <div className={`bg-gradient-to-br ${colorClass} text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition`}>
+        <div
+            className={`bg-gradient-to-br ${colorClass}  rounded-2xl p-6 shadow-lg hover:shadow-2xl transition`}
+        >
             <div className="flex items-center gap-4 mb-4">
                 <img
-                    src={photo }
+                    src={userPhoto}
                     alt={userName}
-                    className="w-12 h-12 rounded-full border-2 border-white"
+                    className="w-12 h-12 rounded-full border-2 border-white object-cover"
                 />
                 <div>
                     <h4 className="text-lg font-bold">{userName}</h4>
+                    <p className="text-sm">{policyTitle}</p>
                     <ReactStars
                         count={5}
                         value={rating}
@@ -34,9 +32,17 @@ const ReviewCard = ({ review }) => {
                     />
                 </div>
             </div>
-            <p className="text-sm italic">
+
+            <p className="text-sm italic mb-2">
                 <FaQuoteLeft className="inline mr-1" />
                 {feedback}
+            </p>
+
+            <p className="text-xs ">
+                {new Date(createdAt).toLocaleString("en-US", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                })}
             </p>
         </div>
     );

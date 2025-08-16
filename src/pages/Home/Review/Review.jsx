@@ -14,11 +14,25 @@ const AllReviews = () => {
         },
     });
 
-    if (isLoading) return <p className="text-center">Loading reviews...</p>;
-    if (isError) return <p className="text-center text-red-500">Failed to load reviews.</p>;
+    if (isLoading)
+        return <p className="text-center text-gray-500 mt-10">Loading reviews...</p>;
+
+    if (isError)
+        return (
+            <p className="text-center text-red-500 mt-10">
+                Failed to load reviews. Please try again later.
+            </p>
+        );
+
+    if (reviews.length === 0)
+        return (
+            <p className="text-center text-gray-500 mt-10">
+                No reviews available yet.
+            </p>
+        );
 
     return (
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
             <h2 className="text-3xl font-bold text-center text-indigo-600 mb-10">
                 🌟 What Our Customers Say
             </h2>

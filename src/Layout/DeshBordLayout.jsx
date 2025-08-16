@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router'
 // import Logo from '../pages/ShardeComponents/Logo/Logo'
-import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature, FaClipboardCheck } from "react-icons/fa";
+import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature, FaClipboardCheck, FaEnvelope } from "react-icons/fa";
 import UseUserRole from '../Hooks/UserRole';
 import logo from "../assets/logo.png"
 // import UseUserRole from '../Hooks/UseUserRole';
@@ -250,6 +250,17 @@ function DashBordLayout() {
                                         >
                                             <FaBlog className="inline mr-2" />
                                             Manage Blogs
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/user-messages"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-blue-400 font-bold bg-base-300 rounded" : ""
+                                            }
+                                        >
+                                            <FaEnvelope className="inline mr-2" />
+                                            User Messages
                                         </NavLink>
                                     </li>
 

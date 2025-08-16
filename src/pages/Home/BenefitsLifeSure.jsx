@@ -43,7 +43,7 @@ const benefits = [
 const BenefitsOfLifeSure = () => {
     return (
         <div className="w-11/12 max-w-7xl mx-auto py-16">
-            <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            <h2 className="text-4xl font-bold text-center  mb-12">
                 Benefits of <span className="text-blue-600">LifeSure</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

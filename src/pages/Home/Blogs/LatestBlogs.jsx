@@ -31,7 +31,7 @@ const LatestBlogs = () => {
         return <p className="text-center text-red-500">Failed to load blogs.</p>;
 
     return (
-        <div className="max-w-6xl mx-auto py-12 px-4">
+        <div className="max-w-11/12 mx-auto py-12 px-4">
             <h2 className="text-3xl font-bold text-center mb-10">
                 ✨ Latest Blogs & Articles
             </h2>

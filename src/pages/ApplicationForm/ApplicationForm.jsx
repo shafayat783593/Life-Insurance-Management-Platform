@@ -85,7 +85,7 @@ export default function ApplicationForm() {
     
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto p-6 bg-white shadow-2xl rounded-lg mt-30"
+                className="max-w-3xl mx-auto p-6 my-10 shadow-2xl rounded-lg   hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] "
         >
             <h2 className="text-2xl font-semibold mb-6 text-center">Policy Application Form</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
