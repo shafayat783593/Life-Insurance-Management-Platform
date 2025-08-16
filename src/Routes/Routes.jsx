@@ -36,6 +36,10 @@ import CostomerPrivateRouter from "../pages/Route/CostomerPrivateRouter";
 import ManageTransactions from "../pages/DeshBord/ManageTransaction";
 import DeshBordHome from "../pages/DeshBord/DeshBordHome/DeshBordHome";
 import ForgotPassword from "../pages/ForgetPassword";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
+import HelpCenter from "../pages/HelpCenter/HelpCenter";
+import Layout from "../Layout/Layout";
+import ContactSupport from "../pages/Contact Support/ContactSupport";
 
 export const router = createBrowserRouter([
 
@@ -87,9 +91,32 @@ export const router = createBrowserRouter([
             }, {
                 path: "forbidden",
                 Component: Forbidden
+            }, {
+                path: "condition",
+                Component: TermsAndConditions
+            }, {
+                path: "helpCenter",
+                Component: HelpCenter
+            }, {
+                path: "helpCenter",
+                            Component: ContactSupport
             }
         ]
-    }, {
+    }, 
+    
+    //     path: "/",
+    //     Component: Layout,
+    //     children: [
+    //         {
+    //             path: "helpCenter",
+    //             Component: ContactSupport
+    //         }
+    //     ]
+    // },
+
+
+
+    {
         path: "/auth",
         Component: AuthLayout,
         children: [
@@ -101,9 +128,9 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register
-            },{
-                path:"forget",
-                Component:ForgotPassword
+            }, {
+                path: "forget",
+                Component: ForgotPassword
             }
         ]
 
@@ -113,7 +140,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component:DeshBordHome
+                Component: DeshBordHome
             },
             {
                 path: "manage-policies",
@@ -167,10 +194,10 @@ export const router = createBrowserRouter([
                 element: <PolicyClearance>
                     <PolicyClearance />
                 </PolicyClearance>
-            },{
-                path:"manage-transaction",
-                element:<AdminPrivateRoutes>
-                    <ManageTransactions/>
+            }, {
+                path: "manage-transaction",
+                element: <AdminPrivateRoutes>
+                    <ManageTransactions />
                 </AdminPrivateRoutes>
             }
         ]

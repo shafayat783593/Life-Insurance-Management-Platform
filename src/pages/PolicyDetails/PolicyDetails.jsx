@@ -32,53 +32,62 @@ const PolicyDetails = () => {
     return (
 
         <>
-            <PageTitle title="Policy Details" /> 
-        <motion.div
-            className="max-w-4xl mx-auto px-4 py-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-        >
-            <h1 className="text-3xl font-bold mb-4">{policy?.title}</h1>
-            <img src={policy?.image} alt={policy?.title} className="rounded-lg w-full max-h-80 object-cover mb-6" />
+            <PageTitle title="Policy Details" />
+            <motion.div
+                className="max-w-4xl mx-auto px-4 py-20"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+            >
+                <h1 className="text-3xl font-bold mb-4 text-base-content">{policy?.title}</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
-                <div>
-                    <h2 className="text-xl font-semibold mb-2">📝 Description:</h2>
-                    <p>{policy?.description}</p>
+                <img
+                    src={policy?.image}
+                    alt={policy?.title}
+                    className="rounded-lg w-full max-h-80 object-cover mb-6"
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base-content/90">
+                    <div>
+                        <h2 className="text-xl font-semibold mb-2 text-base-content">📝 Description:</h2>
+                        <p>{policy?.description}</p>
+                    </div>
+
+                    <div>
+                        <h2 className="text-xl font-semibold mb-2 text-base-content">📊 Details:</h2>
+                        <ul className="space-y-2">
+                            <li><FaCheckCircle className="inline mr-2 text-success" />Category: {policy?.category}</li>
+                            <li><FaCheckCircle className="inline mr-2 text-success" />Min Age: {policy?.minAge}</li>
+                            <li><FaCheckCircle className="inline mr-2 text-success" />Max Age: {policy?.maxAge}</li>
+                            <li><FaCheckCircle className="inline mr-2 text-success" />Coverage: {policy?.coverageRange}</li>
+                            <li>
+                                <FaCheckCircle className="inline mr-2 text-success" />
+                                Duration Options: {Array.isArray(policy?.durationOptions)
+                                    ? policy.durationOptions.join(', ')
+                                    : policy?.durationOptions || 'N/A'}
+                            </li>
+                            <li><FaCheckCircle className="inline mr-2 text-success" />Base Premium Rate: ৳{policy?.basePremiumRate}</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div>
-                    <h2 className="text-xl font-semibold mb-2">📊 Details:</h2>
-                    <ul className="space-y-2">
-                        <li><FaCheckCircle className="inline mr-2 text-green-600" />Category: {policy?.category}</li>
-                        <li><FaCheckCircle className="inline mr-2 text-green-600" />Min Age: {policy?.minAge}</li>
-                        <li><FaCheckCircle className="inline mr-2 text-green-600" />Max Age: {policy?.maxAge}</li>
-                        <li><FaCheckCircle className="inline mr-2 text-green-600" />Coverage: {policy?.coverageRange}</li>
-                        <li>
-                            <FaCheckCircle className="inline mr-2 text-green-600" />
-                            Duration Options: {Array.isArray(policy?.durationOptions) ? policy.durationOptions.join(', ') : policy?.durationOptions || 'N/A'}
-                        </li>                        <li><FaCheckCircle className="inline mr-2 text-green-600" />Base Premium Rate: ৳{policy?.basePremiumRate}</li>
-                    </ul>
+                <div className="flex flex-col md:flex-row gap-4 mt-8">
+                    <button
+                        onClick={() => navigate('/quote', { state: policy })}
+                        className="px-6 py-3 bg-primary hover:bg-primary/80 text-primary-content rounded-lg font-semibold transition"
+                    >
+                        📈 Get Quote
+                    </button>
+                    <button
+                        onClick={() => navigate('/agents')}
+                        className="px-6 py-3 bg-success hover:bg-success/80 text-success-content rounded-lg font-semibold transition"
+                    >
+                        📞 Book Agent Consultation
+                    </button>
                 </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-4 mt-8">
-                <button
-                    onClick={() => navigate('/quote', { state: policy })}
-                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition"
-                >
-                    📈 Get Quote
-                </button>
-                <button
-                    onClick={() => navigate('/agents')}
-                    className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition"
-                >
-                    📞 Book Agent Consultation
-                </button>
-            </div>
-        </motion.div>
+            </motion.div>
         </>
+
     );
 };
 

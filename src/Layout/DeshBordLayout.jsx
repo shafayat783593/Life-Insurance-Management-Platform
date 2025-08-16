@@ -55,7 +55,7 @@ function DashBordLayout() {
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                 }
                             >
                                 <FaHome className="inline mr-2" />
@@ -67,7 +67,7 @@ function DashBordLayout() {
                             <NavLink
                                 to="/dashbord/myparcel"
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                 }
                             >
                                 <FaBox className="inline mr-2" />
@@ -81,7 +81,7 @@ function DashBordLayout() {
                             <NavLink
                                 to="/dashbord/payment-history"
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                 }
                             >
                                 <FaMoneyCheckAlt className="inline mr-2" />
@@ -100,7 +100,7 @@ function DashBordLayout() {
                                         to="/dashbord/rider-pending"
                                         className={({ isActive }) =>
                                             isActive
-                                                ? "text-primary font-bold bg-base-300 rounded px-3 py-2 flex items-center"
+                                                ? "text-blue-400  font-bold bg-base-300 rounded px-3 py-2 flex items-center"
                                                 : "px-3 py-2 flex items-center"
                                         }
                                     >
@@ -114,7 +114,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashbord/completed-delivery"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaCheckCircle className="inline mr-2" />
@@ -136,7 +136,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashbord/pending"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaUserClock className="inline mr-2" />
@@ -148,7 +148,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashbord/active"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaUserCheck className="inline mr-2" />
@@ -160,7 +160,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashbord/useradmin"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaUserShield className="inline mr-2" />
@@ -172,7 +172,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashbord/assignrider"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaMotorcycle className="inline mr-2" />
@@ -198,7 +198,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/manage-applications"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaUserShield className="inline mr-2" />
@@ -210,7 +210,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/manage-user"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaUsers className="inline mr-2" />
@@ -222,7 +222,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/manage-policies"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaFileAlt className="inline mr-2" />
@@ -234,7 +234,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/manage-transaction"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaMoneyCheckAlt className="inline mr-2" />
@@ -245,7 +245,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/manage-blogs"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaBlog className="inline mr-2" />
@@ -276,7 +276,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashboard/assigned-customers"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaUsers className="inline mr-2" />
@@ -289,7 +289,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashboard/manage-blogs"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaBlog className="inline mr-2" />
@@ -301,7 +301,7 @@ function DashBordLayout() {
                                     <NavLink
                                         to="/dashboard/policy-clearance"
                                         className={({ isActive }) =>
-                                            isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                         }
                                     >
                                         <FaClipboardCheck className="inline mr-2" />
@@ -326,7 +326,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/my-policies"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaFileAlt className="inline mr-2" />
@@ -338,7 +338,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/payment-status"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaMoneyCheckAlt className="inline mr-2" />
@@ -352,7 +352,7 @@ function DashBordLayout() {
                                         <NavLink
                                             to="/dashboard/claim-request"
                                             className={({ isActive }) =>
-                                                isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                                isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                             }
                                         >
                                             <FaFileSignature className="inline mr-2" />
@@ -376,7 +376,7 @@ function DashBordLayout() {
                             <NavLink
                                 to="/dashboard/manage-agents"
                                 className={({ isActive }) =>
-                                    isActive ? "text-primary font-bold bg-base-300 rounded" : ""
+                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
                                 }
                             >
                                 <FaUserTie className="inline mr-2" />

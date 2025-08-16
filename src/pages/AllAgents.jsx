@@ -39,7 +39,8 @@ const axiosSecure  = UseAxiosSecure()
                     <motion.div
                         key={agent._id}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-br from-indigo-100 to-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transition-all"
+                        className="bg-gradient-to-br    hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] 
+                            rounded-2xl shadow-md p-6 flex flex-col items-center text-center transition-all"
                     >
                         <img
                             src={agent.photoURL}

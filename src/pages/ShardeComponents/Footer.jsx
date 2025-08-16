@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="flex mt-4 space-x-4 text-xl">
                         <a href="https://www.facebook.com/rana.rahim.5473" className="hover:text-pink-300"><FaFacebook /></a>
                         <a href="#" className="hover:text-pink-300"><FaTwitter /></a>
-                        <a href="#" className="hover:text-pink-300"><FaLinkedin /></a>
+                        <a href="https://www.linkedin.com/in/md-shafayat-hosan" className="hover:text-pink-300"><FaLinkedin /></a>
                     </div>
                 </div>
 
@@ -32,9 +32,9 @@ const Footer = () => {
                     <h3 className="text-xl font-semibold mb-3">Support</h3>
                     <ul className="space-y-2">
                         <li><a href="/faq" className="hover:text-pink-300 transition duration-200">FAQ</a></li>
-                        <li><a href="/terms" className="hover:text-pink-300 transition duration-200">Terms & Conditions</a></li>
+                        <li><a href="/condition" className="hover:text-pink-300 transition duration-200">Terms & Conditions</a></li>
                         <li><a href="/privacy" className="hover:text-pink-300 transition duration-200">Privacy Policy</a></li>
-                        <li><a href="/help" className="hover:text-pink-300 transition duration-200">Help Center</a></li>
+                        <li><a href="/helpCenter" className="hover:text-pink-300 transition duration-200">Help Center</a></li>
                     </ul>
                 </div>
 

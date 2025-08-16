@@ -25,7 +25,7 @@ const slides = [
 
 const HeroSlider = () => {
     return (
-        <div className="w-full max-h-[600px] mt-5">
+        <div className="w-11/12 mx-auto rounded-2xl max-h-[600px] mt-5">
             <Carousel
                 autoPlay
                 infiniteLoop
@@ -40,14 +40,14 @@ const HeroSlider = () => {
                         <img
                             src={slide.image}
                             alt={slide.title}
-                            className="w-full h-[250px] sm:h-[400px] md:h-[600px] object-cover brightness-[.6]"
+                            className="w-full  rounded-3xl my-5 h-[250px] sm:h-[400px] md:h-[600px] object-cover brightness-[.6]"
                         />
                         {/* Overlay Content */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center">
-                            <h2 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 drop-shadow">
+                            <h2 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4  drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">
                                 {slide.title}
                             </h2>
-                            <p className="text-sm sm:text-lg md:text-xl mb-3 sm:mb-6 drop-shadow">
+                            <p className="text-sm sm:text-lg md:text-xl mb-3 sm:mb-6 drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">
                                 {slide.tagline}
                             </p>
                             <NavLink

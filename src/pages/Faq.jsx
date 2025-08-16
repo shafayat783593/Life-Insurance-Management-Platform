@@ -41,7 +41,7 @@ const FAQs = () => {
             <PageTitle title="FAQ" /> 
         
         <div className="max-w-4xl mx-auto my-10 px-4">
-            <h2 className="text-4xl font-bold text-center text-indigo-600 mb-8">
+                <h2 className="text-4xl font-bold text-center text-blue-700 mb-8">
                 <FaQuestionCircle className="inline mr-2 text-pink-500" />
                 Frequently Asked Questions
             </h2>
@@ -50,13 +50,13 @@ const FAQs = () => {
                 {faqData.map((faq, index) => (
                     <div
                         key={index}
-                        className="collapse collapse-arrow bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100 text-base-content shadow-lg rounded-xl"
+                        className="collapse collapse-arrow  bg-gradient-to-br shadow-xl rounded-2xl border border-blue-200 mt-5"
                     >
                         <input type="checkbox" className="peer" />
-                        <div className="collapse-title text-lg font-semibold text-indigo-700">
+                        <div className="collapse-title text-lg font-semibold text-blue-400">
                             {faq.question}
                         </div>
-                        <div className="collapse-content text-gray-700 peer-checked:animate-fade-in">
+                        <div className="collapse-content  peer-checked:animate-fade-in">
                             <p>{faq.answer}</p>
                         </div>
                     </div>

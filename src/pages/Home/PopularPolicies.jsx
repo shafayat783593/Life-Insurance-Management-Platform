@@ -21,8 +21,8 @@ const PopularPolicies = () => {
         return <div className="text-center text-red-500">Failed to load policies.</div>;
 
     return (
-        <div className="w-10/12 mx-auto py-12">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-10">
+        <div className="w-11/12 mx-auto py-12">
+            <h2 className="text-4xl font-bold text-center text-primary mb-10">
                 🌟 Popular Insurance Policies
             </h2>
 
@@ -30,7 +30,12 @@ const PopularPolicies = () => {
                 {Array.isArray(policies) && policies.slice(0, 6).map((policy) => (
                     <div
                         key={policy._id}
-                        className="group bg-white p-5 rounded-2xl shadow-xl hover:shadow-2xl border border-indigo-100 hover:border-pink-300 transition-all duration-300 hover:scale-[1.03]"
+                        className="group p-5 rounded-2xl overflow-hidden 
+                           shadow-md 
+                           hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] 
+                           dark:hover:shadow-[0_8px_35px_rgba(147,197,253,0.8)] 
+                           transition-all duration-500 hover:scale-[1.03] 
+                           bg-base-100"
                     >
                         <img
                             src={policy.image}
@@ -38,32 +43,29 @@ const PopularPolicies = () => {
                             className="w-full h-48 object-cover rounded-xl mb-4 group-hover:opacity-90 transition"
                         />
 
-                        <h3 className="text-2xl font-semibold text-indigo-700 group-hover:text-pink-600 mb-2 transition">
+                        <h3 className="text-2xl font-semibold text-base-content group-hover:text-secondary mb-2 transition">
                             {policy.title}
                         </h3>
 
-                        <div className="text-gray-700 space-y-1 text-sm">
+                        <div className="text-base-content/80 space-y-1 text-sm">
                             <p className="flex items-center gap-2">
                                 <FaShieldAlt className="text-pink-500" />
-                                <span className="font-medium">Coverage:</span>{" "}
-                                {policy.coverageRange}
+                                <span className="font-medium">Coverage:</span> {policy.coverageRange}
                             </p>
                             <p className="flex items-center gap-2">
                                 <FaClock className="text-green-500" />
-                                <span className="font-medium">Term:</span>{" "}
-                                {policy.durationOptions}
+                                <span className="font-medium">Term:</span> {policy.durationOptions}
                             </p>
                             <p className="flex items-center gap-2">
                                 <FaShoppingCart className="text-blue-500" />
-                                <span className="font-medium">Purchased:</span>{" "}
-                                {policy.purchaseCount} times
+                                <span className="font-medium">Purchased:</span> {policy.purchaseCount} times
                             </p>
                         </div>
 
                         <div className="mt-4 text-right">
                             <Link
                                 to={`/policies/${policy._id}`}
-                                className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-full text-sm hover:bg-pink-600 transition duration-300"
+                                className="inline-block px-4 py-2 bg-primary text-primary-content rounded-full text-sm hover:bg-secondary transition duration-300"
                             >
                                 View Details →
                             </Link>
@@ -72,6 +74,7 @@ const PopularPolicies = () => {
                 ))}
             </div>
         </div>
+
     );
 };
 

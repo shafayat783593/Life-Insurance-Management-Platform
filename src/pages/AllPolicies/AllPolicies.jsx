@@ -63,7 +63,7 @@ export default function AllPolicies() {
         return <p className="p-4 text-center text-red-600">Failed to load policies</p>;
 
     return (
-        <div className="max-w-7xl mx-auto p-4 mt-20">
+        <div className="max-w-8xl mx-auto p-4 mt-20">
             <PageTitle title="AllPolices" /> 
             <h1 className="text-4xl font-bold mb-8 text-center text-indigo-700">
                 Explore All Insurance Policies
@@ -71,11 +71,11 @@ export default function AllPolicies() {
 
             {/* Filter Section */}
             <div className="flex items-center mb-6 space-x-3">
-                <FaFilter className="text-indigo-500 text-xl" />
+                <FaFilter className=" text-xl" />
                 <select
                     value={categoryFilter}
                     onChange={onCategoryChange}
-                    className="border border-indigo-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
+                    className="border  rounded-lg px-4 py-2 focus:ring-2  outline-none"
                 >
                     {categories.map((cat) => (
                         <option key={cat} value={cat}>
@@ -87,14 +87,15 @@ export default function AllPolicies() {
 
             {/* Policy Cards */}
             {paginatedPolicies.length === 0 ? (
-                <p className="text-center text-gray-600 mt-10">No policies found.</p>
+                <p className="text-center mt-10">No policies found.</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 ">
                     {paginatedPolicies.map((policy) => (
                         <Link
                             key={policy._id}
                             to={`/policies/${policy._id}`}
-                            className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-xl transition duration-300 p-4 hover:bg-indigo-50 group"
+                            className="  hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] 
+                       border border-gray-200 rounded-2xl shadow transition duration-300 p-4  group"
                         >
                             <img
                                 src={
@@ -110,7 +111,7 @@ export default function AllPolicies() {
                             <p className="text-sm text-indigo-500 font-medium mb-2">
                                 {policy.category}
                             </p>
-                            <p className="text-gray-700">
+                            <p >
                                 {policy.description?.length > 80
                                     ? policy.description.slice(0, 80) + '...'
                                     : policy.description}

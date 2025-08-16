@@ -33,7 +33,9 @@ const NewsletterSubscription = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-md my-20 mx-auto bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 shadow-lg border border-purple-200 rounded-xl p-8"
+            className="max-w-md my-20 mx-auto rounded-xl overflow-hidden p-6 
+               shadow-md hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] 
+               transition-all duration-500"
         >
             <h2 className="text-3xl font-extrabold text-center text-indigo-600 mb-6 tracking-wide">
                 📬 Join Our Newsletter

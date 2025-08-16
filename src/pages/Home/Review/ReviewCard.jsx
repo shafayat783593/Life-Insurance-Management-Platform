@@ -18,7 +18,7 @@ const ReviewCard = ({ review }) => {
         <div className={`bg-gradient-to-br ${colorClass} text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition`}>
             <div className="flex items-center gap-4 mb-4">
                 <img
-                    src={photo || "https://i.pravatar.cc/100"}
+                    src={photo }
                     alt={userName}
                     className="w-12 h-12 rounded-full border-2 border-white"
                 />
