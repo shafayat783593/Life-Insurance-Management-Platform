@@ -96,7 +96,7 @@ const AdminDashboard = () => {
 
                 {/* Chart Section */}
                 <div className="col-span-1 md:col-span-2 xl:col-span-4">
-                    <motion.div className="p-6 shadow-xl rounded-xl bg-white">
+                    <motion.div className="p-6 shadow-xl rounded-xl ">
                         <h3 className="text-xl font-bold text-center mb-4 text-indigo-700">Earnings Over Time</h3>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={chartData}>

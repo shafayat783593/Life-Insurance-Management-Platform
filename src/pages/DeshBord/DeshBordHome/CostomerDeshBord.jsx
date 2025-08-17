@@ -51,27 +51,27 @@ const MyPolicies = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="border p-4 rounded-xl shadow bg-white"
+                            className="border p-4 rounded-xl shadow "
                         >
                             <div className="flex items-center gap-2 mb-2">
                                 <FaCheckCircle className="text-green-500" />
                                 <h4 className="text-lg font-bold">{policy.policyData?.title}</h4>
                             </div>
-                            <p className="text-sm text-gray-600 mb-1">Premium: <strong>{policy.premiumAmount} tk</strong></p>
-                            <p className="text-sm text-gray-600 mb-1">Agent: <strong>{policy.assignedAgent || "N/A"}</strong></p>
-                            <p className="text-sm text-gray-600 mb-3">Payment Status: <strong>{policy.paymentStatus}</strong></p>
+                            <p className="text-sm mb-1">Premium: <strong>{policy.premiumAmount} tk</strong></p>
+                            <p className="text-sm  mb-1">Agent: <strong>{policy.assignedAgent || "N/A"}</strong></p>
+                            <p className="text-sm mb-3">Payment Status: <strong>{policy.paymentStatus}</strong></p>
 
                             {policy.paymentStatus === "Due" ? (
                                 <button
                                     onClick={() => handlePay(policy._id)}
-                                    className="px-4 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+                                    className="px-4 py-1 bg-yellow-500  rounded hover:bg-yellow-600 transition"
                                 >
                                     Pay Now
                                 </button>
                             ) : (
                                 <button
                                     onClick={() => handleClaim(policy._id)}
-                                    className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                                    className="px-4 py-1 bg-blue-500  rounded hover:bg-blue-600 transition"
                                 >
                                     Claim Request
                                 </button>
@@ -90,35 +90,35 @@ const MyPolicies = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="border p-4 rounded-xl shadow bg-red-50"
+                            className="border p-4 rounded-xl shadow "
                         >
                             <h4 className="text-lg font-bold text-red-600">
                                 {policy.policyData?.title || 'Untitled Policy'}
                             </h4>
 
-                            <p className="text-md text-gray-700 mt-2">
+                            <p className="text-md  mt-2">
                                 <span className='font-semibold text-red-700'>Reason:</span>{' '}
                                 {policy.rejectionFeedback || 'Not specified'}
                             </p>
 
-                            <p className="text-sm mt-2 text-gray-600">
+                            <p className="text-sm mt-2 ">
                                 <span className="font-semibold">Premium:</span>{' '}
                                 {policy.premiumAmount || 'N/A'} tk
                             </p>
 
-                            <p className="text-sm mt-1 text-gray-600">
+                            <p className="text-sm mt-1 ">
                                 <span className="font-semibold">Agent:</span>{' '}
                                 {policy.assignedAgent || 'Unassigned'}
                             </p>
 
-                            <p className="text-sm mt-1 text-gray-600">
+                            <p className="text-sm mt-1 ">
                                 <span className="font-semibold">Payment Status:</span>{' '}
                                 <span className={policy.paymentStatus === 'Paid' ? 'text-green-600 font-semibold' : 'text-red-500 font-semibold'}>
                                     {policy.paymentStatus || 'Unknown'}
                                 </span>
                             </p>
 
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm  mt-1">
                                 Submitted: {new Date(policy.submittedAt).toLocaleString()}
                             </p>
                         </motion.div>

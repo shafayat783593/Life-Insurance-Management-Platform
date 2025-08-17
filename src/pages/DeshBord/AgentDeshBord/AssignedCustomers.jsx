@@ -58,9 +58,9 @@ export default function AssignedCustomers() {
 
           {/* Table view for large screens */}
           <div className="hidden md:block overflow-x-auto">
-              <table className="min-w-full bg-white shadow rounded-lg">
+              <table className="min-w-full  shadow rounded-lg">
                   <thead>
-                      <tr className="bg-gray-100 text-gray-700 text-left">
+                      <tr className="  text-left">
                           <th className="py-3 px-4">Customer Name</th>
                           <th className="py-3 px-4">Email</th>
                           <th className="py-3 px-4">Policy</th>
@@ -106,7 +106,7 @@ export default function AssignedCustomers() {
               {assignedApps.map((app) => (
                   <div
                       key={app._id}
-                      className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+                      className=" shadow-md rounded-lg p-4 border "
                   >
                       <p><strong>Name:</strong> {app.name}</p>
                       <p><strong>Email:</strong> {app.email}</p>

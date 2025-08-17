@@ -100,8 +100,8 @@ export default function PolicyClearance() {
             {/* 📱 Card view for small screens */}
             <div className="grid gap-4 md:hidden">
                 {claims.map((claim, index) => (
-                    <div key={claim._id} className="bg-white rounded-lg shadow-md p-4 border">
-                        <p className="text-sm text-gray-500 mb-1">{index + 1}</p>
+                    <div key={claim._id} className=" rounded-lg shadow-md p-4 border">
+                        <p className="text-sm mb-1">{index + 1}</p>
                         <p><strong>Policy:</strong> {claim?.policyTitle}</p>
                         <p><strong>User Email:</strong> {claim.userEmail}</p>
                         <p>
@@ -130,7 +130,7 @@ export default function PolicyClearance() {
                 <Dialog
                     open={!!selectedClaim}
                     onClose={() => setSelectedClaim(null)}
-                    className="fixed z-50 inset-0 overflow-y-auto"
+                    className="fixed  inset-0 overflow-y-auto"
                 >
                     <div className="flex items-center justify-center min-h-screen px-4">
                         <Dialog.Panel className="bg-white rounded-lg p-6 w-full max-w-md shadow-xl">
@@ -168,7 +168,7 @@ export default function PolicyClearance() {
                             )}
 
                             {policyLoading ? (
-                                <p>Loading policy...</p>
+                                <p><Loading/> </p>
                             ) : (
                                 policyDetails && (
                                     <div className="mt-4">

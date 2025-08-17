@@ -103,7 +103,7 @@ const ManageTransactions = () => {
             </div>
 
             {/* Earnings Chart */}
-            <div className="p-6 shadow-xl rounded-xl bg-white">
+            <div className="p-6 shadow-xl rounded-xl ">
                 <h3 className="text-xl font-bold text-center mb-4 text-indigo-700">Earnings Over Time</h3>
                 <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={chartData}>

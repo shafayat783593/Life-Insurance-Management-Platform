@@ -81,7 +81,7 @@ export default function ManageBlogs() {
         <div className="p-6 max-w-6xl mx-auto">
            
             <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                <h2 className="text-3xl font-bold text-gray-800">📝 Manage Blogs</h2>
+                <h2 className="text-3xl font-bold ">📝 Manage Blogs</h2>
                 <button
                     onClick={() => setShowForm(true)}
                     className="btn btn-primary shadow hover:scale-105 transition-transform"
@@ -92,11 +92,11 @@ export default function ManageBlogs() {
 
             {/* Blog Form */}
             {showForm && (
-                <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-                    <h3 className="text-2xl font-semibold text-gray-700 mb-4">Create New Blog</h3>
+                <div className="rounded-xl shadow-lg p-6 mb-8">
+                    <h3 className="text-2xl font-semibold  mb-4">Create New Blog</h3>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="font-medium text-gray-600 block mb-1">Title</label>
+                            <label className="font-medium  block mb-1">Title</label>
                             <input
                                 type="text"
                                 placeholder="Enter blog title"
@@ -108,7 +108,7 @@ export default function ManageBlogs() {
                         </div>
 
                         <div>
-                            <label className="font-medium text-gray-600 block mb-1">Content</label>
+                            <label className="font-medium block mb-1">Content</label>
                             <textarea
                                 placeholder="Write your content here..."
                                 value={formData.content}
@@ -118,8 +118,8 @@ export default function ManageBlogs() {
                             />
                         </div>
 
-                        <div className="text-sm text-gray-500">
-                            <span className="font-medium text-gray-700">Author:</span> {user?.displayName}
+                        <div className="text-sm ">
+                            <span className="font-medium ">Author:</span> {user?.displayName}
                         </div>
 
                         <div className="text-right">
@@ -132,9 +132,9 @@ export default function ManageBlogs() {
             {/* Responsive Blog Display */}
             <div>
                 {/* Table for large screens */}
-                <div className="hidden lg:block bg-white rounded-xl shadow overflow-x-auto">
+                <div className="hidden lg:block  rounded-xl shadow overflow-x-auto">
                     <table className="table w-full">
-                        <thead className="bg-base-200 text-base font-semibold text-gray-700">
+                        <thead className="bg-base-200 text-base font-semibold ">
                             <tr>
                                 <th className="py-3 px-4">Title</th>
                                 <th className="py-3 px-4">Author</th>

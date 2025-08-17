@@ -95,14 +95,14 @@ function Register() {
             <PageTitle title="Register" /> 
         
         <motion.div
-            className="min-h-screen flex items-center justify-center bg-gray-100 px-4"
+            className="min-h-screen flex items-center justify-center  px-4"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-5"
+                    className="hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)]  p-8 rounded-xl shadow-lg w-full max-w-md space-y-5"
             >
                 <h2 className="text-2xl font-bold text-start text-blue-600">Register</h2>
 

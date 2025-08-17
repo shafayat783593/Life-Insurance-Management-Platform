@@ -46,7 +46,7 @@ export default function PaymentStatus() {
                 <>
                     {/* Table for large screens */}
                     <div className="hidden lg:block overflow-x-auto">
-                        <table className="table w-full bg-white shadow rounded">
+                        <table className="table w-full  shadow rounded">
                             <thead className="bg-base-200">
                                 <tr>
                                     <th>Policy Name</th>

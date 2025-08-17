@@ -15,13 +15,13 @@ const AgentDashboard = () => {
     const axiosSecure = UseAxiosSecure();
     const {user}= UseAuth()
 
-    // const { data: agentProfile = {}, isLoading: profileLoading } = useQuery({
-    //     queryKey: ["agent-profile"],
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get("/users/agent/me");
-    //         return res.data;
-    //     },
-    // });
+    const { data: agentProfile = {}, isLoading: profileLoading } = useQuery({
+        queryKey: ["agent-profile"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/users/agent/me");
+            return res.data;
+        },
+    });
 
     // const agentEmail = agentProfile?.email;
 
@@ -50,7 +50,7 @@ const AgentDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
             <Card title="Assigned Customers" count={assignedCustomers?.length || 0} color="bg-blue-200" />
             <Card title="Claim Requests" count={claimRequests?.length || 0} color="bg-rose-200" />
-            <Card title="Manage Blogs" count={blogs?.length || 0} color="bg-yellow-200" />
+            <Card title="Manage Blogs" count={agentProfile?.length || 0} color="bg-yellow-200" />
             {/* <Card title="Policy Performance" count={policies?.length || 0} color="bg-green-200" />
             <Card title="Recent Activities" count={activities?.length || 0} color="bg-purple-200" /> */}
             <Card title="Agent Profile" count={user.email ? 1 : 0} color="bg-orange-200" />

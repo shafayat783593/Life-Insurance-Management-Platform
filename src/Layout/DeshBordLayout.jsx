@@ -64,7 +64,7 @@ function DashBordLayout() {
                                 />
                             </div>
                             <div className="text-center mt-2">
-                                <h4 className="text-lg font-semibold text-gray-800">{user?.displayName}</h4>
+                                <h4 className="text-lg font-semibold ">{user?.displayName}</h4>
                                 <p className="text-sm text-gray-500">{user?.email}</p>
                                 {role && (
                                     <span className="mt-1 inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2 py-1 rounded-full">

@@ -71,7 +71,7 @@ const ManageApplications = () => {
             <h2 className="text-2xl font-bold mb-4">📋 Manage Applications</h2>
 
             {/* Desktop Table */}
-            <div className="hidden md:block bg-white rounded-xl shadow overflow-x-auto">
+            <div className="hidden md:block rounded-xl shadow overflow-x-auto">
                 <table className="table w-full">
                     <thead className="bg-gray-100 text-gray-800">
                         <tr>
@@ -169,7 +169,7 @@ const ManageApplications = () => {
                 <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
                 <div className="fixed inset-0 flex items-center justify-center p-4">
                     <Dialog.Panel className="w-full max-w-lg bg-white rounded-xl p-6">
-                        <Dialog.Title className="text-xl font-bold mb-4">Application Details</Dialog.Title>
+                        <Dialog.Title className="text-xl font-bold text-black mb-4">Application Details</Dialog.Title>
                         {selectedApp && (
                             <div className="space-y-2 text-sm text-gray-700">
                                 <p><strong>Name:</strong> {selectedApp.name}</p>

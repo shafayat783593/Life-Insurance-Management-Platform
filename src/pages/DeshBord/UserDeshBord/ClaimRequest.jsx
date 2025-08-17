@@ -85,9 +85,9 @@ export default function ClaimRequest() {
             {application.length === 0 ? (
                 <p>No approved  police found.</p>
             ) : (
-                <div className="overflow-x-auto bg-white shadow rounded">
+                <div className="overflow-x-auto  shadow rounded">
                     <table className="table w-full text-sm">
-                        <thead className="bg-gray-100 text-gray-700">
+                        <thead className=" ">
                             <tr>
                                 <th className="p-3 text-left">Policy Title</th>
                                 <th className="p-3">Coverage</th>

@@ -167,7 +167,7 @@ export default function ManagePolicies() {
             {showModal && (
                 <motion.div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4">
                     <motion.div
-                        className="bg-white p-4 md:p-6 rounded-xl shadow-md w-full max-w-md md:max-w-2xl relative overflow-y-auto max-h-[90vh]"
+                        className=" hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)]  p-4 md:p-6 rounded-xl shadow-md w-full max-w-md md:max-w-2xl relative overflow-y-auto max-h-[90vh]"
                         initial={{ scale: 0.7 }}
                         animate={{ scale: 1 }}
                     >

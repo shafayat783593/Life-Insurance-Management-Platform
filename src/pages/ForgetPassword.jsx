@@ -24,8 +24,8 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-            <div className="bg-white shadow-lg p-8 rounded-lg w-full max-w-md">
+        <div className="min-h-screen flex items-center justify-center  px-4">
+            <div className=" hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)]  shadow-lg p-8 rounded-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-4 text-center">Forgot Password</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>

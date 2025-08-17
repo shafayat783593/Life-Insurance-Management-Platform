@@ -6,10 +6,13 @@
 
 @plugin "daisyui";
 
+/* @plugin "daisyui" {
+    themes: light --default, dark --prefersdark, dark, cupcake;
+} */
+
 @plugin "daisyui" {
     themes: light --default, dark --prefersdark, dark, cupcake;
 }
-
 
 a.active {
     @apply bg-base-300
