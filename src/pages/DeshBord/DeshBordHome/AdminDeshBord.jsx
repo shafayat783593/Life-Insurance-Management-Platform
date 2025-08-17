@@ -120,7 +120,7 @@ const AdminDashboard = () => {
                     <Link to="/dashboard/manage-policies">
                         <button className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition">Manage Policies</button>
                     </Link>
-                    <Link to="/dashboard/manage-transactions">
+                    <Link to="/dashboard/manage-transaction">
                         <button className="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition">Manage Transactions</button>
                     </Link>
                 </div>

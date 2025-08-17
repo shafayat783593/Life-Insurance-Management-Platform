@@ -8,6 +8,7 @@ import NewsletterSubscription from './NewsletterSubscription'
 import AssignedCustomers from '../DeshBord/AgentDeshBord/AssignedCustomers'
 import FeaturedAgents from './FeaturedAgents'
 import PageTitle from '../../Hooks/PageTItle'
+import StatisticsSection from './Achievements'
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
         <BenefitsOfLifeSure/>
         <AllReviews/>
         <FeaturedAgents/>
+        <StatisticsSection/>
         <NewsletterSubscription/>
         
  

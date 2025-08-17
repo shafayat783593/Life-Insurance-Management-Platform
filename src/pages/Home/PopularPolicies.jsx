@@ -22,7 +22,7 @@ const PopularPolicies = () => {
 
     return (
         <div className="w-11/12 mx-auto py-12">
-            <h2 className="text-4xl font-bold text-center text-primary mb-10">
+            <h2 className="text-4xl font-bold text-center text-primary mb-10 roboto ">
                 🌟 Popular Insurance Policies
             </h2>
 

@@ -2,6 +2,8 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { NavLink } from 'react-router'; // fixed from 'react-router'
 
+
+
 const slides = [
     {
         id: 1,
@@ -44,7 +46,7 @@ const HeroSlider = () => {
                         />
                         {/* Overlay Content */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center">
-                            <h2 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4  drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">
+                            <h2 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4   roboto    drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">
                                 {slide.title}
                             </h2>
                             <p className="text-sm sm:text-lg md:text-xl mb-3 sm:mb-6 drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">

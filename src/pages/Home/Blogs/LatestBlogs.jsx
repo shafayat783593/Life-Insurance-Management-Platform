@@ -28,11 +28,11 @@ const LatestBlogs = () => {
 
     if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     if (isError)
-        return <p className="text-center text-red-500">Failed to load blogs.</p>;
+        return <p className="text-center text-red-500 ">Failed to load blogs.</p>;
 
     return (
         <div className="max-w-11/12 mx-auto py-12 px-4">
-            <h2 className="text-3xl font-bold text-center mb-10">
+            <h2 className="text-3xl font-bold text-center mb-10 roboto ">
                 ✨ Latest Blogs & Articles
             </h2>
 

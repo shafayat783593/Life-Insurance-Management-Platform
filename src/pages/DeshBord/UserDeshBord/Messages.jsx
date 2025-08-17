@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import { FaReply } from "react-icons/fa";
+import Loading from "../../../components/Loader/Loading";
 
 const UserMessages = () => {
     const axiosSecure = UseAxiosSecure();
@@ -44,7 +45,7 @@ const UserMessages = () => {
         }
     };
 
-    if (isLoading) return <p className="text-center">Loading messages...</p>;
+    if (isLoading) return <p className="text-center"><Loading/></p>;
     if (isError) return <p className="text-center text-red-500">Failed to load messages.</p>;
 
     return (

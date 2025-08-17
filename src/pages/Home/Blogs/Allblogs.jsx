@@ -34,7 +34,7 @@ const Allblogs = () => {
     return (
         <div className="max-w-6xl mx-auto py-12 px-4 mt-10">
             <PageTitle title="All Blogs" /> 
-            <h2 className="text-3xl font-bold text-center mb-10">
+            <h2 className="text-3xl font-bold roboto  text-center mb-10">
                 ✨ All Blogs & Articles
             </h2>
 

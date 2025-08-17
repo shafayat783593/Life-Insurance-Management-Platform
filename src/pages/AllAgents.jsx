@@ -30,7 +30,7 @@ const axiosSecure  = UseAxiosSecure()
         
         <div className="max-w-7xl mx-auto px-6 py-10">
             
-            <h1 className="text-4xl font-bold text-center mb-10 text-indigo-700">
+                <h1 className="text-4xl font-bold text-center mb-10 text-indigo-700 roboto ">
                 Our Professional Agents
             </h1>
 
@@ -39,7 +39,7 @@ const axiosSecure  = UseAxiosSecure()
                     <motion.div
                         key={agent._id}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-br    hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] 
+                        className="bg-gradient-to-br    hover:shadow-[0_8px_5px_rgba(59,130,246,0.6)] 
                             rounded-2xl shadow-md p-6 flex flex-col items-center text-center transition-all"
                     >
                         <img

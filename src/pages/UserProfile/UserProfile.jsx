@@ -73,7 +73,7 @@ const EditProfile = () => {
 
         <>
             <PageTitle title="User Profile" />
-            <div className="max-w-lg mx-auto px-4 mt-20 py-6 bg-white shadow rounded">
+            <div className="max-w-lg mx-auto px-4 my-20 py-6 shadow hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] rounded-2xl">
 
 
                 <div className="text-center mb-4">
@@ -119,7 +119,7 @@ const EditProfile = () => {
                         <input
                             value={user?.email}
                             readOnly
-                            className="w-full input input-bordered bg-gray-100"
+                            className="w-full input input-bordered "
                             type="email"
                         />
                     </div>
