@@ -8,6 +8,7 @@ import NewsletterSubscription from './NewsletterSubscription'
 import AssignedCustomers from '../DeshBord/AgentDeshBord/AssignedCustomers'
 import FeaturedAgents from './FeaturedAgents'
 import PageTitle from '../../Hooks/PageTItle'
+import TrustBadges from './TrustBadges'
 
 
 function Home() {
@@ -20,7 +21,7 @@ function Home() {
         <BenefitsOfLifeSure/>
         <AllReviews/>
         <FeaturedAgents/>
-        {/* <StatisticsSection/> */}
+        <TrustBadges/>
         <NewsletterSubscription/>
         
  

@@ -15,7 +15,7 @@ const Footer = () => {
                     <p>Your trusted platform for managing life insurance — secure your tomorrow, today.</p>
                     <div className="flex mt-4 space-x-4 text-xl">
                         <a href="https://www.facebook.com/rana.rahim.5473" className="hover:text-pink-300"><FaFacebook /></a>
-                        <a href="#" className="hover:text-pink-300"><FaTwitter /></a>
+                        <a href="https://x.com/" className="hover:text-pink-300"><FaTwitter /></a>
                         <a href="https://www.linkedin.com/in/md-shafayat-hosan" className="hover:text-pink-300"><FaLinkedin /></a>
                     </div>
                 </div>

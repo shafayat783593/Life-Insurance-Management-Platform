@@ -10,7 +10,7 @@ const QuotePage = () => {
     const [quote, setQuote] = useState(null);
     const navigate = useNavigate();
     const loaction = useLocation()
-    const  policyData  = loaction.state
+    const policyData = loaction.state
 
 
     const calculatePremium = (data) => {
@@ -43,82 +43,82 @@ const QuotePage = () => {
     return (
 
         <>
-            <PageTitle title="Quote " /> 
-        
-        <motion.div
+            <PageTitle title="Quote " />
+
+            <motion.div
                 className="max-w-xl mx-auto p-6 rounded-lg shadow-lg my-10 hover:shadow-[0_8px_35px_rgba(59,130,246,0.6)] "
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-        >
-            <h2 className="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2">
-                <FaCalculator /> Get a Free Quote
-            </h2>
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+            >
+                <h2 className="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2">
+                    <FaCalculator /> Get a Free Quote
+                </h2>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                    <label className="block mb-1 font-medium">Age</label>
-                    <input
-                        type="number"
-                        {...register("age", { required: true })}
-                        className="input input-bordered w-full"
-                    />
-                </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <div>
+                        <label className="block mb-1 font-medium">Age</label>
+                        <input
+                            type="number"
+                            {...register("age", { required: true })}
+                            className="input input-bordered w-full"
+                        />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Gender</label>
-                    <select {...register("gender")} className="select select-bordered w-full">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Gender</label>
+                        <select {...register("gender")} className="select select-bordered w-full">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Coverage Amount (৳)</label>
-                    <input
-                        type="number"
-                        {...register("coverageAmount", { required: true })}
-                        className="input input-bordered w-full"
-                        placeholder="e.g. 2000000"
-                    />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Coverage Amount (৳)</label>
+                        <input
+                            type="number"
+                            {...register("coverageAmount", { required: true })}
+                            className="input input-bordered w-full"
+                            placeholder="e.g. 2000000"
+                        />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Duration (Years)</label>
-                    <input
-                        type="number"
-                        {...register("duration", { required: true })}
-                        className="input input-bordered w-full"
-                    />
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Duration (Years)</label>
+                        <input
+                            type="number"
+                            {...register("duration", { required: true })}
+                            className="input input-bordered w-full"
+                        />
+                    </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Are you a smoker?</label>
-                    <select {...register("smoker")} className="select select-bordered w-full">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
+                    <div>
+                        <label className="block mb-1 font-medium">Are you a smoker?</label>
+                        <select {...register("smoker")} className="select select-bordered w-full">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
 
-                <button type="submit" className="btn btn-primary w-full mt-4">
-                    Calculate Premium
-                </button>
-            </form>
-
-            {quote && (
-                <div className="mt-6 text-center border-t pt-4">
-                    <p className="text-lg font-semibold">Estimated Premium</p>
-                    <p>Monthly: ৳{quote.monthly}</p>
-                    <p>Yearly: ৳{quote.annual}</p>
-                    <button
-                        onClick={() => navigate("/application", { state: { quote, policyData }})}
-                        className="btn btn-accent mt-4"
-                    >
-                        Apply for Policy
+                    <button type="submit" className="btn btn-primary w-full mt-4">
+                        Calculate Premium
                     </button>
-                </div>
-            )}
-        </motion.div>
+                </form>
+
+                {quote && (
+                    <div className="mt-6 text-center border-t pt-4">
+                        <p className="text-lg font-semibold">Estimated Premium</p>
+                        <p>Monthly: ৳{quote.monthly}</p>
+                        <p>Yearly: ৳{quote.annual}</p>
+                        <button
+                            onClick={() => navigate("/application", { state: { quote, policyData } })}
+                            className="btn btn-accent mt-4"
+                        >
+                            Apply for Policy
+                        </button>
+                    </div>
+                )}
+            </motion.div>
         </>
     );
 };
