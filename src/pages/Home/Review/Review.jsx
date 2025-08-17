@@ -32,7 +32,7 @@ const AllReviews = () => {
         );
 
     return (
-        <section className="max-w-7xl mx-auto px-4 py-12">
+        <section className="w-11/12 mx-auto px-4 py-12">
             <h2 className="text-3xl font-bold text-center text-indigo-600 mb-10 roboto ">
                 🌟 What Our Customers Say
             </h2>

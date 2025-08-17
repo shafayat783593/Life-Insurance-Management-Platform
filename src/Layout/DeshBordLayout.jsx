@@ -4,8 +4,12 @@ import { Link, NavLink, Outlet } from 'react-router'
 import { FaHome, FaBox, FaFileAlt, FaHistory, FaUserShield, FaUsers, FaMoneyCheckAlt, FaUserTie, FaUserCheck, FaUserClock, FaMotorcycle, FaTruckLoading, FaCheckCircle, FaBlog, FaFileSignature, FaClipboardCheck, FaEnvelope } from "react-icons/fa";
 import UseUserRole from '../Hooks/UserRole';
 import logo from "../assets/logo.png"
+import UseAuth from '../Hooks/UseAuth';
+import { User } from 'lucide-react';
 // import UseUserRole from '../Hooks/UseUserRole';
 function DashBordLayout() {
+    const { user } = UseAuth()
+    console.log(user)
 
     const { role, roleLoading } = UseUserRole()
     // console.log(role)
@@ -51,6 +55,27 @@ function DashBordLayout() {
                             <img className='w-15 rounded-full' src={logo} alt="" />  InsuranceCo
                         </Link>
 
+                        <Link to="/profile" className="flex flex-col items-center justify-center my-6 gap-2">
+                            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-400 shadow-md">
+                                <img
+                                    src={user?.photoURL}
+                                    alt={user?.displayName || "User"}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div className="text-center mt-2">
+                                <h4 className="text-lg font-semibold text-gray-800">{user?.displayName}</h4>
+                                <p className="text-sm text-gray-500">{user?.email}</p>
+                                {role && (
+                                    <span className="mt-1 inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2 py-1 rounded-full">
+                                        {role}
+                                    </span>
+                                )}
+                            </div>
+                        </Link>
+
+
+
                         <li>
                             <NavLink
                                 to="/"
@@ -63,126 +88,7 @@ function DashBordLayout() {
                             </NavLink>
                         </li>
 
-                        {/* <li>
-                            <NavLink
-                                to="/dashbord/myparcel"
-                                className={({ isActive }) =>
-                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaBox className="inline mr-2" />
-                                My Parcel
-                            </NavLink>
-                        </li>
- */}
-
-
-                        {/* <li>
-                            <NavLink
-                                to="/dashbord/payment-history"
-                                className={({ isActive }) =>
-                                    isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                }
-                            >
-                                <FaMoneyCheckAlt className="inline mr-2" />
-                                Payment History
-                            </NavLink>
-                        </li> */}
-                        {/* Rider links  */}
-
-                        {/* {!roleLoading && role === "rider" && (
-
-
-                            <>
-
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/rider-pending"
-                                        className={({ isActive }) =>
-                                            isActive
-                                                ? "text-blue-400  font-bold bg-base-300 rounded px-3 py-2 flex items-center"
-                                                : "px-3 py-2 flex items-center"
-                                        }
-                                    >
-                                        <FaTruckLoading className="inline mr-2" />
-                                        Pending Deliveries
-                                    </NavLink>
-                                </li>
-
-
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/completed-delivery"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                        }
-                                    >
-                                        <FaCheckCircle className="inline mr-2" />
-                                        Completed Delivery
-                                    </NavLink>
-                                </li>
-
-                            </>
-                        )
-
-
-                        } */}
-
-                        {/* Repeat this pattern for other links... */}
-
-                        {/* {!roleLoading && role === "admin" && (
-                            <>
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/pending"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                        }
-                                    >
-                                        <FaUserClock className="inline mr-2" />
-                                        Pending Riders
-                                    </NavLink>
-                                </li>
-
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/active"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                        }
-                                    >
-                                        <FaUserCheck className="inline mr-2" />
-                                        Active Riders
-                                    </NavLink>
-                                </li>
-
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/useradmin"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                        }
-                                    >
-                                        <FaUserShield className="inline mr-2" />
-                                        Manage Admin
-                                    </NavLink>
-                                </li>
-
-                                <li>
-                                    <NavLink
-                                        to="/dashbord/assignrider"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
-                                        }
-                                    >
-                                        <FaMotorcycle className="inline mr-2" />
-                                        Assign Rider
-                                    </NavLink>
-                                </li>
-                            </>
-                        )} */}
-
-
+                       
 
 
                         {/*  admin  */}
@@ -406,7 +312,7 @@ function DashBordLayout() {
 
 
 
-                     
+
 
 
 

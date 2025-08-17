@@ -30,7 +30,7 @@ console.log(agents)
     if (isLoading) return <div className='flex justify-center items-center mt-50'> <Loading /></div>;
     return (
         <section className="py-16 px-4 md:px-8 ">
-            <div className="max-w-7xl mx-auto text-center">
+            <div className="w-11/12 mx-auto text-center">
                 <h2 className="text-4xl font-bold text-indigo-700 mb-12 roboto ">🌟 Meet Our Top Agents</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {agents.map((agent, index) => (
