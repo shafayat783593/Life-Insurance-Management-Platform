@@ -77,7 +77,7 @@ function DashBordLayout() {
 
 
                         <li>
-                            <NavLink
+                            <Link
                                 to="/"
                                 className={({ isActive }) =>
                                     isActive ? "text-blue-400  font-bold bg-base-300 rounded" : ""
@@ -85,7 +85,7 @@ function DashBordLayout() {
                             >
                                 <FaHome className="inline mr-2" />
                                 Home
-                            </NavLink>
+                            </Link>
                         </li>
 
                        

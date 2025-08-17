@@ -41,6 +41,7 @@ import HelpCenter from "../pages/HelpCenter/HelpCenter";
 import Layout from "../Layout/Layout";
 import ContactSupport from "../pages/Contact Support/ContactSupport";
 import UserMessages from "../pages/DeshBord/UserDeshBord/Messages";
+import NotFound from "../pages/NotFoundPage/NotFound";
 
 export const router = createBrowserRouter([
 
@@ -101,6 +102,9 @@ export const router = createBrowserRouter([
             }, {
                 path: "contactSupport",
                 Component: ContactSupport
+            },{
+                path:"notfound",
+                Component:NotFound
             }
         ]
     },

@@ -1,7 +1,10 @@
+import { User } from "lucide-react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope, FaPhone, FaLocationArrow } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
+import UseAuth from "../../Hooks/UseAuth";
 
 const Footer = () => {
+    const {user}= UseAuth()
     return (
         <footer className="bg-gradient-to-r from-indigo-900 via-purple-800 to-pink-800 text-white py-10">
             <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -23,8 +26,10 @@ const Footer = () => {
                     <ul className="space-y-2">
                         <li><Link to="/" className="hover:text-pink-300 transition duration-200">Home</Link></li>
                         <li><Link to="/policies" className="hover:text-pink-300 transition duration-200">All Policies</Link></li>
-                        <li><Link to="/dashboard" className="hover:text-pink-300 transition duration-200">Dashboard</Link></li>
-                        <li><a href="/contact" className="hover:text-pink-300 transition duration-200">Contact Us</a></li>
+{
+                            user && <li><Link to="/dashboard" className="hover:text-pink-300 transition duration-200">Dashboard</Link></li>
+
+}                        <li><a href="/contactSupport" className="hover:text-pink-300 transition duration-200">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -34,7 +39,7 @@ const Footer = () => {
                     <ul className="space-y-2">
                         <li><Link to="/faq" className="hover:text-pink-300 transition duration-200">FAQ</Link></li>
                         <li><Link to="/condition" className="hover:text-pink-300 transition duration-200">Terms & Conditions</Link></li>
-                        <li><Link to="/privacy" className="hover:text-pink-300 transition duration-200">Privacy Policy</Link></li>
+                        <li><Link to="/notfound" className="hover:text-pink-300 transition duration-200">Privacy Policy</Link></li>
                         <li><Link to="/helpCenter" className="hover:text-pink-300 transition duration-200">Help Center</Link></li>
                     </ul>
                 </div>
