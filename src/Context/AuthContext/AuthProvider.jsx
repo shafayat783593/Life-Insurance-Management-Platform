@@ -63,7 +63,7 @@ function AuthProvider({ children }) {
             // console.log("User:", currentuser);
 
             if (currentuser?.email) {
-                axios.post("http://localhost:3000/jwt", {
+                axios.post("https://server-one-jet-28.vercel.app/jwt", {
                     email: currentuser.email
                 })
                     .then(res => {
