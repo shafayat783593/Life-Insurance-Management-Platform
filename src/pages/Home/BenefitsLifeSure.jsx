@@ -4,39 +4,39 @@ import { motion } from "framer-motion";
 const benefits = [
     {
         title: "Instant Quote Calculation",
-        icon: <ShieldCheck className="w-10 h-10 text-white" />,
+        icon: <ShieldCheck className="w-10 h-10 " />,
         description: "Get real-time quotes tailored to your needs within seconds.",
-        bg: "bg-gradient-to-r from-indigo-500 to-purple-500",
+        // bg: "bg-gradient-to-r from-indigo-500 to-purple-500",
     },
     {
         title: "Expert Agent Support",
-        icon: <Headset className="w-10 h-10 text-white" />,
+        icon: <Headset className="w-10 h-10 " />,
         description: "Talk to licensed agents who guide you every step of the way.",
-        bg: "bg-gradient-to-r from-pink-500 to-red-500",
+        // bg: "bg-gradient-to-r from-pink-500 to-red-500",
     },
     {
         title: "100% Online Application",
-        icon: <Globe className="w-10 h-10 text-white" />,
+        icon: <Globe className="w-10 h-10 " />,
         description: "Apply from the comfort of your home with our digital-first process.",
-        bg: "bg-gradient-to-r from-green-400 to-emerald-600",
+        // bg: "bg-gradient-to-r from-green-400 to-emerald-600",
     },
     {
         title: "Secure Online Payments",
-        icon: <Lock className="w-10 h-10 text-white" />,
+        icon: <Lock className="w-10 h-10 " />,
         description: "Your transactions are encrypted and protected for full peace of mind.",
-        bg: "bg-gradient-to-r from-blue-400 to-cyan-600",
+        // bg: "bg-gradient-to-r from-blue-400 to-cyan-600",
     },
     {
         title: "Real-Time Claim Tracking",
-        icon: <Clock className="w-10 h-10 text-white" />,
+        icon: <Clock className="w-10 h-10 " />,
         description: "Track your claim progress live and receive timely updates.",
-        bg: "bg-gradient-to-r from-yellow-400 to-orange-500",
+        // bg: "bg-gradient-to-r from-yellow-400 to-orange-500",
     },
     {
         title: "Personalized Dashboard Access",
-        icon: <LayoutDashboard className="w-10 h-10 text-white" />,
+        icon: <LayoutDashboard className="w-10 h-10 " />,
         description: "Manage policies, payments, and claims all in one place.",
-        bg: "bg-gradient-to-r from-teal-400 to-sky-600",
+        // bg: "bg-gradient-to-r from-teal-400 to-sky-600",
     },
 ];
 
@@ -50,7 +50,7 @@ const BenefitsOfLifeSure = () => {
                 {benefits.map((benefit, index) => (
                     <motion.div
                         key={index}
-                        className={`p-6 rounded-2xl text-white shadow-xl ${benefit.bg}`}
+                        className={`p-6 rounded-2xl  shadow-xl`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}

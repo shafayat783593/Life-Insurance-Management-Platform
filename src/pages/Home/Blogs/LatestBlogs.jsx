@@ -39,13 +39,13 @@ const LatestBlogs = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogs.slice(0, 6).map((blog, i) => {
                     // Assign colorful gradients
-                    const cardColors = [
-                        "from-pink-500 to-red-400",
-                        "from-blue-500 to-indigo-500",
-                        "from-green-500 to-emerald-400",
-                        "from-yellow-500 to-orange-400",
-                    ];
-                    const bgGradient = cardColors[i % cardColors.length];
+                    // const cardColors = [
+                    //     "from-pink-500 to-red-400",
+                    //     "from-blue-500 to-indigo-500",
+                    //     "from-green-500 to-emerald-400",
+                    //     "from-yellow-500 to-orange-400",
+                    // ];
+                    // const bgGradient = cardColors[i % cardColors.length];
 
                     return (
                         <motion.div
@@ -54,7 +54,7 @@ const LatestBlogs = () => {
                             initial="hidden"
                             animate="visible"
                             variants={cardVariants}
-                            className={`bg-gradient-to-br ${bgGradient} text-white shadow-xl rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300`}
+                            className={`bg-gradient-to-br  shadow-xl rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300`}
                         >
                             <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
                             <p className="text-sm opacity-90 mb-3 break-words line-clamp-4">
@@ -63,7 +63,7 @@ const LatestBlogs = () => {
                             <p className="text-xs opacity-70 mb-4">By {blog.author}</p>
                             <Link
                                 to={`/blogs/${blog._id}`}
-                                className="inline-block text-sm font-medium text-white bg-black/20 hover:bg-black/30 transition px-4 py-2 rounded-md"
+                                className="inline-block text-sm font-medium  hover:bg-black/30 transition px-4 py-2 rounded-md"
                             >
                                 Read More →
                             </Link>
